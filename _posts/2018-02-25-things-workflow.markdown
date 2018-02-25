@@ -48,7 +48,8 @@ Workflow is an iOS app in which you write miniature programs to perform whatever
 
 The `when` attribute of the Autolyse step in this case would be swapped out with a calculated variable in Workflow. I created two workflows to manage the whole action, one workflow takes an input of minutes, adds those minutes to the current datetime, and outputs a string in the `YYYY-MM-dd@hh:mm` format. The second - and main - workflow will continuously call the previous workflow with the minutes required for each step of the recipe. It puts the resulting datetime strings into a constant json body; uses a regular expression to remove the minify the json; and finally url encodes the resulting string. This is then opened in Things and the project with to-do items with reminders are created.
 
-A final adjustment I added was the ability to preview the times for the respective recipe without having to create the todo list. This took an `if-else` block in the main workflow that gives the user options of whether to preview the times or do make the todo list.
+A final adjustment I added was the ability to preview the times for the respective recipe without having to create the todo list. This took an `if-else` block in the main workflow that gives the user options of whether to preview the times or do make the todo list. Doing this I can check if I have time to make a specific bread from my lockscreen or even my watch.
+![Workflow from lockscreen]({{ "assets/workflow-output.jpeg" | absolute_url }})
 
 
 You can find the full workflow [here](https://workflow.is/workflows/8d663d101e474462b75d2cf7ac100c0f) and watch the workflow in action below.
