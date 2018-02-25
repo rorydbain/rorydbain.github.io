@@ -1,0 +1,18 @@
+---
+layout: post
+title:  "Beginnings In Bread"
+date:   2018-02-25 19:00:04 +0000
+categories: personal
+---
+
+A month ago I bought a copy of [Flour Water Salt Yeast](http://kensartisan.com/flour-water-salt-yeast/)(FWSY) by Ken Forkish. In June of last year I bought his newer book [The Elements of Pizza](http://kensartisan.com/elements-of-pizza/), which I really enjoyed. I find it particularly good for a number of reasons, the two key ones being that although it is written by a professional baker, it does not use unattainable utensils for the casual home baker and that it follows a traditional approach to baking - there are no overly fancy, or unecessary, modern quirks. 
+
+A week after buying FWSY I ordered a [Lodge Cast Iron Combo Cooker](http://shop.lodgemfg.com/deep-skillets/3-quart-cast-iron-combo-cooker.asp) and ever since have been baking fresh loaves twice a week.
+
+This week I baked my first fully naturely leavened loaf and was delighted with the results.
+
+
+![Sourdough crumb]({{ "/assets/sourdough_1.jpg" | absolute_url }})
+
+
+![Sourdough]({{ "/assets/sourdough_2.jpg" | absolute_url }})
