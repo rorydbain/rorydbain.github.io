@@ -19,7 +19,7 @@ Any live photo can be turned into a boomerang long after you took the photo. Thi
 #### [Google Motion Stills](https://itunes.apple.com/us/app/motion-stills-gif-collage/id1086172168?mt=8)
 
 
-This app is pretty simple but it can help you get much more use out of your live photos. You can convert them to GIFs, convert them to videos and also loop them. The best thing about this app though is it's motion stabilizing. A shaky live photo can be perfectly still after be resaved as a Live Photo using Motion Stills. I regularly use this on my Instagram posts in order to get videos where only one part of the image is moving. I've also used the video export of this app quite extensively in order to create a holiday video where half the content was just the video portion of the Live Photos I took whilst away.
+This app is pretty simple but it can help you get much more use out of your live photos. You can convert them to GIFs, convert them to videos and also loop them. The best thing about this app though is it's motion stabilizing. A shaky live photo can be perfectly still after be resaved as a Live Photo using Motion Stills. I regularly use this on my [Instagram](https://www.instagram.com/rorybain/) posts in order to get videos where only one part of the image is moving. I've also used the video export of this app quite extensively in order to create a holiday video where half the content was just the video portion of the Live Photos I took whilst away.
 
 <p align="center">
   <iframe width="560" height="315" src="https://www.youtube.com/embed/rjdvW9osqS4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -27,7 +27,7 @@ This app is pretty simple but it can help you get much more use out of your live
 
 #### [Darkroom]()
 
-Darkroom has become my go-to photo editing app. I love not having to import photos, being able to batch edit efficiently and the fact that it properly uses Photos APIs so that you can 'modify' photos instead of saving a copy (I used to end up with multiple copies of photos I was editing in various apps). Recently the app added support for editing Live Photos, in that you can apply edits to a photo and those same edits are applied to the video portion of the Live Photo. I use a combination of this and Google Motion stills to create many of my Instagram posts. 
+Darkroom has become my go-to photo editing app. I love not having to import photos, being able to batch edit efficiently and the fact that it properly uses Photos APIs so that you can 'modify' photos instead of saving a copy (I used to end up with multiple copies of photos I was editing in various apps). Recently the app added support for editing Live Photos, in that you can apply edits to a photo and those same edits are applied to the video portion of the Live Photo. I use a combination of this and Google Motion stills to create many of my [Instagram](https://www.instagram.com/rorybain/) posts. 
 
 <p align="center">
 <iframe src="https://giphy.com/embed/cJz650IZNpdmKhz8Pd" width="480" height="480" frameBorder="0" class="giphy-embed" allowFullScreen style="pointer-events: none;"></iframe>
