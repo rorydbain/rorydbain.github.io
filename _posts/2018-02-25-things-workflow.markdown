@@ -55,6 +55,4 @@ A final adjustment I added was the ability to preview the times for the respecti
 You can find the full workflow [here](https://workflow.is/workflows/8d663d101e474462b75d2cf7ac100c0f) and watch the workflow in action below.
 
 
-<p align="center">
-<iframe src="https://giphy.com/embed/830QciNGxX1e8DoSrt" width="222" height="480" frameBorder="0" class="giphy-embed" allowFullScreen style="pointer-events: none;"></iframe>
-</p>
+<iframe src="https://giphy.com/embed/830QciNGxX1e8DoSrt" width="100%" height="480" frameBorder="0" class="giphy-embed" allowFullScreen style="pointer-events: none;"></iframe>
