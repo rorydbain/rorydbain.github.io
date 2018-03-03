@@ -14,4 +14,7 @@ theme: minima
 plugins:
   - jekyll-feed
 
+disqus:
+  shortname: www-roryba-in
+
 
