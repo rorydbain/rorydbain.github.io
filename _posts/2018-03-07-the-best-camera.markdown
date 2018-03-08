@@ -18,8 +18,8 @@ What I miss from my Canon:
 
 Here are the reasons I much prefer the Fujifilm:
 
-#### 1. Its weight
- * The lens and body of the Fujifilm combined weight less than eitehr the lens or the body of the Canon. This is probably the main factor for me. My Canon was brilliant but I had to consciously bring it places and it's so bulky that when I did take it places, I wouldn't want to keep it out all the time. The X-T20, on the other hand, is so small and light that I can happily leave it slung over my shoulder, it comes with me far more often.
+#### 1. It's small and light
+ * The lens and body of the Fujifilm combined weight less than either the lens or the body of the Canon. This is probably the main factor for me. My Canon was brilliant but I had to consciously bring it places and it was so bulky that when I did take it places, I wouldn't want to keep it out all the time. The X-T20, on the other hand, is so small and light that I can happily leave it slung over my shoulder, it comes with me far more often.
 
  ![Linlithgow Snow]({{ "/assets/snow.jpg" | absolute_url }}){: .center-image }
 
@@ -34,7 +34,7 @@ Here are the reasons I much prefer the Fujifilm:
 ![Trees]({{ "/assets/trees.jpg" | absolute_url }}){: .center-image }
 
 #### 4. A physical aperture ring, shutter speed dial and exposure compensation ring
-* Have physical controls for each setting feels great. Combining this and the brilliant film simulation is the closest you can get to shooting film without spending £10 per 30 shots of photos you take. Having an aperture ring has encouraged me to change the aperture in my photos far more often, I no longer shoot everything wide open and hope for bokeh.
+* Having physical controls for each setting feels great. Combining this and the brilliant film simulation gives you the closest you can get to shooting film without spending £10 per 30 shots of photos you take. Having an aperture ring has encouraged me to change the aperture in my photos far more often, I no longer shoot everything wide open and hope for bokeh.
 
 ![Frosty]({{ "/assets/frosty.jpg" | absolute_url }}){: .center-image }
 
