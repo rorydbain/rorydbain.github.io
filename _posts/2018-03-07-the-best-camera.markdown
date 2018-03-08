@@ -44,6 +44,9 @@ Here are the reasons I much prefer the Fujifilm:
 
 ![Castle]({{ "/assets/castle.jpg" | absolute_url }}){: .center-image }
 
+#### 6. Charging over USB
+* The X-T20 can be charged with any micro-USB cable. This is great for travelling as you don't need to pack a camera specific and can even charge your camera using a battery pack. I regularly would forgot the proprietary Canon charger and never wanted to fork out the cash for a spare one, so USB charging is a welcome change.
+
 
 [1]: https://www.amazon.co.uk/Canon-8035B026-EOS-6D/dp/B00AAULJLE/ref=sr_1_2?ie=UTF8&qid=1520455065&sr=8-2&keywords=canon+6d
 [2]: https://www.amazon.co.uk/Sigma-35mm-F1-4-Lens-Canon/dp/B00A35X6NU/ref=sr_1_1?s=electronics&ie=UTF8&qid=1520455075&sr=1-1&keywords=sigma+35mm+1.4+art
