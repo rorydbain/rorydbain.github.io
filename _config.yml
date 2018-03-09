@@ -9,12 +9,28 @@ github_username:  rorydbain
 instagram_username: rorybain
 
 # Build settings
-markdown: kramdown
+markdown: redcarpet
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-picture-tag
 
 disqus:
   shortname: www-roryba-in
 
+google_analytics: UA-114754770-1
 
+picture:
+  source: "assets/images/_fullsize"
+  output: "assets/images"
+  markup: "picture"
+  presets:
+    default:
+      attr:
+        class: "gallery-pict"
+      ppi: [1, 1.5, 2.0]
+      source_medium:
+        media: "(min-width: 40em)"
+        width: "600"
+      source_default:
+        width: "600"
