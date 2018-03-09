@@ -11,7 +11,8 @@ A week after buying FWSY I ordered a [Lodge Cast Iron Combo Cooker](http://shop.
 
 This week I baked my first fully naturely leavened loaf and was delighted with the results.
 
-{% picture sourdough_1.jpg %}
+
+![Sourdough crumb]({{ "/assets/sourdough_1.jpg" | absolute_url }})
 
 
-{% picture sourdough_2.jpg %}
+![Sourdough]({{ "/assets/sourdough_2.jpg" | absolute_url }})
