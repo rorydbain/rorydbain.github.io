@@ -32,12 +32,14 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* Fresh roman pizza in real pizza oven for £3.95 in London.
 10. [Dough](http://dough-pizza.co.uk/), Edinburgh
 	* Good pizza but not as great value as the above options. A solid choice if you are in the center of Edinburgh and fancy something quick.
-11. [Civerinos](http://www.civerinos.com/), Edinburgh
+11. [Söderberg](http://www.soderberg.uk/soderberg-pavilion/)
+	* Thin crispy pizza from a woodfired pizza oven. I prefer neopolitan style but there's no denying that Söderberg know their sourdough breads.
+12. [Civerinos](http://www.civerinos.com/), Edinburgh
 	* Edinburgh's favourite pizzeria that I just don't love. The pizza can be good but certainly not good value for money.
-12.  [Homeslice](http://www.homeslicepizza.co.uk/), London
+13.  [Homeslice](http://www.homeslicepizza.co.uk/), London
 	* The London restaurant selling by the slice that likely inspired Civerinos Slice may have also inspired the expensive pricing.
-13. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
+14. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
 	* Currently the only non pizzeria on this list. Nice pizza but expensive and personally, a thin crispy pizza will never beat a neopolitan one worth its 3% salt. 
-14. La Favorita, Glasgow
+15. La Favorita, Glasgow
 	* This branch of the La Favorita brand has now shut down and I'm yet to try its East coast sibling. Not great value and toppings that were fancier than they needed to be.
 
