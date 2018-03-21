@@ -24,22 +24,24 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* Probably your best option for a cheap meal in London.
 6. [Franco Manca](http://www.francomanca.co.uk/), London
 	* Closely follows Pizza Pilgrims, slightly smaller in my experience and just beaten in dough quality.
-7. [Napizza](http://www.napizza.uk/), Stirling
+7. [Mozza](http://www.mozza.it), Glasgow
+	* If Paesano is full - or you need to book - this is a great option.
+8. [Napizza](http://www.napizza.uk/), Stirling
 	* By far my favourite cheap eat in Stirling, proper neopolitan pizza. It's a shame their shop is so small.
-8. [Pizza Posto](https://pizzaposto.co.uk/)
+9. [Pizza Posto](https://pizzaposto.co.uk/)
 	* Massive restaurant and one of the only places you can get Neopolitan pizza in Edinburgh.
-9. [Pizza Union](https://www.pizzaunion.com/), London
+10. [Pizza Union](https://www.pizzaunion.com/), London
 	* Fresh roman pizza in real pizza oven for £3.95 in London.
-10. [Dough](http://dough-pizza.co.uk/), Edinburgh
+11. [Dough](http://dough-pizza.co.uk/), Edinburgh
 	* Good pizza but not as great value as the above options. A solid choice if you are in the center of Edinburgh and fancy something quick.
-11. [Söderberg](http://www.soderberg.uk/soderberg-pavilion/)
+12. [Söderberg](http://www.soderberg.uk/soderberg-pavilion/)
 	* Thin crispy pizza from a woodfired pizza oven. I prefer neopolitan style but there's no denying that Söderberg know their sourdough breads.
-12. [Civerinos](http://www.civerinos.com/), Edinburgh
+13. [Civerinos](http://www.civerinos.com/), Edinburgh
 	* Edinburgh's favourite pizzeria that I just don't love. The pizza can be good but certainly not good value for money.
-13.  [Homeslice](http://www.homeslicepizza.co.uk/), London
+14.  [Homeslice](http://www.homeslicepizza.co.uk/), London
 	* The London restaurant selling by the slice that likely inspired Civerinos Slice may have also inspired the expensive pricing.
-14. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
+15. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
 	* Currently the only non pizzeria on this list. Nice pizza but expensive and personally, a thin crispy pizza will never beat a neopolitan one worth its 3% salt. 
-15. La Favorita, Glasgow
+16. La Favorita, Glasgow
 	* This branch of the La Favorita brand has now shut down and I'm yet to try its East coast sibling. Not great value and toppings that were fancier than they needed to be.
 
