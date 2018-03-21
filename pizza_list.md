@@ -38,7 +38,7 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* Thin crispy pizza from a woodfired pizza oven. I prefer neopolitan style but there's no denying that Söderberg know their sourdough breads.
 13. [Civerinos](http://www.civerinos.com/), Edinburgh
 	* Edinburgh's favourite pizzeria that I just don't love. The pizza can be good but certainly not good value for money.
-14.  [Homeslice](http://www.homeslicepizza.co.uk/), London
+14. [Homeslice](http://www.homeslicepizza.co.uk/), London
 	* The London restaurant selling by the slice that likely inspired Civerinos Slice may have also inspired the expensive pricing.
 15. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
 	* Currently the only non pizzeria on this list. Nice pizza but expensive and personally, a thin crispy pizza will never beat a neopolitan one worth its 3% salt. 
