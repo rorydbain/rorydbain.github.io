@@ -5,7 +5,7 @@ date:   2018-03-21 21:31:00 +0000
 categories: programming swift
 ---
 
-Ninety percent of my programming is done in Swift. Ninety percent of my time working in Swift is spent waiting for Swift to compile. There are many reasons why your compile times may be slow and the examples that follow are just some simple options to be aware of - if long build times are a problem for you. Hopefully the Swift compiler will evolve to a state where you do not have to consider what is going to compile quickly. But, for now, this could be of some help.
+If you are ever trying to get the compile time of a particular function down then hopefully the following examples will be of some use. For me, the best option from the following examples is to split long functions into smaller, composite functions.
 
 To easily see the compile times of functions I created an empty project and added an `Other Swift Flags` (this can be found inside `$Your Project` -> `Build Settings` -> `Swift Compiler - Custom Flags`) of `-Xfronted -warn-long-function-bodies=1`. Doing this means Xcode will warn you everytime that you build if any function in your project took longer than 1 millisecond to type check.
 
