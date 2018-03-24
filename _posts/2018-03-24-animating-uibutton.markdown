@@ -1,0 +1,88 @@
+---
+layout: post
+title:  "Animating UIButton Presses In Swift"
+date:   2018-03-24 21:00:00 +0000
+categories: programming swift
+---
+
+Animation can vastly improve user experience in an application. I love buttons that animate and give you the feeling that you are actually pressing something. Here are a couple of ways of doing that in Swift - both of which utilise UIButtons addTarget methods.
+<iframe src="https://giphy.com/embed/WxTzRZHomhAvHD8kgV" width="100%" height="100" frameBorder="0" class="giphy-embed" allowFullScreen style="pointer-events: none;"></iframe>
+
+#### RxSwift + RxCocoa
+This is my preferred method of making generic animations and is one that we use at [FanDuel](https://www.fanduel.com). The benefit of using RxSwift is that you start and stop animating button presses - should you wish to - simply by disposing the DisposeBag that you pass in.
+
+{% highlight swift %}
+import RxSwift
+import RxCocoa
+
+extension UIButton {
+    
+    func animateWhenPressed(disposeBag: DisposeBag) {
+        let animateTransform = PublishSubject<CGAffineTransform>()
+        
+        self.rx.controlEvent([.touchDown, .touchDragEnter])
+            .map({ CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95) })
+            .bind(to: animateTransform)
+            .disposed(by: disposeBag)
+        
+        self.rx.controlEvent([.touchDragExit, .touchCancel, .touchUpInside, .touchUpOutside])
+            .map({ CGAffineTransform.identity })
+            .bind(to: animateTransform)
+            .disposed(by: disposeBag)
+        
+        animateTransform
+            .distinctUntilChanged()
+            .subscribe(onNext: { [weak self] transform -> Void in
+                self?.animate(transform)
+            }).disposed(by: disposeBag)
+        
+    }
+    
+    private func animate(_ transform: CGAffineTransform) {
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 3,
+                       options: [.curveEaseInOut],
+                       animations: { [weak self] in
+                        self?.transform = transform
+            }, completion: nil)
+    }
+    
+}
+{% endhighlight %}
+
+This bit of Rx revolves around mapping button events to an animation state. For touch-down or touch-drag-enter events, we want to animate the press down action of the button, this 'pressed' state is represented by `CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95)`. For all other touch events we want to animate back to the `identity` (the default) transform. For more info on how transforms work, check out [this article](https://www.hackingwithswift.com/read/15/4/transform-cgaffinetransform) by HackingWithSwift. These transform mappings are both bound to the `animateTransform` PublishSubject which simply calls the animateTransform function whenever a new event is received.
+
+#### Vanilla UIKit Method
+{% highlight swift %}
+extension UIButton {
+    
+    func startAnimatingPressActions() {
+        addTarget(self, action: #selector(animateDown), for: [.touchDown, .touchDragEnter])
+        addTarget(self, action: #selector(animateUp), for: [.touchDragExit, .touchCancel, .touchUpInside, .touchUpOutside])
+    }
+    
+    @objc private func animateDown(sender: UIButton) {
+        animate(sender, transform: CGAffineTransform.identity.scaledBy(x: 0.95, y: 0.95))
+    }
+    
+    @objc private func animateUp(sender: UIButton) {
+        animate(sender, transform: .identity)
+    }
+    
+    private func animate(_ button: UIButton, transform: CGAffineTransform) {
+        UIView.animate(withDuration: 0.4,
+                       delay: 0,
+                       usingSpringWithDamping: 0.5,
+                       initialSpringVelocity: 3,
+                       options: [.curveEaseInOut],
+                       animations: { [weak button] in
+                        button?.transform = transform
+            }, completion: nil)
+    }
+    
+}
+{% endhighlight %}
+
+If you are not using RxSwift or RxCocoa, this method should work just as well. The only downside is that you once a button becomes animatable, you have no way of making it un-animatable.
