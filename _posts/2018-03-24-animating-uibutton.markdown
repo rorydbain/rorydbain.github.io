@@ -5,7 +5,9 @@ date:   2018-03-24 21:00:00 +0000
 categories: programming swift
 ---
 
-Animation can vastly improve user experience in an application. I love buttons that animate and give you the feeling that you are actually pressing something. Here are a couple of ways of doing that in Swift - both of which utilise UIButtons addTarget methods.
+Animation can vastly improve user experience in an application. I love buttons that animate and give you the feeling that you are actually pressing something. These combined with the great TapticEngine APIs ([UIFeedbackGenerator](https://developer.apple.com/documentation/uikit/uifeedbackgenerator)) can completely change the way your application feels.
+
+Here are a couple of ways of doing button animations in Swift - both of which utilise UIButton addTarget methods.
 <iframe src="https://giphy.com/embed/WxTzRZHomhAvHD8kgV" width="100%" height="100" frameBorder="0" class="giphy-embed" allowFullScreen style="pointer-events: none;"></iframe>
 
 #### RxSwift + RxCocoa
