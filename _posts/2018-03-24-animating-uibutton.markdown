@@ -33,8 +33,8 @@ extension UIButton {
                        usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 3,
                        options: [.curveEaseInOut],
-                       animations: { [weak button] in
-                        button?.transform = transform
+                       animations: {
+                        button.transform = transform
             }, completion: nil)
     }
     
@@ -71,8 +71,8 @@ extension UIButton {
                        usingSpringWithDamping: 0.5,
                        initialSpringVelocity: 3,
                        options: [.curveEaseInOut],
-                       animations: { [weak self] in
-                        self?.transform = transform
+                       animations: {
+                        self.transform = transform
             }, completion: nil)
     }
     

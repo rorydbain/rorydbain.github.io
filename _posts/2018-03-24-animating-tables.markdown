@@ -82,8 +82,8 @@ private func animate(_ cell: UICollectionViewCell, to transform: CGAffineTransfo
                     usingSpringWithDamping: 0.4,
                     initialSpringVelocity: 3,
                     options: [.curveEaseInOut],
-                    animations: { [weak cell] in
-                    cell?.transform = transform
+                    animations: {
+                    cell.transform = transform
         }, completion: nil)
 }
 {% endhighlight %}
