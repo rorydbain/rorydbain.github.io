@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "Animating UIButton Presses In Swift"
-date:   2018-03-24 21:00:00 +0000
+title: "Animating UIButton Presses In Swift"
+date: 2018-03-24 21:00:00 +0000
 categories: programming swift
 ---
 
