@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "You Should Make Fresh Pasta"
+title: "Fresh Pasta"
 date: 2018-03-31 19:00:00 +0000
 categories: food
 ---
 
-A couple of months ago I first made fresh pasta and was amazed at how easy it was to do - it requires just two ingredients and can be done in 15 minutes.
+A couple of months ago I first made fresh pasta and was amazed at how easy it was to do - it requires just two ingredients and can be done in 15 minutes. In the summer my Mum's hens lay more eggs than she knows what to do with at times and this is a delicious way to make use of them.
 
 ![Pre roll]({{ "/assets/pasta_preroll.jpg" | absolute_url }})
 
