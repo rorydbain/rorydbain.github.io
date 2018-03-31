@@ -2,7 +2,7 @@
 layout: post
 title:  "Things 3 + Workflow"
 date:   2018-02-25 20:29:04 +0000
-categories: workflow things3
+categories: programming apple
 ---
 I started using [Things](https://culturedcode.com/things/) as my to-do list on iOS back in December and it has become one of my favourite apps to use. The latest version (3.4) added powerful deeplinking that allows you to create shortcuts and automate tasks within the app. For example, you can open the following URL on your Mac or iOS device to go straight to the today list - [`things:///show?id=today`](things:///show?id=today). 
 

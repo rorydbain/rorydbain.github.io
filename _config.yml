@@ -1,8 +1,8 @@
 title: To Make A Long Rory Short
 email: rorydbain@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  My name is Rory Bain, I'm a software developer living in Edinburgh.
-  Here you will find various things that I find interesting. 
+  I'm Rory, I'm a software engineer from Scotland.
+  Here you'll find my posts about all sorts of things - expect baking, programming and photography.
 baseurl: "/" # the subpath of your site, e.g. /blog
 url: "https://rorydbain.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  rorydbain
@@ -13,8 +13,12 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 disqus:
   shortname: www-roryba-in
+
+paginate: 6
+paginate_path: /page:num/
 
 

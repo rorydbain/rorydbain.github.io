@@ -2,7 +2,7 @@
 layout: post
 title:  "Utilising Live Photos"
 date:   2018-03-02 16:29:04 +0000
-categories: photography instagram
+categories: photography
 ---
 
 Every iPhone since the 6S has had the ability to shoot [Live Photos](https://support.apple.com/en-gb/HT207310) (a photo with the surrounding 1.5 seconds stored as video). There is nothing breakthrough about this 'file format', but I find them to be one of the nicest features of iOS. The video captured has a low frame rate (something around 15 fps) and takes up relatively little space. Unless you are completely void of storage space on your phone then I see no reason not to leave them enabled. 
