@@ -2,13 +2,13 @@
 ---
 
 @import "{{ site.theme }}";
-
 .center-image {
     margin: 0 auto;
     display: block;
 }
 
-.pagination a, .pagination span {
+.pagination a,
+.pagination span {
     padding: 7px 18px;
     border: 1px solid #eee;
     margin-left: -2px;
@@ -26,4 +26,12 @@
 
 .pagination {
     text-align: center;
+ }
+ 
+ $font-stack:    Helvetica, sans-serif;
+ $primary-color: #333;
+ 
+ body {
+   font: 100% $font-stack;
+   color: $primary-color;
  }
