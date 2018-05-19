@@ -1,6 +1,6 @@
 ---
 layout: page
-title: The Best Pizzas
+title: 🍕
 permalink: /pizzas/
 ---
 
