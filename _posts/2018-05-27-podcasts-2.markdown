@@ -1,0 +1,30 @@
+---
+layout: post
+title:  "Podcast List - May 2018"
+date:   2018-05-26 17:16:00 +0000
+categories: podcasts recommendations
+---
+
+When I first started this blog I made [a post]({% post_url 2018-02-26-podcasts %}) about the podcasts that I have enjoyed listening to at the time. Since then, I've discovered a some other podcasts that I thought I'd share.
+
+### Podcasts 
+
+#### [The Daily](https://www.nytimes.com/podcasts/the-daily)
+This New York Times podcast comes in ~twenty minute episodes, five days a week. I got into it through the new series they are hosting called Caliphate that details the story of an ex-ISIS member that is incredibly interesting.
+
+#### [Planet Money](https://www.npr.org/podcasts/510289/planet-money)
+
+Another NPR podcast that I have started listening to more frequently. Planet Money tells really interesting stories relating to economics. This sort of topic is usually not my sort of thing but the Podcast always tells an interesting story that is really accessible.
+
+#### [On The Media](https://www.wnycstudios.org/shows/otm)
+
+I view On The Media as the media version of Planet Money. Some of the episodes can be too America-focused, but there is the odd story that they tell of media outcomes elsewhere in the world.
+
+#### [Black Hands](https://itunes.apple.com/gb/podcast/black-hands-a-family-mass-murder/id1259053911?mt=2)
+
+Black Hands is a murder mystery podcast that investigates the murders of a family in New Zealand. The story is interesting, though I wasn't completely satisfied with the ending, and the accents are even better.
+
+
+### Overcast
+
+As a side note, whenever I recommend someone a podcast and they haven't listened to podcasts before, I always recommend that they download [Overcast](https://overcast.fm). Overcast is a free podcast player for iOS that comes with a handful of features that make it great. The main feature that I love is that it shortens the silences in a Podcast - I've saved over 28 hours of listening through having these silences shortened. This is not a feature that is exclusive to Overcast by any means, but it's still a great, free app. 
