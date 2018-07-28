@@ -1,0 +1,16 @@
+---
+layout: post
+title:  " WWDC 2018"
+date:   2018-07-28 14:16:00 +0000
+categories: reviews tech
+---
+
+![Badge]({{ "/assets/wwdc_badge.jpg" | absolute_url }})
+
+![Sign]({{ "/assets/wwdc_sign.jpg" | absolute_url }})
+
+![Tim ]({{ "/assets/wwdc_tim.jpg" | absolute_url }})
+
+![Scooter ]({{ "/assets/wwdc_scoot.jpg" | absolute_url }})
+
+![Model 3]({{ "/assets/wwdc_mod3.jpg" | absolute_url }})

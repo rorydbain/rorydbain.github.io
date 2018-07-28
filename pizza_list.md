@@ -44,6 +44,8 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* The London restaurant selling by the slice that likely inspired Civerinos Slice may have also inspired the expensive pricing.
 16. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
 	* Currently the only non pizzeria on this list. Nice pizza but expensive and personally, a thin crispy pizza will never beat a neopolitan one worth its 3% salt. 
-17. La Favorita, Glasgow
+17. [Tony's Pizza Napoletana](http://tonyspizzanapoletana.com), San Francisco
+	* San Franciscos highly rated and loved pizzeria that serves a good variety of 'pies' but costs that San Francisco price and then some. Our two margheritas and two drinks were almost $100. The pizza was good but nothing special; and I find it hard to look past that price.
+18. La Favorita, Glasgow
 	* This branch of the La Favorita brand has now shut down and I'm yet to try its East coast sibling. Not great value and toppings that were fancier than they needed to be.
 
