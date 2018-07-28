@@ -7,9 +7,36 @@ categories: reviews tech
 
 ![Badge]({{ "/assets/wwdc_badge.jpg" | absolute_url }})
 
+<blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">Yaaay apple conference tonight! Mac arrives Friday :)</p>&mdash; Rory Bain (@rorybain) <a href="https://twitter.com/rorybain/status/22703229276?ref_src=twsrc%5Etfw">September 1, 2010</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+
+
+15 year old me was pretty excited about watching the Apple Event where Apple would unveil the penultimate iPods Nano and Touch. 23 year old me was even more excited to have the chance to go San Jose and attend WWDC in person. I thought I'd write about my takeaways from attending and why I'm so keen to to return.
+
+
 ![Sign]({{ "/assets/wwdc_sign.jpg" | absolute_url }})
 
+#### Learnings and Inspriation
+
+Although you can watch the vast majority of the WWDC sessions online, it's nothing compared to 5 days of dedicated learning in proper theatres. There are around 6 time slots during each day which each have up to 3 concurrently running sessions. There is always something worth going to. This means that you end up going to so many sessions that you would have likely would never watch online and there are so many tricks to learn. I work on a large Objective C and Swift project and our compile time is dreadfully slow. I attended several sessions that taught changes you could make to your application to improve compile time which have now been compiled into a massive JIRA board at work of project cleanup tasks where the speed improvements alone are worth the cost of a WWDC ticket. 
+
+The sessions are great, but even more useful are the labs. These offer you the chance to speak to the actual Apple engineers who wrote the APIs that you are consuming. I cannot recommend enough making sure that you attend as many labs as possible. I went to a UIKit one and an LLVM one. The UIKit one I attended, I asked about some UITableView autolayout based sizing header and footers where I have a working solution (thanks to StackOverflow) but I was convinved there was a better way. Sure enough, I was linked a [great GitHub Gist on how to do this properly](https://gist.github.com/smileyborg/50de5da1c921b73bbccf7f76b3694f6a). The LLVM session I was hoping for some simple solutions as to why our compile time is so slow (up to 40 minutes for a clean build and overly keen 20 minute recompiles). The engineer I spoke to was nice but he was just shocked as to how poor the compilers performance was on our project. The feedback I got was to file a couple of radars and to try and split up our main target into more separate frameworks - which is easier said than done. Even with no concrete actions to leave with, it was incredibly useful to at least have some validation that our build settings were correctly configured - something that can be all to easy to mess up.
+
+My biggest regret would be not having enough things to ask at the labs. What I'm committing to doing in the future is to keep track of all solutions I have that are less than satisfactory. Whether this is through easily rediscoverable code comments or through a list in notes. This last week I've added a note to check how Apple recommends that you manage screen orientation for single cases where you need to display in landscape. Particularly for the case where you have an `AVPlayerViewController` - which you should not subclass.
+
+My personal favourites of the sessions I attended -
+
+* [Advanced Debugging with Xcode and LLDB](https://developer.apple.com/videos/play/wwdc2018/412/)
+* [Behind the Scenes of the Xcode Build Process](https://developer.apple.com/videos/play/wwdc2018/415/)
+* [Building Faster in Xcode](https://developer.apple.com/videos/play/wwdc2018/408/)
+* [A Tour of UICollectionView](https://developer.apple.com/videos/play/wwdc2018/225/)
+* [Intentional Design](https://developer.apple.com/videos/play/wwdc2018/802/)
+
 ![Tim ]({{ "/assets/wwdc_tim.jpg" | absolute_url }})
+
+#### Networking
+
+Possibly my favourite thing about the conference was the sheer variety of developers you met. There are 5000 developers that attend WWDC, and there is also Layers conference and Alt Conf running at the same time, also in San Jose. I met people who worked on custom email clients,banking clients, car rentals, music streaming, cycling, design prototyping, podcasting and even simulated Santa phoning, to name a few. All these companies are working so many different technologies and you are always chatting and exchanging experiences and recommendations. I met more developers in a day than I had previously met in my life. I found this to be invaluable, particularly at my age, should I ever come across a problem that I'm struggling with and perhaps my co-workers have no experience in, I now have a wealth of people to contact who are authors or experts of the tools that I'm trying to use.
+#### San Jose
 
 ![Scooter ]({{ "/assets/wwdc_scoot.jpg" | absolute_url }})
 
