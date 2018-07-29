@@ -7,7 +7,7 @@ categories: reviews tech
 
 ![Badge]({{ "/assets/wwdc_badge.jpg" | absolute_url }})
 
-<!-- <blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">Yaaay apple conference tonight! Mac arrives Friday :)</p>&mdash; Rory Bain (@rorybain) <a href="https://twitter.com/rorybain/status/22703229276?ref_src=twsrc%5Etfw">September 1, 2010</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>  -->
+<blockquote class="twitter-tweet tw-align-center" data-lang="en"><p lang="en" dir="ltr">Yaaay apple conference tonight! Mac arrives Friday :)</p>&mdash; Rory Bain (@rorybain) <a href="https://twitter.com/rorybain/status/22703229276?ref_src=twsrc%5Etfw">September 1, 2010</a></blockquote> <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 
 15 year old me was pretty excited about watching the Apple Event where Apple would unveil the penultimate iPods Nano and Touch. 23 year old me was even more excited to have the chance to go San Jose and attend WWDC in person. I thought I'd write about my takeaways from attending and why I'm so keen to to return.
@@ -39,7 +39,7 @@ Possibly my favourite thing about the conference was the sheer variety of develo
 
 #### San Jose
 
-Silicon Valley is fully committed to all the its cliches which can be both a positive and a negative thing. 
+Silicon Valley is fully committed to all its cliches which is both a strength and a weakness. Whilst I was there, the most exciting things for me were the dock-less electric scooters and the Tesla Model 3. Both of which appear to me to be the future of transport. For the unaware, the scooters are electrically powered, internet connected scooters that you can find on most sidewalks in certain US cities. You scan a barcode with your phone and you are then free to ride the scooter as far as its range of roughly 35 kilometres will allow. Typically you pay $1 to start and subsequently 25 cents per minute.
 
 ![Lime Scooters]({{ "/assets/wwdc_scoot.jpg" | absolute_url }})
 
