@@ -15,7 +15,7 @@ This has been great for so many reasons.
 
 And much more...
 
-The final (for now 😬) piece of the iCloud set up that I received last week was a Lightning SD card adapter. Until now I have been using my laptop to upload my photos, having given up on WiFi transfer for being too slow. I got the Apple SD adapter, which I would highly recommend despite its high price. I tried to cheap out at first and was left with an adapter that hardly worked. Plus, the Apple one transfers at USB-3 speeds on the iPad Pro. I now leave this adapter in my bag alongside my camera and I can transfer photos in an instant. I love this setup. Its only problem is that it has me eyeing the upcoming 2018 iPad Pro.
+The final (for now 😬) piece of the iCloud set up that I received last week was a Lightning SD card adapter. Until now I have been using my laptop to upload my photos, having given up on WiFi transfer for being too slow. I got the Apple SD adapter, which I would highly recommend despite its high price. I tried to cheap out at first and was left with an adapter that hardly worked. Plus, the Apple one transfers at USB-3 speeds on the iPad Pro. I now leave this adapter in my bag alongside my camera and I can transfer photos in an instant. I love this setup. Its only problem is that it has me eyeing the upcoming 2018 iPad Pro... 🙄
 
 
 
