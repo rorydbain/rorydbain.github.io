@@ -12,6 +12,7 @@ This has been great for so many reasons.
 * Great utilisation of machine learning for photos. I’ve tagged friends and family and can now make full use of search in Photos. This has only been made better by iOS 12 where you can combine search terms. I can instantly find photos of all sorts. For example ‘Rory Bain’, ‘Snowboarding’ in ‘France’. 
 * Vastly improved “Memories”. When adding my photos from my hard drives, I also added photos from my Mum’s old hard drives. I’ve still many more to add, but even now it’s made the Memories feature far more enjoyable. On a persons birthdays for example, it automatically creates an album with my photos of that person over the years. Most people only get these albums since the start of their social media presence in the last 10 years and are photos are limited to ones that they’ve selectively kept online. This gives me photos going back decades. 
 * Less scraping through sets of photos. Another benefit of machine learning and image recognition techniques in is that Photos automatically only adds distinct photos to auto-created albums. There aren’t 10 takes of the same family photo where I accidentally left continuous shutter on.
+* iOS photo editing apps are great. I personally use Darkroom 90% of the time and can do 80% of what I did in Lightroom without any importing faff.
 
 And much more...
 
