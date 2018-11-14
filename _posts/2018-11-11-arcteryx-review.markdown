@@ -9,10 +9,15 @@ A few weeks ago coming down Ben Ledi, soaked to the bone for what felt like the 
 
 In my looking I couldn’t find many great photos of the jackets online and any good quality ones I found did not do the fits of the jackets justice. I thought I’d share some pictures of mine for anyone else who isn’t sold by the styling you see online.
 
+In each of these photos I’m wearing the Arcteryx with a Rab Microlight Alpine down jacket underneath - both in size UK medium. 
+
 ![Arcteryx Beta SL with Rab Microlight]({{ "/assets/jacket1.jpeg" | absolute_url }})
 
 ![Arcteryx Beta SL with Rab Microlight]({{ "/assets/jacket2.jpeg" | absolute_url }})
 
+The hood on the jacket is great, it fits large so that it can fit over a helmet, but it can also be cinched down for normal wearing just fine. I’ll often wear over-ear headphones to work and it’s nice that they fit easily under this hood, something I couldn’t say about my previous North Face Triclimate.
+
 ![Arcteryx Beta SL with Rab Microlight]({{ "/assets/jacket3.jpeg" | absolute_url }})
 
 ![Arcteryx Beta SL with Rab Microlight]({{ "/assets/jacket4.jpeg" | absolute_url }})
+The Arcteryx next to my friend Declan’s Carthart parka after a 30 minute downpour.
