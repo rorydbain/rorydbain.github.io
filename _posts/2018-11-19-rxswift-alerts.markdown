@@ -6,7 +6,7 @@ categories: programming
 ---
 I was recently writing a helper application for work that would store a bunch of URL paths that we support as Deeplinks. The user can pick from one of these paths and will be prompted to input a value for any parameters (any part of the path that matched a specific regex). However, the app got pretty complex when having to deal with multiple capture groups in that regular expression.
 
-The given problem was this - given an array of strings (capture groups from my regular expression), show an alert one after requesting what value the user wishes to input for that ‘key’.
+The given problem was this - given an array of strings (capture groups from my regular expression), show an alert one after the other requesting a value that the user wishes to input for that ‘key’.
 
 Traditionally, I would have probably made some `UIAlertController`-controller that might look something like this.
 
