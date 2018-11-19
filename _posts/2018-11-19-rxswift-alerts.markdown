@@ -44,6 +44,7 @@ class MultipleAlertController {
     
     private func display(alert: AlertViewModel) {
         // some stuff here showing alert, invoking show next alert after completion
+        iterations += 1
     }
     
 }
