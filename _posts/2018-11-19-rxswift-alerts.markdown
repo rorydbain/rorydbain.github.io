@@ -8,6 +8,8 @@ I was recently writing a helper application for work that would store a bunch of
 
 The problem was this - given an array of strings (capture groups from my regular expression), show an alert one after the other requesting a value that the user wishes to input for that ‘key’.
 
+<iframe src="https://giphy.com/embed/9x2WYbCdexFTdWWjxB" width="100%" height="500" frameBorder="0" class="giphy-embed" allowFullScreen style="pointer-events: none;"></iframe>
+
 Traditionally, I would have probably made some `UIAlertController`-controller that might look something like this.
 
 ```swift
