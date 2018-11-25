@@ -1,6 +1,6 @@
 ---
 layout: page
-title: 🍕
+title: Pizza Places 🍕
 permalink: /pizzas/
 ---
 
