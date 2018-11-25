@@ -4,7 +4,7 @@ title: 🍕
 permalink: /pizzas/
 ---
 
-### 🍕
+### Pizza Places 🍕
 
 ---
 
