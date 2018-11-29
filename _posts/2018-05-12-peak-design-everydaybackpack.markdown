@@ -2,8 +2,8 @@
 layout: post
 title: "Peak Design Everyday Backpack Review"
 date: 2018-05-12 17:43:00 +0000
-categories: review
-#review
+categories: reviews
+#reviews
 ---
 
 ![Strap on carry]({{ "/assets/arthurs_seat.jpg" | absolute_url }})

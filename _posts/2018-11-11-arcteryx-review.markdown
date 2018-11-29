@@ -2,8 +2,8 @@
 layout: post
 title:  "Arcteryx Beta SL"
 date:   2018-11-11 14:16:00 +0000
-categories: review
-#review
+categories: reviews
+#reviews
 ---
 
 A few weeks ago coming down Ben Ledi, soaked to the bone for what felt like the hundredth time that year, I decided it was time to invest in a solid waterproof jacket. As soon as I was home I did a bunch of online reading (notably [Outdoor Gear Lab](https://www.outdoorgearlab.com) and [The Wirecutter](https://thewirecutter.com)) and over the next few weeks I took every opportunity to run into an outdoors shop in order to try out brands and sizes. Eventually I settled on the Arcteryx. Had I not gone for this jacket, the Mountain Equipment Rupal was next on my list. Both were highly waterproof, not crazily expensive and, in my opinion, looked pretty good. 

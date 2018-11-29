@@ -2,8 +2,8 @@
 layout: post
 title:  "Rab Microlight Alpine"
 date:   2018-11-19 09:16:00 +0000
-categories: review
-#review
+categories: reviews
+#reviews
 ---
 I recently purchased the Rab Microlight Alpine down jacket. Like with my Arcteryx jacket, I thought it might be helpful to others if I shared my opinions and some pictures as there’s limited info or pictures outside of those by the manufacturer online.
 

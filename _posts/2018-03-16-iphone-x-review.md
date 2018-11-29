@@ -2,8 +2,8 @@
 layout: post
 title:  "Mini iPhone X Review"
 date:   2018-03-16 08:26:00 +0000
-categories: apple review
-#apple #review
+categories: apple reviews
+#apple #reviews
 ---
 
 

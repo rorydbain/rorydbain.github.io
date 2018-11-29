@@ -2,8 +2,8 @@
 layout: post
 title: "Nintendo Switch Review"
 date: 2018-05-19 10:40:00 +0000
-categories: review
-#review
+categories: reviews
+#reviews
 ---
 
 ![Nintendo Switch]({{ "/assets/switch.jpg" | absolute_url }})

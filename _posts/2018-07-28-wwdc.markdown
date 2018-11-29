@@ -2,8 +2,8 @@
 layout: post
 title:  " WWDC 2018"
 date:   2018-07-28 14:16:00 +0000
-categories: review tech
-#review #tech
+categories: personal apple
+#personal #apple
 ---
 
 ![Badge]({{ "/assets/wwdc_badge.jpg" | absolute_url }})
