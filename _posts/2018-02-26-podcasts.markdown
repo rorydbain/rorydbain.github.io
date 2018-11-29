@@ -6,7 +6,7 @@ categories: podcasts recommendations
 #podcasts #recommendations
 ---
 
-I typically listen to a least one podcast a day, the topics of which vary significantly. Here's a list of some of my favorites podcasts this past year.
+I typically listen to a least one #podcast a day, the topics of which vary significantly. Here's a list of some of my favorites podcasts this past year.
 
 
 ### Crime/Thriller/Mystery
