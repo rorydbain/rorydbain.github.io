@@ -2,8 +2,10 @@
 layout: post
 title:  "Mini iPhone X Review"
 date:   2018-03-16 08:26:00 +0000
-categories: apple
+categories: apple review
+#apple #review
 ---
+
 
 #### 👍🏼
 1. **Its screen** is the best I've ever used - viewing anything edge-to-edge on this phone is a delight. The best way I can describe it is by saying it looks like it has been superimposed onto the phone using CGI.

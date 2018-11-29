@@ -3,6 +3,7 @@ layout: post
 title:  "Animating UICollectionView or UITableView Cell Touches"
 date:   2018-03-24 22:00:00 +0000
 categories: programming swift
+#programming #swift
 ---
 
 Following on from my previous post about the animation of UIButtons, I wanted to look at animating UITableView or UICollectionView cell touches. This effect is used in the AppStore on the Today page alongside a great transition delegate for opening and closing articles. 

@@ -3,6 +3,7 @@ layout: post
 title: "Podcast List - November 2018"
 date: 2018-11-25 12:26:56 +0000
 categories: podcasts recommendations
+#podcasts #recommendations
 ---
 
 A November edition of some podcasts that I’ve been listening to recently.

@@ -3,6 +3,7 @@ layout: post
 title: "Animating Tab Bar Controller Taps"
 date: 2018-03-25 21:00:00 +0000
 categories: programming swift
+#programming #swift
 ---
 
 Following on from my previous animation posts ([here]({% post_url 2018-03-24-animating-uibutton %}) and [here]({% post_url 2018-03-24-animating-tables %})), this post is about animating the taps on an iOS tab bar - an effect used by Spotify in their app.  UITabBarController is an old piece of UIKit that draws its architecural design from AppKit. Configuring your tabs requires you to use UITabBarItem, you have no access to the internal UIBarButton class. Because of this, we have to use some less than ideal `valueForKey` method - however, in this case I feel this is OK as there is no crticial operation relying on it, just an animation.

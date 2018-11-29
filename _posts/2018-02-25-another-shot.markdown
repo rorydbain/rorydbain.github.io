@@ -3,6 +3,7 @@ layout: post
 title:  "Another Shot"
 date:   2018-02-25 18:00:04 +0000
 categories: personal
+#personal
 ---
 
 {% highlight swift %}

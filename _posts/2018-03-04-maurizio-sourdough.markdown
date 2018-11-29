@@ -3,6 +3,7 @@ layout: post
 title:  "Steps Forward and Back"
 date:   2018-03-04 22:26:00 +0000
 categories: food
+#food
 ---
 
 This weekend I forayed from the safety of my go-to Flour Water Salt Yeast book to try a recipe from [The Perfect Loaf](https://www.theperfectloaf.com). The reasoning for this was that I was keen to improve the scoring on my bread. FWSY says that scoring is unnecessary and you are fine to just let your loaves split naturally. However, I'm keen to improve the neatness of my loaves and want to move on baguettes which will certainly require scoring. If you don't score your loves they can split anywhere on the loaf as they expand - leading to a less even bake. 

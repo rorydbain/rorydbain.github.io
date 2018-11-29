@@ -3,6 +3,7 @@ layout: post
 title:  "Presenting a series of UIAlertControllers with RxSwift"
 date:   2018-11-19 22:00:00 +0000
 categories: programming
+#programming
 ---
 I was recently writing a helper application for work that would store a bunch of URL paths that we support as Deeplinks. The user can pick from one of these paths and will be prompted to input a value for any parameters (any part of the path that matched a specific regex). However, the app got pretty complex when having to deal with multiple capture groups in that regular expression.
 

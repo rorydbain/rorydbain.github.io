@@ -3,6 +3,7 @@ layout: post
 title:  "My Best Camera"
 date:   2018-03-07 20:35:00 +0000
 categories: photography
+#photography
 ---
 
 Between my third and fourth years of university, I worked as a distillery tour guide and as an intern software developer. By the end of the first month I bought my ideal camera - a [Canon 6D][1] - and a month later I picked up the [Sigma 35mm 1.4 ART][2] lens. Two years later I sold both of these and instead bought a second hand [Fujifilm X-T20][3] and [Fujinon 23mm 1.4 lens][4] and bar a few nitpicks, I believe it was a brilliant swap to make.

@@ -3,6 +3,7 @@ layout: post
 title: "Animating UIButton Presses In Swift"
 date: 2018-03-24 21:00:00 +0000
 categories: programming swift
+#programming #swift
 ---
 
 Animation can vastly improve user experience in an application. I love buttons that animate and give you the feeling that you are actually pressing something. These combined with the great TapticEngine APIs ([UIFeedbackGenerator](https://developer.apple.com/documentation/uikit/uifeedbackgenerator)) can completely change the way your application feels.

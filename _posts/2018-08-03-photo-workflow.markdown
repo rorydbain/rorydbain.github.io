@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "Photo Storage Workflow"
+date:   2018-08-03 21:31:00 +0000
+categories: apple photography
+#apple #photography
+---
+
 When I first started this blog I wrote a post about how much I love using my Fujifilm X-T20. Around the time I wrote that post I made a decision to stop paying for a Creative Cloud subscription and began using my phone as a hub for all my photos. Now, several months later, I can’t see myself ever going back.
 
 ### Previously 💾 

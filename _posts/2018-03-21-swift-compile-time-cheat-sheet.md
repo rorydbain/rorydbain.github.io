@@ -2,7 +2,8 @@
 layout: post
 title:  "Swift Compile Time Cheat Sheet"
 date:   2018-03-21 21:31:00 +0000
-categories: #programming #swift
+categories: programming swift
+#programming #swift
 ---
 
 If you are ever trying to get the compile time of a particular function down then hopefully the following examples will be of some use. For me, the best option from the following examples is to split long functions into smaller, composite functions.

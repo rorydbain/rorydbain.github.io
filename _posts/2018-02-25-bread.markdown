@@ -3,6 +3,7 @@ layout: post
 title:  "Beginnings In Bread"
 date:   2018-02-25 19:00:04 +0000
 categories: food
+#food
 ---
 
 A month ago I bought a copy of [Flour Water Salt Yeast](http://kensartisan.com/flour-water-salt-yeast/)(FWSY) by Ken Forkish. In June of last year I bought his newer book [The Elements of Pizza](http://kensartisan.com/elements-of-pizza/), which I really enjoyed. I find it particularly good for a number of reasons, the two key ones being that although it is written by a professional baker, it does not use unattainable utensils for the casual home baker and that it follows a traditional approach to baking - there are no overly fancy, or unecessary, modern quirks. 
