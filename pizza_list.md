@@ -22,6 +22,8 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* €3.50 for one of the best pizzas I've ever had.
 5. [Pizza Pilgrims](https://www.pizzapilgrims.co.uk/), London
 	* Probably your best option for a cheap meal in London.
+6. [Pizzeria 1926](https://www.pizzeria1926.com), Edinburgh
+	* The best pizza in Edinburgh in my opinion - a highly Neapolitan affair.
 6. [Franco Manca](http://www.francomanca.co.uk/), London
 	* Closely follows Pizza Pilgrims, slightly smaller in my experience and just beaten in dough quality.
 7. [Mozza](http://www.mozza.it), Glasgow
