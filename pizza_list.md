@@ -24,30 +24,34 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* Probably your best option for a cheap meal in London.
 6. [Pizzeria 1926](https://www.pizzeria1926.com), Edinburgh
 	* The best pizza in Edinburgh in my opinion - a highly Neapolitan affair.
-6. [Franco Manca](http://www.francomanca.co.uk/), London
+7. [L’antica Pizzeria Da Michele(https://www.damichele.net/), London
+	* Incredibly different from its sibling restaurant in Naples. The neon signs and large menu make it hard to believe that they’re at all related. That being said, the pizzas (what really matters) are almost as good. And that says a lot.
+8. [Franco Manca](http://www.francomanca.co.uk/), London
 	* Closely follows Pizza Pilgrims, slightly smaller in my experience and just beaten in dough quality.
-7. [Mozza](http://www.mozza.it), Glasgow
+9. [Mozza](http://www.mozza.it), Glasgow
 	* If Paesano is full - or you need to book - this is a great option.
-8. [Napizza](http://www.napizza.uk/), Stirling
+10. [Napizza](http://www.napizza.uk/), Stirling
 	* By far my favourite cheap eat in Stirling, proper neopolitan pizza. It's a shame their shop is so small.
-9. [East Pizzas](https://www.eastpizzas.com), Edinburgh
+11. [East Pizzas](https://www.eastpizzas.com), Edinburgh
 	* This Leith based eatery support local produce and make a decent Neopolitan Pizza.
-10. [Pizza Posto](https://pizzaposto.co.uk/)
+12. [Pizza Posto](https://pizzaposto.co.uk/)
 	* Massive restaurant and one of the only places you can get Neopolitan pizza in Edinburgh.
-11. [Pizza Union](https://www.pizzaunion.com/), London
+13. [Pizza Union](https://www.pizzaunion.com/), London
 	* Fresh roman pizza in real pizza oven for £3.95 in London.
-12. [Dough](http://dough-pizza.co.uk/), Edinburgh
+14. [Pizzetta 408](http://www.instagram.com/pizzetta408_sj), San Jose
+	* A small street food style pizza place in San Jose, nothing really special but one of few options for Neopolitan in the area.
+15. [Dough](http://dough-pizza.co.uk/), Edinburgh
 	* Good pizza but not as great value as the above options. A solid choice if you are in the center of Edinburgh and fancy something quick.
-13. [Söderberg](http://www.soderberg.uk/soderberg-pavilion/)
+16. [Söderberg](http://www.soderberg.uk/soderberg-pavilion/)
 	* Thin crispy pizza from a woodfired pizza oven. I prefer neopolitan style but there's no denying that Söderberg know their sourdough breads.
-14. [Civerinos](http://www.civerinos.com/), Edinburgh
+17. [Civerinos](http://www.civerinos.com/), Edinburgh
 	* Edinburgh's favourite pizzeria that I just don't love. The pizza can be good but certainly not good value for money.
-15. [Homeslice](http://www.homeslicepizza.co.uk/), London
+18. [Homeslice](http://www.homeslicepizza.co.uk/), London
 	* The London restaurant selling by the slice that likely inspired Civerinos Slice may have also inspired the expensive pricing.
-16. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
+19. [Jam Jars](http://www.jamjarcafe.co.uk/), Stirling
 	* Currently the only non pizzeria on this list. Nice pizza but expensive and personally, a thin crispy pizza will never beat a neopolitan one worth its 3% salt. 
-17. [Tony's Pizza Napoletana](http://tonyspizzanapoletana.com), San Francisco
+20. [Tony's Pizza Napoletana](http://tonyspizzanapoletana.com), San Francisco
 	* San Franciscos highly rated and loved pizzeria that serves a good variety of 'pies' but costs that San Francisco price and then some. Our two margheritas and two drinks were almost $100. The pizza was good but nothing special; and I find it hard to look past that price.
-18. La Favorita, Glasgow
+21. La Favorita, Glasgow
 	* This branch of the La Favorita brand has now shut down and I'm yet to try its East coast sibling. Not great value and toppings that were fancier than they needed to be.
 
