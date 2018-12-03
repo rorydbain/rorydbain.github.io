@@ -24,7 +24,7 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* Probably your best option for a cheap meal in London.
 6. [Pizzeria 1926](https://www.pizzeria1926.com), Edinburgh
 	* The best pizza in Edinburgh in my opinion - a highly Neapolitan affair.
-7. [L’antica Pizzeria Da Michele(https://www.damichele.net/), London
+7. [L’antica Pizzeria Da Michele](https://www.damichele.net/), London
 	* Incredibly different from its sibling restaurant in Naples. The neon signs and large menu make it hard to believe that they’re at all related. That being said, the pizzas (what really matters) are almost as good. And that says a lot.
 8. [Franco Manca](http://www.francomanca.co.uk/), London
 	* Closely follows Pizza Pilgrims, slightly smaller in my experience and just beaten in dough quality.
