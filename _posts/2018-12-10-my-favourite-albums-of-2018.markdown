@@ -6,11 +6,12 @@ categories: recommendations personal
 #recommendations #personal
 ---
 
+<iframe src="https://open.spotify.com/embed/user/rorybain/playlist/5HmhOamlYpiGsFFxplPfS7" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
 Spotify recently released their 2018-Wrapped playlists for users. It’s a brilliant feature that I wish more services would implement. Twice in the past I’ve used Apple Music for a few months at a time. Both times I regretted it, and was then annoyed when my year-end stats missed my binge on a new album. It’s an ego-filling service whose greatest purpose is for enabling you to tell others about how good your music taste is. But, who doesn’t love to be told about a band that you never listen to until you _discover_ them yourself. 
 
 
 I thought I’d write a little about my favourite releases of this year.
-
 
 #### [New Light (Single), John Mayer](https://open.spotify.com/track/3bH4HzoZZFq8UpZmI2AMgV?si=EgEJOcBqQDaXfY7eGBroEA)
 My first choice is only one song, but it’s a really great one. This song reminds of Los Angeles evenings, I think it’s got a very `La La Land` vibe but can’t quite place where I get that from.
@@ -29,6 +30,3 @@ Lawrence are a pop-funk band whose songs feel like a disney soundtrack. They are
 
 #### [Tom Misch, Geography](https://open.spotify.com/album/28enuddLPEA914scE6Drvk?si=MKTD9mUXQIm26vBVahxg8A) 
 Tom Misch has become my current guitar idol. Every song on this album is brilliant.
-
-
-<iframe src="https://open.spotify.com/embed/user/rorybain/playlist/5HmhOamlYpiGsFFxplPfS7" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
