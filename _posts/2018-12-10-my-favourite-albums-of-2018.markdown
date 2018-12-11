@@ -8,6 +8,8 @@ categories: recommendations personal
 
 <iframe src="https://open.spotify.com/embed/user/rorybain/playlist/5HmhOamlYpiGsFFxplPfS7" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
 
+
+
 Spotify recently released their 2018-Wrapped playlists for users. It’s a brilliant feature that I wish more services would implement. Twice in the past I’ve used Apple Music for a few months at a time. Both times I regretted it, and was then annoyed when my year-end stats missed my binge on a new album. It’s an ego-filling service whose greatest purpose is for enabling you to tell others about how good your music taste is. But, who doesn’t love to be told about a band that you never listen to until you _discover_ them yourself. 
 
 
