@@ -18,22 +18,17 @@ My first choice is only one song, but it’s a really great one. This song remin
 #### [Leon Bridges, Good Thing](https://open.spotify.com/album/7J9fifadXb0PPSBWXctbi8?si=E8togu_YTc6yhkYaMgPACA)
 This album is a significant departure from the first Leon Bridges’ early Rhythm and Blues style. I particularly like `Bad Bad News` and `Mrs`.
 
-#### [Hill Climber, Vulfpeck](https://open.spotify.com/album/23jJjnLWnkYfK7E50Kmbcm?si=ICqiiRjPSv6LcX9IkKbJFw)
+#### [Hill Climber, Vulfpeck](https://open.spotify.com/album/23jJjnLWnkYfK7E50Kmbcm)
 Squeezing in at the very end of the year, I haven’t turned this off since it came out. It’s maybe too early days but I think it’s my favourite Vulfpeck album yet. It’s an album I’d highly recommend listening to from start to finish.
 
-#### [Guide My Back Home (Live), City and Color](https://open.spotify.com/album/0ykutdu7Hf0DlrK1BXK65I?si=TOJOXOaYQPmXzm57KzcKRw)
+#### [Guide My Back Home (Live), City and Color](https://open.spotify.com/album/0ykutdu7Hf0DlrK1BXK65I)
 I don’t usually like live albums much but this one is different. Dallas Green has developed so much as a musician that it’s amazing to hear songs that I grew up listening to (that now seem dated, for want of a better word) performed in a more mature and emotive set.
 
-#### [Living Room, Lawrence](https://open.spotify.com/album/0cI6FYd7CETgvwLQ8j7Y8P?si=0pEXwxPwQx-7O2naoDmpvA) 
+#### [Living Room, Lawrence](https://open.spotify.com/album/0cI6FYd7CETgvwLQ8j7Y8P) 
 Lawrence are a pop-funk band whose songs feel like a disney soundtrack. They are fronted by a brother-sister duo with amazing voices. I’m hoping they come across to the UK sometime as I’d love to see them live.
 
 #### [Tom Misch, Geography](https://open.spotify.com/album/28enuddLPEA914scE6Drvk?si=MKTD9mUXQIm26vBVahxg8A) 
 Tom Misch has become my current guitar idol. Every song on this album is brilliant.
 
 
-[I’ve made a Spotify playlist with some of my favourites from this year.](https://open.spotify.com/user/rorybain/playlist/5HmhOamlYpiGsFFxplPfS7?si=YqQ7LrdfRjyUkf1TBdHkYQ)
-
-
-
-
-
+<iframe src="https://open.spotify.com/embed/user/rorybain/playlist/5HmhOamlYpiGsFFxplPfS7" width="100%" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
