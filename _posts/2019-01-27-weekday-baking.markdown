@@ -6,6 +6,7 @@ categories: food
 #food
 ---
 
+# ![Prework bake]({{ "/assets/weekday-bread1.jpeg" | absolute_url }})
 
 It’s been just over a year since I started baking bread and I’ve almost certainly baked more in the last month than I had in the previous twelve. There are two reasons that I’ve been doing so much more recently. 
 
