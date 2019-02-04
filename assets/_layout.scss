@@ -226,4 +226,7 @@
             @include relative-font-size(1.125);
         }
     }
+    table {
+        padding: 8px;
+    }
 }
