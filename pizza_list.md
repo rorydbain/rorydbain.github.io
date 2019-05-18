@@ -28,6 +28,8 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* Incredibly different from its sibling restaurant in Naples. The neon signs and large menu make it hard to believe that they’re at all related. That being said, the pizzas (what really matters) are almost as good. And that says a lot.
 8. [Franco Manca](http://www.francomanca.co.uk/), London
 	* Closely follows Pizza Pilgrims, slightly smaller in my experience and just beaten in dough quality.
+9. [50 Kalo](https://www.50kalo.it/ciro__salvo.php), London
+	* The best pizza you can find near Trafalgar Square. 
 9. [Mozza](http://www.mozza.it), Glasgow
 	* If Paesano is full - or you need to book - this is a great option.
 10. [Napizza](http://www.napizza.uk/), Stirling
