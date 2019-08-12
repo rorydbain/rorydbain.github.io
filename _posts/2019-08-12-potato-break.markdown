@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Potato Sourdough"
-date: 2019-08-12 21:11:20 +0000
+date: 2019-08-12 21:11:20 +0100
 categories: food
 #food
 ---
@@ -12,7 +12,7 @@ I was keen to try and bring this idea to the sourdough bread that I’ve been ma
 
 I eventually gave up searching and just thought I’d wing it with a recipe. It turned out far better than I could have hoped, so I thought I’d share it here. It makes for a brilliantly moist crumb and flavoursome crust.
 
-
+# ![Potato Bread]({{ "/assets/potato-bread-1.jpeg" | absolute_url }})
 
 ### Recipe
 
@@ -26,7 +26,7 @@ I eventually gave up searching and just thought I’d wing it with a recipe. It 
 
 #### 08:00 - Prepare Levain
 
-Prepare a levain in the morning by mixing **60 of flour**, **60g of warm water** and **60g** of sourdough starter. (You may need to adjust ratios and timing based on the temperature of your kitchen or liveliness of your starter)
+Prepare a levain in the morning by mixing **60 of flour**, **60g of warm water** and **60g of sourdough starter**. (You may need to adjust ratios and timing based on the temperature of your kitchen or liveliness of your starter)
 
 #### 17:00 - Mix Dough & Boil Potatoes
 
@@ -60,7 +60,11 @@ The dough will have spread out by now. Flour the top of it and then use a scrape
 
 If you proof the dough overnight in the fridge, the time at which you bake the next day is pretty flexible. 
 
-Place a lidded pod into the oven and preheat to 240 degrees. After 45 minutes, remove the pot from the oven and the proofing loaf from the fridge. Turn the dough out into the pot and optionally score the dough with a sharp blade. Place it back into the oven for 25 minutes. After 25 minutes, remove the lid and continue to bake for another 15 minutes.
+Place a lidded pod into the oven and preheat to **240 degrees**. After 45 minutes, remove the pot from the oven and the proofing loaf from the fridge. Turn the dough out into the pot and optionally score the dough with a sharp blade. Place it back into the oven for **25 minutes**. After 25 minutes, remove the lid and continue to bake for another **15 minutes**.
 
+
+# ![Potato Bread]({{ "/assets/potato-bread-2.jpeg" | absolute_url }})
+
+# ![Potato Bread]({{ "/assets/potato-bread-3.jpeg" | absolute_url }})
 
 
