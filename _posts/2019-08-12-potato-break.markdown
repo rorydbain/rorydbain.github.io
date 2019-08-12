@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Potato Sourdough"
-date: 2019-08-12 21:11:20 +0100
+date: 2019-08-12 21:11:20 +0000
 categories: food
 #food
 ---
