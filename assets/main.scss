@@ -5,6 +5,11 @@
 
 // Define defaults for each variable.
 
+:root {
+    color-scheme: light dark;
+}
+
+
 $base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
@@ -13,27 +18,27 @@ $base-line-height: 1.5 !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:       #111 !default;
-$background-color: #fdfdfd !default;
-$brand-color:      #4e4e4e !default;
+$text-color:            #111 !default;
+$background-color:      #fdfdfd !default;
+$dark-text-color:       #ddd !default;
+$dark-background-color: #222 !default;
+$brand-color:           #4e4e4e !default;
+$dark-brand-color:     lighten($brand-color, 40%) !default;
 
 $grey-color:       #828282 !default;
 $grey-color-light: lighten($grey-color, 40%) !default;
 $grey-color-dark:  darken($grey-color, 25%) !default;
 
+$dark-grey-color:       lighten($grey-color, 20%) !default;
+$dark-grey-color-light: lighten($dark-grey-color, 40%) !default;
+$dark-grey-color-dark:  darken($dark-grey-color, 25%) !default;
+
 // Width of the content area
-$content-width:    1000px !default;
+$content-width:    800px !default;
 
-$on-palm:          600px !default;
-$on-laptop:        1000px !default;
+$on-palm:          500px !default;
+$on-laptop:        800px !default;
 
-// Use media queries like this:
-// @include media-query($on-palm) {
-//   .wrapper {
-//     padding-right: $spacing-unit / 2;
-//     padding-left: $spacing-unit / 2;
-//   }
-// }
 @mixin media-query($device) {
   @media screen and (max-width: $device) {
     @content;
@@ -83,6 +88,10 @@ body {
     font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
     color: $text-color;
     background-color: $background-color;
+    @media (prefers-color-scheme: dark) {
+        color: $dark-text-color;
+        background-color: $dark-background-color;
+    }
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
@@ -169,11 +178,20 @@ h6 {
 a {
     color: $brand-color;
     text-decoration: none;
+    @media (prefers-color-scheme: dark) {
+        color: $dark-brand-color;
+    }
     &:visited {
         color: darken($brand-color, 15%);
+        @media (prefers-color-scheme: dark) {
+            color: darken($dark-brand-color, 15%);
+        }
     }
     &:hover {
         color: $text-color;
+        @media (prefers-color-scheme: dark) {
+            color: #fff;
+        }
         text-decoration: underline;
     }
     .social-media-list &:hover {
@@ -292,8 +310,10 @@ pre {
 
 .pagination a {    
   &:hover {
-      background-color: #f1f1f1;
       color: #333;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+    }
   }
 }
 

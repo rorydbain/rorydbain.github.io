@@ -8,7 +8,7 @@ permalink: /pizzas/
 
 ---
 
-
+<br/>
 In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt2488496/) at the iMAX in Glasgow, I had my first proper neopolitan pizza. Since then I've eaten a truckload of pizza. Here are my rankings.
 
 [Here is the full list on Google Maps](https://www.google.com/maps/placelists/list/4xld6h1t6cM7my_Z2eENaEFce0NoQQ?hl=en&q=+&ibp=gwp;0,6&stick=H4sIAAAAAAAAAONg28DI-IlJQUjOpCInxSzDsMQs2dc8tzI-yijV1S_R1S051cAvPzAQAHZGeYooAAAA)
