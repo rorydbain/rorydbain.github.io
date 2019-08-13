@@ -23,17 +23,17 @@ title: Categories & Archive
 {% endfor %}
 
 {% for category in categories %}
-<h2 id="{{ category | slugify }}">{{ category | capitalize }}</h2>
+<h4 id="{{ category | slugify }}">{{ category | capitalize }}</h4>
 <ul>
     {% for post in site.posts %}
         {% if post.categories contains category %}
             <li>
-            <h3>
+            <h5>
             <a href="{{ post.url }}">
                 {{ post.title }}
                 <small>- {{ post.date | date_to_string }}</small>
             </a>
-            </h3>
+            </h5>
             </li>
         {% endif %}
     {% endfor %}

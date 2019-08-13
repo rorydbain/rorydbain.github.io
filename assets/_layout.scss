@@ -60,8 +60,6 @@
       color: $dark-text-color;
       background-color: $dark-background-color;
     }
-    border: 1px solid $grey-color-light;
-    border-radius: 5px;
     text-align: right;
     label[for="nav-trigger"] {
       display: block;
@@ -81,6 +79,9 @@
       text-align: center;
       > svg path {
         fill: $grey-color-dark;
+        @media (prefers-color-scheme: dark) {
+          fill: $dark-grey-color-dark;
+        }
       }
     }
     input ~ .trigger {
@@ -212,6 +213,7 @@
   list-style: none;
   > li {
     margin-bottom: $spacing-unit;
+    overflow-y: hidden;
   }
 }
 
@@ -268,9 +270,15 @@
       @include relative-font-size(1.125);
     }
   }
+  table {
+    overflow-x: auto;
+  }
   th,
   td {
     padding: 12px 15px;
+    @include media-query($on-laptop) {
+      padding: 8px 6px;
+    }
     text-align: left;
     border-bottom: 1px solid #e1e1e1;
   }
@@ -288,5 +296,9 @@
     margin-right: auto;
     width: 80%;
   }
-  margin-bottom: 150px;
+  margin-bottom: 60px;
+}
+
+.scroll {
+  overflow-x: auto;
 }
