@@ -28,7 +28,7 @@ function padLeft(value: string, padding: any) {
 }
 ```
 
-Coming to Typescript from a background of using Swift, I found myself rarely using union types. I preferred writing things that either used concrete types generics. However, I recently discovered the `typeof` operator in Typescript and have been loving using it. 
+Coming to Typescript from a background of using Swift, I found myself rarely using union types. I preferred writing things that either used concrete types or generics. However, I recently discovered the `typeof` operator in Typescript and have been loving using it. 
 
 ### Typeof
 
@@ -201,7 +201,7 @@ So, how is this `SafeMergeUnion<T>` actually working?
 
 To break it down, we take a type T and call `K in keyof UnionToIntersection<T>`. A simple `keyof T` would only give us the set of keys that are in both sides of the union, whereas swapping the union for an intersection means that we get all keys, even if they are only in one side of the union.
 
-Now, for every key we say if that key is in `keyof T` (i.e. is this key in both sides of the union) then we want to use that value as is, but if the value is an object, then recursively call `SafeMergeUnion`. We have one edge case to cover first - arrays in Javascript are objects. So, we say if the value is an array of any type, then leave it untouched. Else if the value is an object, recursively call `SafeMergeUnion` on the object, otherwise leave the value as it is (it is a number, string etc).
+Now, for every key we say if that key is in `keyof T` (i.e. is this key in both sides of the union) then we want to use that value as is - it is not optional and we know it exists in both sides of the union. We want to say, take this value, and if it is an object, return the SafeMergeUnion of that object (the recursive part). However, before we can think about using `SafeMergeUnion`, we have one edge case to cover first - arrays in Javascript are objects. So, we say if the value is an array of any type, then leave it untouched. Else if the value is an object, recursively call `SafeMergeUnion` on the object, otherwise leave the value as it is (it is a number, string etc).
 
 If the key isn‘t in `keyof T`, then we know the value is in only one side of the union, leave the value as is but add an `| undefined` as we **know** that it is not in both sides of the union.
 
