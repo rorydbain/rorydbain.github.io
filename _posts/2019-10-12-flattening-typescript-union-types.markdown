@@ -188,14 +188,29 @@ type SafeMergeUnion<T> = {
 
 type Person = SafeMergeUnion<Teacher | Superhero>
 ```
-(Note: this is using recursive types, a new feature of Typescript 3.7. Without recursive types, we‘d have to write a ‘finite’ version of this calling SafeMerge -> SafeMerge2 -> SafeMerge3 for each nested object in a union)
+<small>(Note: this is using recursive types, a new feature of Typescript 3.7. Without recursive types, we‘d have to write a ‘finite’ version of this calling SafeMerge -> SafeMerge2 -> SafeMerge3 for each nested object in a union)</small>
 
 By doing this, we now have a type that allows us to safely access any property on either side of a union. Going way back to the example at the top, we can now access deeply nested properties without having to check if each nested object contains a value for a key. 
 
 ```
-const superheroPhoto = (person: Person) => person.photos?.find(x => x.id === 1)?.name
+
+type Person = Teacher | Superhero
+type SafePerson = SafeMergeUnion<Person>
+
+// Using discriminating union, we have to check a property to verify the type
+const getPhotoWithId = (person: Person, id: number) => {
+    if ('photos' in person) {
+        return person.photos.find(p => p.id === id)
+    }
+    return undefined
+}
+
+// Using SafeMerge
+const getPhotoWithId = (person: SafePerson, id: number) => person.photos?.find(p => p.id === id)
 ```
-(Note: this is using the new nested optional syntax in Typescript 3.7)
+<small>(Note: this is using the new nested optional syntax in Typescript 3.7)</small>
+
+By using the SafeMerge version, we don‘t have to inspect the property to verify our photos property exist. We can autocomplete all properties - something that doesn‘t work with the discriminated union version as only the keys on both sides of the union are suggested by Typescript.
 
 So, how is this `SafeMergeUnion<T>` actually working? 
 
