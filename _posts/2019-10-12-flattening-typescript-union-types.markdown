@@ -32,11 +32,11 @@ Coming to Typescript from a background of using Swift, I found myself rarely usi
 
 ##### Typeof
 
-The `typeof` operator allows you to create a type alias for the _type of_ any typescript variable. When I first read about this operator I was thinking _“Why would you want to do that?“_. It wasn‘t till I was converting a large amount of Javascript code to Typescript that I saw the usefulness of it. Typescript is great at inferring the types of variables you’ve written. `typeof` allows you to pass around inferred types and in some cases mean that you never have to write types and interfaces at all.
+The `typeof` operator allows you to create a type alias for the _type of_ any typescript variable. When I first read about this operator I was thinking _“Why would you want to do that?“_. It wasn‘t until I was converting a large amount of Javascript code to Typescript that I saw the usefulness of it. Typescript is great at inferring the types of variables you’ve written. `typeof` allows you to pass around inferred types and in some cases mean that you never have to write types and interfaces at all.
 
 Now, that’s a lot of abstract information, how does that look in practice?
 
-My favourite use of `typeof` has been in a codebase I use at work where we build several ‘apps’ from one codebase. Each of these apps have different `constants.ts` files. `typeof` and `import()` have been incredibly valuable in automatically generating types for these files that can be passed around the codebase.
+My favourite use of `typeof` has been in a codebase I use at work where we build several ‘apps’ from one codebase. All of these apps have different `constants.ts` files. `typeof` and `import()` have been incredibly valuable in automatically generating types for these files that can be passed around the codebase.
 
 ``` 
 // app-one/constants.ts
@@ -77,7 +77,7 @@ const authenticationMiddleware = (request: Request, constants: AppConstants) => 
 }
 ```
 
-Without `typeof` usages, we’d have to write and maintain an `AppConstants` interface that aligns to the constants files of each app. In addition to this, Typescript’s inference system can often type things better than you as a developer can. For example, in the above code snippets, if you had written the type of `AppConstants` yourself, you might have said `COOKIE_NAMES` has a property of `AUTH_TOKEN` that is a `string`. However, the inferred type will actually tell you that `AUTH_TOKEN` is `’X-Auth-Token’ | ‘AUTHENTICATION_TOKEN’`. This extra bit of context can be really useful.
+Without `typeof` usages, we’d have to write and maintain an `AppConstants` interface that aligns to the constants files of each app. In addition to this, Typescript’s inference system can often type things better than you as a developer can. For example, in the above code snippets, if you had written the type of `AppConstants` yourself, you might have said `COOKIE_NAMES` has a property of `AUTH_TOKEN` that is a `string`. However, the inferred type will tell you that `AUTH_TOKEN` is `’X-Auth-Token’ | ‘AUTHENTICATION_TOKEN’`. This extra bit of context can be really useful.
 
 Type inference has uses in other contexts too. You could infer the type of an API response from a mock JSON file; or you could have varied `Storage` objects for a Web app versus a ReactNative app; any time that you’re having to write a lot of types with Typescript, it’s worth thinking if there’s a way you can have that type inferred for you.
 
@@ -135,9 +135,9 @@ const getSubject = (person: Person) => {
 }
 ```
 
-Annoyingly, although `Person` is a union of a `Student` and a `Teacher`, we get a compiler error on trying to access `person.subject` (personally, I would rather typescript ‘flattened’ these union types for you. Such that a `Person` had a property of `subject` that was `string | undefined`.) 
+Annoyingly, although `Person` is a union of a `Student` and a `Teacher`, we get a compiler error on trying to access `person.subject` (I would rather typescript ‘flattened’ these union types for you. Such that a `Person` had a property of `subject` that was `string | undefined`.) 
 
-To handle this use case, Typescript offers a feature called “Discriminating Union Types”. This technique involves you adding a constant property to each side of a union that acts a unique identifier for that type in the union.
+To handle this use case, Typescript offers a feature called “Discriminating Union Types”. This technique involves you adding a constant property to each side of a union that acts as a unique identifier for that type in the union.
 
 ```
 interface Superhero {
@@ -163,7 +163,7 @@ if (somePerson.type === ‘TEACHER’) {
 }
 ```
 
-By checking the `type` (our discriminator) is `TEACHER`, we can then access all properties that are unique to a Teacher and not in Superhero. This is really useful and allows us to access properties in only one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it also adds an unnecessary runtime cost. 
+By checking the `type` (our discriminator) is `TEACHER`, we can then access all properties that are unique to a Teacher and not in Superhero. This is useful and allows us to access properties in only one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it also adds an unnecessary runtime cost. 
 
 Now, the main point of this post. There is a way that we can generate a `Person` type that makes properties of both types in the union accessible, whilst maintaining type safety.
 
@@ -190,7 +190,7 @@ type Person = SafeMergeUnion<Teacher | Superhero>
 ```
 (Note: this is using recursive types, a new feature of Typescript 3.7. Without recursive types, we‘d have to write a ‘finite’ version of this calling SafeMerge -> SafeMerge2 -> SafeMerge3 for each nested object in a union)
 
-By doing this, we now have a type that allows us to safely access any property in either side of a union. Going way back to the example at the top, we can now access deeply nested properties without having to check if each nested object contains a value for a key. 
+By doing this, we now have a type that allows us to safely access any property on either side of a union. Going way back to the example at the top, we can now access deeply nested properties without having to check if each nested object contains a value for a key. 
 
 ```
 const superheroPhoto = (person: Person) => person.photos?.find(x => x.id === 1)?.name
