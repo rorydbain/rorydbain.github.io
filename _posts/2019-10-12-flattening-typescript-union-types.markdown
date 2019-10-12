@@ -38,17 +38,22 @@ My favourite use of `typeof` has been in a codebase I use at work where we build
 // app-one/constants.ts
 export const COOKIE_KEYS = {
 	AUTH_TOKEN: ‘X-Auth-Token’
-}
+} 
 
 export const CURRENCY = ‘USD’
+```
 
+```
 // app-two/constants.ts
 export const COOKIE_KEYS = {
 	AUTH_TOKEN: ‘X-Auth-Token’,
 	LOGIN_TOKEN: ‘X-Login-Token’
 }
-export const CURRENCY = ‘GBP’
 
+export const CURRENCY = ‘GBP’
+```
+
+```
 // shared/constants.ts
 
 type AppOneConstants = typeof import(“../app-one/constants”)
@@ -57,3 +62,10 @@ type AppTwoConstants = typeof import(“../app-two/constants”)
 type AppConstants = AppOneConstants | AppTwoConstants
 
 ```
+
+```
+const authenticationMiddleware = (request: Request, constants: AppConstants) => {
+	request.addHeader(constants.COOKIE_KEYS.AUTH_TOKEN, ‘some-token’)
+}
+```
+
