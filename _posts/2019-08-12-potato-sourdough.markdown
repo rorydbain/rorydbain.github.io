@@ -6,9 +6,9 @@ categories: food
 #food
 ---
 
-One of the many great foods that my mum makes is potato bread rolls. These are small rolls that we’d have alongside a meal made from yeasted dough and either instant or normal mashed potato. They are light in texture and soft in flavour.
+One of the many great foods that my mum makes is potato bread rolls. These are small rolls that we have alongside a meal, made from yeasted dough and either instant or normal mashed potato. They are light in texture and taste great.
 
-I was keen to try and bring this idea to the sourdough bread that I’ve been making as of recent. I researched online to see if there were any recipes available for this sort of dough, but I couldn’t see anything that exactly matched what I wanted. Which were an open crumb and no visible pieces of potato. There were several recipes using real potatoes and mixing it in smoothly, however, the dough that they made was of low hydration, fast rise and a closed crumb. Similarly, I did find one recipe that matched those characteristics. But, it was one where you left in chunks of potato, which I wasn’t keen for. 
+I was keen to try and bring this idea to the sourdough bread that I’ve been making as of recent. I researched online to see if there were any recipes available for this sort of dough, but I couldn’t see anything that exactly matched what I wanted - this was an open crumb and no visible pieces of potato. There were several recipes I found that were using real potatoes and mixing it in smoothly, however, the dough that they made was of low hydration, fast rise and a closed crumb. Similarly, I did find one recipe that matched those characteristics. But, it was one where you left in chunks of potato, which I wasn’t keen for. 
 
 I eventually gave up searching and just thought I’d wing it with a recipe. It turned out far better than I could have hoped, so I thought I’d share it here. It makes for a brilliantly moist crumb and flavoursome crust.
 
