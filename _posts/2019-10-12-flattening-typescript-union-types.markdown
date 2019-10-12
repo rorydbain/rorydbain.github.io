@@ -6,7 +6,7 @@ categories: programming
 #programming
 ---
 
-##### Union Types
+### Union Types
 
 [Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types) in Typescript are a powerful way to describe a value that could one of two or more types. They are particularly useful in codebases that are transitioning from Javascript to Typescript. Where one function may accept an input parameter that can be one of several different types. 
 
@@ -30,7 +30,7 @@ function padLeft(value: string, padding: any) {
 
 Coming to Typescript from a background of using Swift, I found myself rarely using union types. I preferred writing things that either used concrete types generics. However, I recently discovered the `typeof` operator in Typescript and have been loving using it. 
 
-##### Typeof
+### Typeof
 
 The `typeof` operator allows you to create a type alias for the _type of_ any typescript variable. When I first read about this operator I was thinking _“Why would you want to do that?“_. It wasn‘t until I was converting a large amount of Javascript code to Typescript that I saw the usefulness of it. Typescript is great at inferring the types of variables you’ve written. `typeof` allows you to pass around inferred types and in some cases mean that you never have to write types and interfaces at all.
 
@@ -81,7 +81,7 @@ Without `typeof` usages, we’d have to write and maintain an `AppConstants` int
 
 Type inference has uses in other contexts too. You could infer the type of an API response from a mock JSON file; or you could have varied `Storage` objects for a Web app versus a ReactNative app; any time that you’re having to write a lot of types with Typescript, it’s worth thinking if there’s a way you can have that type inferred for you.
 
-##### Merging Union Types
+### Merging Union Types
 
 Now, inferred types are great, but when you are saying something is the union of some inferred types, there will be cases where the two types don’t share properties. In this case, only shared properties will be accessible on the type unless you add a type check to confirm which side of a union your instance comes from.
 
