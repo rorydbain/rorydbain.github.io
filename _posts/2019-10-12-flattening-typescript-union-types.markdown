@@ -26,3 +26,34 @@ function padLeft(value: string, padding: any) {
 }
 ```
 
+Coming to Typescript from a background of using Swift, I found myself rarely using union types. I preferred writing things that either used concrete types generics. However, I recently discovered the `typeof` operator in Typescript and have been loving using it. 
+
+The `typeof` operator allows you to create a type alias for the _type of_ any typescript variable. When I first read about this operator I was thinking _“Why would you want to do that?“_. It wasn‘t till I was converting a large amount of Javascript code to Typescript that I saw the usefulness of it. Typescript is great at inferring the types of variables you’ve written. `typeof` allows you to pass around inferred types and in some cases mean that you never have to write types and interfaces at all.
+
+Now, that’s a lot of abstract information, how does that look in practice?
+
+My favourite use of `typeof` has been in a codebase I use at work where we build several ‘apps’ from one codebase. Each of these apps have different `constants.ts` files. `typeof` and `import()` have been incredibly valuable in automatically generating types for these files that can be passed around the codebase.
+
+``` 
+// app-one/constants.ts
+export const COOKIE_KEYS = {
+	AUTH_TOKEN: ‘X-Auth-Token’
+}
+
+export const CURRENCY = ‘USD’
+
+// app-two/constants.ts
+export const COOKIE_KEYS = {
+	AUTH_TOKEN: ‘X-Auth-Token’,
+	LOGIN_TOKEN: ‘X-Login-Token’
+}
+export const CURRENCY = ‘GBP’
+
+// shared/constants.ts
+
+type AppOneConstants = typeof import(“../app-one/constants”)
+type AppTwoConstants = typeof import(“../app-two/constants”)
+
+type AppConstants = AppOneConstants | AppTwoConstants
+
+```
