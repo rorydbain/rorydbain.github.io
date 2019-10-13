@@ -166,7 +166,7 @@ if (somePerson.type === ‘TEACHER’) {
 
 By checking the `type` (our discriminator) is `TEACHER`, we can access all properties that are unique to a Teacher and not in Superhero. This is useful and allows us to access properties in only one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it also adds an unnecessary runtime cost. 
 
-### SafeMergeUnion
+### FlattenUnion
 
 Now, the main point of this post. There is a way that we can generate a `Person` type that makes properties of both types in the union accessible, whilst maintaining type safety.
 
@@ -179,26 +179,26 @@ type UnionToIntersection<U> = (U extends any
     ? I
     : never;
 
-// Merges two union types into a single type with optional values
-// i.e. SafeMergeUnion<{ a: number, c: number } | { b: string, c: number }> = { a?: number, b?: string, c: number }
-type SafeMergeUnion<T> = {
+// Flattens two union types into a single type with optional values
+// i.e. FlattenUnion<{ a: number, c: number } | { b: string, c: number }> = { a?: number, b?: string, c: number }
+type FlattenUnion<T> = {
     [K in keyof UnionToIntersection<T>]: K extends keyof T ?
     T[K] extends any[] ? T[K]
-    : T[K] extends object ? SafeMergeUnion<T[K]>
+    : T[K] extends object ? FlattenUnion<T[K]>
     : T[K]
     : UnionToIntersection<T>[K] | undefined
 }
 
-type Person = SafeMergeUnion<Teacher | Superhero>
+type Person = FlattenUnion<Teacher | Superhero>
 ```
-<small>(Note: this is using recursive types, a new feature of Typescript 3.7. Without recursive types, we‘d have to write a ‘finite’ version of this calling SafeMerge -> SafeMerge2 -> SafeMerge3 for each nested object in a union)</small>
+<small>(Note: this is using recursive types, a new feature of Typescript 3.7. Without recursive types, we‘d have to write a ‘finite’ version of this calling FlattenUnion -> FlattenUnion2 -> FlattenUnion3 for each nested object in a union)</small>
 
 By doing this, we now have a type that allows us to safely access any property on either side of a union. Going way back to the example at the top, we can now access deeply nested properties without having to check if each nested object contains a value for a key. 
 
 ```
 
 type Person = Teacher | Superhero
-type SafePerson = SafeMergeUnion<Person>
+type SafePerson = FlattenUnion<Person>
 
 // Using discriminating union, we have to check a property to verify the type
 const getPhotoWithId = (person: Person, id: number) => {
@@ -208,19 +208,19 @@ const getPhotoWithId = (person: Person, id: number) => {
     return undefined
 }
 
-// Using SafeMerge
+// Using FlattenUnion
 const getPhotoWithId = (person: SafePerson, id: number) => person.photos?.find(p => p.id === id)
 ```
 <small>(Note: this is using the new nested optional syntax in Typescript 3.7)</small>
 
-By using the SafeMerge version, we don‘t have to inspect the property to verify our photos property exist. We can autocomplete all properties - something that doesn‘t work with the discriminated union version as only the keys on both sides of the union are suggested by Typescript.
+By using the FlattenUnion version, we don‘t have to inspect the property to verify our photos property exist. We can autocomplete all properties - something that doesn‘t work with the discriminated union version as only the keys on both sides of the union are suggested by Typescript.
 
-So, how is this `SafeMergeUnion<T>` actually working? 
+So, how is this `FlattenUnion<T>` actually working? 
 
 To break it down, we take a type T and call `K in keyof UnionToIntersection<T>`. A simple `keyof T` would only give us the set of keys that are in both sides of the union, whereas swapping the union for an intersection means that we get all keys, even if they are only in one side of the union.
 
-Now, for every key we say if that key is in `keyof T` (i.e. is this key in both sides of the union) then we want to use that value as is - it is not optional and we know it exists in both sides of the union. We want to say, take this value, and if it is an object, return the SafeMergeUnion of that object (the recursive part). However, before we can think about using `SafeMergeUnion`, we have one edge case to cover first - arrays in Javascript are objects. So, we say if the value is an array of any type, then leave it untouched. Else if the value is an object, recursively call `SafeMergeUnion` on the object, otherwise leave the value as it is (it is a number, string etc).
+Now, for every key we say if that key is in `keyof T` (i.e. is this key in both sides of the union) then we want to use that value as is - it is not optional and we know it exists in both sides of the union. We want to say, take this value, and if it is an object, return the FlattenUnion of that object (the recursive part). However, before we can think about using `FlattenUnion`, we have one edge case to cover first - arrays in Javascript are objects. So, we say if the value is an array of any type, then leave it untouched. Else if the value is an object, recursively call `FlattenUnion` on the object, otherwise leave the value as it is (it is a number, string etc).
 
 If the key isn‘t in `keyof T`, then we know the value is in only one side of the union, leave the value as is but add an `| undefined` as we **know** that it is not in both sides of the union.
 
-[You can play around with an example of this here](https://www.typescriptlang.org/play/?ts=3.7-Beta&ssl=64&ssc=22&pln=64&pc=66#code/MYewdgzgLgBBAOBLAJgUwE4FsCGYYF4YBvAKBnJnglQFdlwBPTALhgHIBlJNLXNgGjIUAFqkQBzYVFYBGAKwAGQRRjZkydKggRWpFSpStFSofpii1ARxrZ0UDDvYBBAG6ow4hzAASARTamMAC+yhTwwiBQII4A2kQwhjAy-DBg2JiorGwIKKgMAHQAVvDibMEp8YkALClpGVn0wAC0IMBQRSVlIcQJyEYpmpiRqACq6AA2WVJQVMwA9HMA7sv5OTw4YPmgmHOIOJ4yHailwQC6JEEkJKCQsJjoACqI4+MQAEY06AwExIEAZoh0NAAHLpTIwABETjswk+ENC5GoN2QoPqkKeL3enwY8MCogkUlkAA4TCoIDQ3oVUG1WFC7LiVGoNFpHHozL1ZAAmADMyUCZKgmlQUCc6k02hkWRkMAAwmoPl8YAAZXCoAT8ijARBQBhZYEgdB-EDjADW6vZlGiUFAaD10oA0gBROTmighQJocRC3Qa8g0MCINxA7W69gAcXG2Ag4hAi1dZnJlOp0nY3kQ0AN3xAfxg0KgARUl0uOvgqBgD1Q2GAonQPxLqGzMHuGNeCoYJHrMA4NFL6BrIDrDFLjbWGA2V07AAUHOAft3e-2YAAfcuV6sYK4LWXgINQCCqGD+xCzxtQRYD+v7xBgKKqPDX+xA5PHvAkLeIfKofK55cwABCMBNAAfD+ABk-4dkOZYjAG4APCAACSN4OM+4AADwjCBhAABQjDAqAAB72GAyD7rg7YqAA-DA2EmqwIwAJQECBLggCggSsGAqBBkxhHEaRNG0aw15-BgMAIUx+AsWxyAMYE1EIRxqTcRgADcm5zDAACyGCePuZ4Dkes6XgkN4DtgcDXuI4xlp2izasIMAgPAUAvtg4wwC47k0Fob6aR+X5dtgok6egngwS+aHxNgnE0JgbwYCkwCxfFYlBL+8RvKw0DoFZSUpQltZBFhPTYJRBWJTAbzlXAgp5TAyWpHFhXBH5fkwCaeSNhFcGIchT5tJFDwgfZLwwJ4sDuR5nUMPujYWUZYBJSAmDwLYqDIDAt4zY2DwJHuqDjDmizCIg1ZOWA4zfBN+4zVeeBvJEjkQLkc05lAoiHrBYDtQAYga+FBt8M1OTmYgfWJL1oKDW2fYtrDteQiDvZ9IPpqZVVPZZaBvbDZbw4jBgo2WXnjD5MBGrWH3YLAaNkXgtjoNg3zYcIuDIDZsPo8AUZlgCQKTWR6BM7N+FEe4m0gEmbQQHJW4WnAwqwzTHV5FtA4JXjqjC8zqhXvuFCExQh3UAkxOed5fMA9TtNq+juBOdLUCCPLFrULA9rq1VZYWRwwWoKF4XfTRmjAJ8L0eBTANro5UtUm0TFG+QJtlkn+g0KbDwxPapx6wk+7YdqTYZ7AmsWWAzViQDOVWU5tYQCtwqnR4cuacnrxluQacPJ9pPk5gJcXVdYvprA14XWWUNlqecPfSk7v7V7msQxbZNluPNtfS+ddfWgAJcZtKgTlBQUhbpozfWhw0-Gy5DZxjO05j1YDwUhj5Iq56HDacrCe3xEu3S6jmPalFAhZxzmLfi9MGAxFztRcB5wVCsAQZAgBjt46wGon7M+YUL5DWzqcICSkEFKWfq-fqH8hpAQIb+f0e9rwbQuFcG40AYAER+M2Z4rZsR52wQHc+z8r4xzEiuecGB+xEJYbAVyUAbIAHk-iTgiFEAA6g5BCyBpSEAIvkcIkRoiUXyPvZA2F2FSTYfkFABB8CEBkAxQxdRUAkCAA)
+[You can play around with an example of this here](https://www.typescriptlang.org/play/?ts=3.7-Beta&ssl=58&ssc=29&pln=58&pc=38#code/MYewdgzgLgBBAOBLAJgUwE4FsCGYYF4YBvAKBnJnglQFdlwBPTALhgHIBlJNLXNgGjIUAFqkQBzYVFYBGAKwAGQRRjZkydKggRWpFSpStFSofpii1ARxrZ0UDDvYBBAG6ow4hzAASARTamMAC+yhTwwiBQII4A2kQwhjAy-DBg2JiorGwIKKgMAHQAVvDibMEp8YkALClpGVn0wAC0IMBQRSVlIcQJyEYpmpiRqACq6AA2WVJQVMwA9HMA7sv5OTw4YPmgmHOIOJ4yHailwQC6JEEkJKCQsJjoACqI4+MQAEY06AwExIEAZoh0NAAHLpTIwABETjswk+ENC5GoN2QoPqkKeL3enwY8MCogkUlkAA4TCoIDQ3oVUG1WFC7LiVGoNFpHHozL1ZAAmADMyUCZKgmlQUCc6k02hkWRkMAAwmoPl8YAAZXCoAT8ijARBQBhZYEgdB-EDjADW6vZlGiUFAaD10oA0gBROTmighQJocRC3Qa8g0MCINxA7W69gAcXG2Ag4hAi1dZnJlOp0nY3kQ0AN3xAfxg0KgARUl0uOvgqBgD1Q2GAonQPxLqGzMHuGNeCoYJHrMA4NFL6BrIDrDFLjbWGA2V07AAUHOAft3e-2YAAfcuV6sYK4LWXgINQCCqGD+xCzxtQRYD+v7xBgKKqPDX+xA5PHvAkLeIfKofK55cwABCMBNAAfD+ABk-4dkOZYjAG4APCAACSN4OM+4AADwjCBhAABQjDAqAAB72GAyD7rg7YqAA-DA2EmqwIwAJQECBLggCggSsGAqBBkxhHEaRNG0aw15-BgMAIUx+AsWxyAMYE1EIRxqTcRgADcm5zDAACyGCePuZ4Dkes6XgkN4DtgcDXuI4xlp2izasIMAgPAUAvtg4wwC47k0Fob6aR+X4wAAYpGUDETBL5ofE2CcTQmBvBgKTALF8ViUEv7xG8rDQOgVlJSlCW1kEWE9NglEFYlMBvOVcCCnlMDJakcWFcEfl+TAJp5I2EVwYhyFPm0kUPCB9kvDAniwO5HmdQw+6NhZRlgElICYPAtioMgMC3jNjYPAke6oOMOaLMIiDVk5YDjN8E37jNV54G8kSORAuRzTmUCiIesFgO1QUGvhQbfDNTk5mIH1iS9aAg1tn2Law7XkIg72fcD6amVVT2WWgb0w2WcMIwYyNll54w+TARq1h92CwKjZF4LY6DYN82HCLgyA2TDaPAFGZYAkCk1kegjOzfhRHuJtIBJm0EByVuFpwMKMPUx1eRbQOCW46oQtM6oV77hQBMUId1AJETnnebz-1UzTqto7gTlS1Aghyxa1CwPaatVWWFkhdT4XfTRmjAJ8L0eOT-1ro5ktUm0TGG+QxtlvH+g0CbDwxPapy6wk+7YdqTap7AGsWWAzVif9OVWU5tYQCtwqnR4suaQnrxluQycPJ9JNk5ghcXVdovprA14XWWkNlqesPfSkbv7Z7Gvg+bpNliP1tfS+1dfWgAJcZtKgTlBwWhf7Q0lWy5AZ+jO05j1YDwUhj5Iq56HDacrAe3x4u3V1OZ7ZRgTp0zqLfidMGAxCztRQB5wVCsCgcAr+DsY6wGor7MK7hb5oSgUBJSUClK33vv1J+p8M5ZxXP6be14NoXCuDcaAMACI-GbM8Vs2Js6oJPi-SOYkVzzgwP2bBtDYCuSgDZAA8n8ScEQogAHUHIIWQNKQgBF8jhEiNESi+Qd7IGwgwqS9D8goAIPgQgMgGIaLqKgEgQA)
