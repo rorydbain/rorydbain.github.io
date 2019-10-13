@@ -173,14 +173,11 @@ h6 {
 
 /**
  * Links
- */
+ */ 
 
 a {
-    color: $brand-color;
     text-decoration: none;
-    @media (prefers-color-scheme: dark) {
-        color: $dark-brand-color;
-    }
+
     &:visited {
         color: darken($brand-color, 15%);
         @media (prefers-color-scheme: dark) {
@@ -199,6 +196,19 @@ a {
         .username {
             text-decoration: underline;
         }
+    }
+}
+
+// Non h anchor tags have salmon
+:not(h1) > a, :not(h2) > a, :not(h3) > a, :not(h4) > a, :not(h5) > a, :not(h6) > a {
+    color: darksalmon;
+}
+
+// H anchor tags have grey colours
+h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
+    color: $brand-color;
+    @media (prefers-color-scheme: dark) {
+        color: $dark-brand-color;
     }
 }
 
