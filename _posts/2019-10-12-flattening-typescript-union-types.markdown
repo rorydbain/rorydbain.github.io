@@ -6,6 +6,8 @@ categories: programming
 #programming
 ---
 
+In this post I describe how to flatten a union of two objects into one single object - sort of like outer joining two database tables. [Click here to jump straight to the type alias for that](#flattenunion)
+
 ### Union Types
 
 [Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types) in Typescript are a powerful way to describe a value that could be one of two or more types. They are particularly useful in codebases that are transitioning from Javascript to Typescript, where one function may accept an input parameter that can be one of several different types. 
@@ -166,7 +168,7 @@ if (somePerson.type === ‘TEACHER’) {
 
 By checking the `type` (our discriminator) is `TEACHER`, we can access all properties that are unique to a Teacher and not in Superhero. This is useful and allows us to access properties in only one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it also adds an unnecessary runtime cost. 
 
-### FlattenUnion
+### FlattenUnion ###
 
 Now, the main point of this post. There is a way that we can generate a `Person` type that makes properties of both types in the union accessible, whilst maintaining type safety.
 
