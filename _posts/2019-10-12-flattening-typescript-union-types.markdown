@@ -136,7 +136,7 @@ const getSubject = (person: Person) => {
 }
 ```
 
-Annoyingly, although `Person` is a union of a `Student` and a `Teacher`, we get a compiler error on trying to access `person.subject` (I would rather typescript ‘flattened’ these union types for you. Such that a `Person` had a property of `subject` that was `string | undefined`.) 
+Annoyingly, although `Person` is a union of a `Superhero` and a `Teacher`, we get a compiler error on trying to access `person.subject` because `Superhero` does not contain a subject property. (I would rather typescript ‘flattened’ these union types for you. Such that a `Person` had a property of `subject` that was `string | undefined`.) 
 
 To handle this use case, Typescript offers a feature called “Discriminating Union Types”. This technique involves you adding a constant property to each side of a union that acts as a unique identifier for that type in the union. You can also check if a property is ‘in’ the variable that you know is unique to one side of the union, e.g photos on Spider-Man. However, this value might change, or the Teacher type may later get photos and you’d have to update all usages of discriminating by photo to instead discriminate by another property.
 
