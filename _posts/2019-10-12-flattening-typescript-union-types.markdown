@@ -8,7 +8,7 @@ categories: programming
 
 ### Union Types
 
-[Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types) in Typescript are a powerful way to describe a value that could one of two or more types. They are particularly useful in codebases that are transitioning from Javascript to Typescript. Where one function may accept an input parameter that can be one of several different types. 
+[Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types) in Typescript are a powerful way to describe a value that could be one of two or more types. They are particularly useful in codebases that are transitioning from Javascript to Typescript, where one function may accept an input parameter that can be one of several different types. 
 
 Here‘s an example of that in action, taken from the Typescript docs:
 ```
@@ -17,14 +17,13 @@ Here‘s an example of that in action, taken from the Typescript docs:
  * If 'padding' is a string, then 'padding' is appended to the left side.
  * If 'padding' is a number, then that number of spaces is added to the left side.
  */
-function padLeft(value: string, padding: any) {
+function padLeft(value: string, padding: string | number) {
     if (typeof padding === "number") {
         return Array(padding + 1).join(" ") + value;
     }
     if (typeof padding === "string") {
         return padding + value;
     }
-    throw new Error(`Expected string or number, got '${padding}'.`);
 }
 ```
 
@@ -32,11 +31,11 @@ Coming to Typescript from a background of using Swift, I found myself rarely usi
 
 ### Typeof
 
-The `typeof` operator allows you to create a type alias for the _type of_ any typescript variable. When I first read about this operator I was thinking _“Why would you want to do that?“_. It wasn‘t until I was converting a large amount of Javascript code to Typescript that I saw the usefulness of it. Typescript is great at inferring the types of variables you’ve written. `typeof` allows you to pass around inferred types and in some cases mean that you never have to write types and interfaces at all.
+The `typeof` operator allows you to create a type alias for the _type of_ any typescript variable. When I first read about this operator I was thinking _“Why would you want to do that?“_. It wasn‘t until I was converting a large amount of Javascript code to Typescript that I saw the usefulness of it. Typescript is great at inferring the types of variables you’ve written. `typeof` allows you to pass around inferred types and in some cases that means that you can avoid writing types and interfaces yourself.
 
 Now, that’s a lot of abstract information, how does that look in practice?
 
-My favourite use of `typeof` has been in a codebase I use at work where we build several ‘apps’ from one codebase. All of these apps have different `constants.ts` files. `typeof` and `import()` have been incredibly valuable in automatically generating types for these files that can be passed around the codebase.
+My favourite use of `typeof` has been in a codebase I work on where we build several ‘apps’ from one codebase. All of these apps have different `constants.ts` files. `typeof` and `import()` have been incredibly valuable in automatically generating types for these files that can be passed around the codebase.
 
 ``` 
 // app-one/constants.ts
@@ -83,7 +82,9 @@ Type inference has uses in other contexts too. You could infer the type of an AP
 
 ### Merging Union Types
 
-Now, inferred types are great, but when you are saying something is the union of some inferred types, there will be cases where the two types don’t share properties. In this case, only shared properties will be accessible on the type unless you add a type check to confirm which side of a union your instance comes from.
+Now, inferred types are great, but when you are saying something is the union of some inferred types, there will be cases where the two types don’t share properties. In this case, only shared properties will be accessible on the union type, unless you add a type check to confirm which side of a union your instance comes from.
+
+Take the following data structures of a Superhero and Teacher for example:
 
 ```
 const spiderman = {
@@ -118,7 +119,7 @@ type Superhero = typeof spiderman
 type Person = Superhero | Teacher
 ```
 
-If we now go to use the `Person` type, without a ‘discriminating union type’ check, we can’t access properties that aren’t shared by both Mr Tilbury and Spiderman. 
+Now, as Teacher and Superhero both have a height property, I can access height on an instance of the union type no problem:
 
 ```
 const getHeightDetails = (person: Person) => {
@@ -127,7 +128,7 @@ const getHeightDetails = (person: Person) => {
 }
 ```
 
-In this case, both types in the union have keys called `height`, but what if we want to try and use the `subject` property on a teacher?
+But what if we want to try and use the `subject` property on a teacher?
 
 ```
 const getSubject = (person: Person) => {
@@ -137,7 +138,7 @@ const getSubject = (person: Person) => {
 
 Annoyingly, although `Person` is a union of a `Student` and a `Teacher`, we get a compiler error on trying to access `person.subject` (I would rather typescript ‘flattened’ these union types for you. Such that a `Person` had a property of `subject` that was `string | undefined`.) 
 
-To handle this use case, Typescript offers a feature called “Discriminating Union Types”. This technique involves you adding a constant property to each side of a union that acts as a unique identifier for that type in the union.
+To handle this use case, Typescript offers a feature called “Discriminating Union Types”. This technique involves you adding a constant property to each side of a union that acts as a unique identifier for that type in the union. You can also check if a property is ‘in’ the variable that you know is unique to one side of the union, e.g photos on Spider-Man. However, this value might change, or the Teacher type may later get photos and you’d have to update all usages of discriminating by photo to instead discriminate by another property.
 
 ```
 interface Superhero {
@@ -163,7 +164,9 @@ if (somePerson.type === ‘TEACHER’) {
 }
 ```
 
-By checking the `type` (our discriminator) is `TEACHER`, we can then access all properties that are unique to a Teacher and not in Superhero. This is useful and allows us to access properties in only one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it also adds an unnecessary runtime cost. 
+By checking the `type` (our discriminator) is `TEACHER`, we can access all properties that are unique to a Teacher and not in Superhero. This is useful and allows us to access properties in only one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it also adds an unnecessary runtime cost. 
+
+### SafeMergeUnion
 
 Now, the main point of this post. There is a way that we can generate a `Person` type that makes properties of both types in the union accessible, whilst maintaining type safety.
 
