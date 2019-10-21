@@ -1194,12 +1194,12 @@ aside ul li a.active {
 .tags .softskills {
   background-color: #f2552c;
 }
-.post-list h4 {
+/* .post-list h4 {
   font-size: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 1.2;
-}
+} */
 .footer-tags {
   margin-bottom: 50px;
   float: none;
