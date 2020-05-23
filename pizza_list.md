@@ -4,9 +4,6 @@ title: Pizza Places 🍕
 permalink: /pizzas/
 ---
 
-### Pizza Places 🍕
-
----
 
 <br/>
 In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt2488496/), I had my first proper neopolitan pizza. Since then I've eaten a truckload of pizza. Here are my rankings.
@@ -22,10 +19,14 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* The freshest tasting sauce I've had. Very traditional, "margherita o marinara?"
 1. [Di Matteo](http://www.pizzeriadimatteo.com/) Naples
 	* €3.50 for one of the best pizzas I've ever had.
-1. [Pizza Pilgrims](https://www.pizzapilgrims.co.uk/), London
-	* Probably your best option for a cheap meal in London.
 1. [Laboratorio](https://www.laboratoriopizza.co.uk/eat), London
 	* Great pizza on Brick Lane.
+1. [Roma](https://www.romapizzaldn.com/location), London
+	* One of the few non Neapolitan pizzas on this list, great value and taste.
+1. [Pizza Room](http://thepizzaroom.co.uk), London
+	* Our go to pizza delivery.
+1. [Pizza Pilgrims](https://www.pizzapilgrims.co.uk/), London
+	* Probably your best option for a cheap meal in London (varies per location however).
 1. [Pizzeria 1926](https://www.pizzeria1926.com), Edinburgh
 	* The best pizza in Edinburgh in my opinion - a highly Neapolitan affair.
 1. [L’antica Pizzeria Da Michele](https://www.damichele.net/), Milan
@@ -34,6 +35,10 @@ In 2015 after going to see [The Force Awakens](http://www.imdb.com/title/tt24884
 	* Incredibly different from its sibling restaurant in Naples. The neon signs and large menu make it hard to believe that they’re at all related. That being said, the pizzas (what really matters) are almost as good. And that says a lot.
 1. [Standard](https://www.standard-berlin.de), Berlin
   * Great neapolitan pizza and vibe in Berlin.
+1. [Johnny Take Ué](http://www.johnnypizzaportafoglio.it), London
+	* A London version of a Naples pizzeria.
+1. [Well Street Pizza](https://www.wellstreetpizza.com), London
+	* I’ve only had their delivery, so perhaps not conclusive, but decent.
 1. [Franco Manca](http://www.francomanca.co.uk/), London
 	* Closely follows Pizza Pilgrims, slightly smaller in my experience and just beaten in dough quality.
 1. [50 Kalo](https://www.50kalo.it/ciro__salvo.php), London

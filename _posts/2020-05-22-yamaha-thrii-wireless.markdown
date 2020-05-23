@@ -36,6 +36,6 @@ Being able to unplug the amp and carry it to another room on battery power is su
 
 One thing I wish I could do, is connect wireless headphones somehow. I _know_ that bluetooth can’t manage the latency, but if Yamaha made some fancy 2.4ghz headphones that I could buy to go with the THR, I would probably do it. It’s funny, we’ve had wireless headphones for years, when I finally get a wireless guitar **and** wireless amp, the possibility of wireless headphones is gone.
 
-# ![THR]({{ “/assets/thr-2.jpeg” | absolute_url }})
+# ![THR]({{ “/assets/thr-1.jpeg” | absolute_url }})
 
 If you have any questions about this amp feel free to fire me an e-mail. I’ve not attached any audio clips, but there are hundreds of sound demos available online elsewhere.
