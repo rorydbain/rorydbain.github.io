@@ -9,7 +9,7 @@ categories: music
 
 The Yamaha THR10ii Wireless is an excellent amplifier. I got one back in February and this week I (finally) took delivery of the Line 6 G10t wireless jack to go with it. Here‘s what I like and what I don’t like about this amp.
 
-# ![THR]({{ “/assets/thr-1.jpeg” | absolute_url }})
+# ![THR10II](assets/thr-1.jpeg)
 
 The amp sounds great and has *a lot* of options. Every sound on this amp is digitally modelled. You can choose between the ‘amp’ you want to simulate, the size of room you are in (for reverb), add some basic effects like ‘chorus’, ‘phaser’ or ‘tremolo’ and also add compression. Much of this can be controlled via the hardware dials and buttons, though you can also edit everything from the connected app (more on that later). I _like_ having the two options as it means I can change the sound from the other side of the room.
 
@@ -36,6 +36,6 @@ Being able to unplug the amp and carry it to another room on battery power is su
 
 One thing I wish I could do, is connect wireless headphones somehow. I _know_ that bluetooth can’t manage the latency, but if Yamaha made some fancy 2.4ghz headphones that I could buy to go with the THR, I would probably do it. It’s funny, we’ve had wireless headphones for years, when I finally get a wireless guitar **and** wireless amp, the possibility of wireless headphones is gone.
 
-# ![THR]({{ “/assets/thr-1.jpeg” | absolute_url }})
+# ![THR2](assets/thr-2.jpeg)
 
 If you have any questions about this amp feel free to fire me an e-mail. I’ve not attached any audio clips, but there are hundreds of sound demos available online elsewhere.
