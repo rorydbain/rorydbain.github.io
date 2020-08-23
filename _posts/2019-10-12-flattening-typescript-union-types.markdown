@@ -6,11 +6,11 @@ categories: programming
 #programming
 ---
 
-In this post I describe how to flatten a union of two objects into one single object - sort of like outer joining two database tables. [Click here to jump straight to the type alias for that](#flattenunion)
+In this post I describe how to flatten a union of two objects into one object - like joining two database tables. [Click here to jump straight to the type alias for that](#flattenunion)
 
 ### Union Types
 
-[Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types) in Typescript are a powerful way to describe a value that could be one of two or more types. They are particularly useful in codebases that are transitioning from Javascript to Typescript, where one function may accept an input parameter that can be one of several different types. 
+[Union Types](https://www.typescriptlang.org/docs/handbook/advanced-types.html#union-types) in Typescript are a powerful way to describe a value that could be one of two or more types. They are useful in codebases that are transitioning from Javascript to Typescript, where one function may accept an input parameter that can be one of several different types. 
 
 Here‘s an example of that in action, taken from the Typescript docs:
 ```
@@ -37,7 +37,7 @@ The `typeof` operator allows you to create a type alias for the _type of_ any ty
 
 Now, that’s a lot of abstract information, how does that look in practice?
 
-My favourite use of `typeof` has been in a codebase I work on where we build several ‘apps’ from one codebase. All of these apps have different `constants.ts` files. `typeof` and `import()` have been incredibly valuable in automatically generating types for these files that can be passed around the codebase.
+My favourite use of `typeof` has been in a codebase I work on where we build several ‘apps’ from one codebase. All these apps have different `constants.ts` files. `typeof` and `import()` have been incredibly valuable in automatically generating types for these files that can be passed around the codebase.
 
 ``` 
 // app-one/constants.ts
@@ -78,13 +78,13 @@ const authenticationMiddleware = (request: Request, constants: AppConstants) => 
 }
 ```
 
-Without `typeof` usages, we’d have to write and maintain an `AppConstants` interface that aligns to the constants files of each app. In addition to this, Typescript’s inference system can often type things better than you as a developer can. For example, in the above code snippets, if you had written the type of `AppConstants` yourself, you might have said `COOKIE_NAMES` has a property of `AUTH_TOKEN` that is a `string`. However, the inferred type will tell you that `AUTH_TOKEN` is `’X-Auth-Token’ | ‘AUTHENTICATION_TOKEN’`. This extra bit of context can be really useful.
+Without `typeof` usages, we’d have to write and maintain an `AppConstants` interface that aligns to the constants files of each app. In addition to this, Typescript’s inference system can type things better than you as a developer can. For example, in the above code snippets, if you had written the type of `AppConstants` yourself, you might have said `COOKIE_NAMES` has a property of `AUTH_TOKEN` that is a `string`. However, the inferred type will tell you that `AUTH_TOKEN` is `’X-Auth-Token’ | ‘AUTHENTICATION_TOKEN’`. This extra bit of context can be useful.
 
-Type inference has uses in other contexts too. You could infer the type of an API response from a mock JSON file; or you could have varied `Storage` objects for a Web app versus a ReactNative app; any time that you’re having to write a lot of types with Typescript, it’s worth thinking if there’s a way you can have that type inferred for you.
+Type inference has uses in other contexts. You could infer the type of an API response from a mock JSON file; or you could have varied `Storage` objects for a Web app versus a ReactNative app; any time that you’re having to write a lot of types with Typescript, it’s worth thinking if there’s a way you can have that type inferred for you.
 
 ### Merging Union Types
 
-Now, inferred types are great, but when you are saying something is the union of some inferred types, there will be cases where the two types don’t share properties. In this case, only shared properties will be accessible on the union type, unless you add a type check to confirm which side of a union your instance comes from.
+Now, inferred types are great, but when you are saying something is the union of two inferred types, there will be cases where the two types don’t share properties. In this case, shared properties will be accessible on the union type, unless you add a type check to confirm which side of a union your instance comes from.
 
 Take the following data structures of a Superhero and Teacher for example:
 
@@ -121,7 +121,7 @@ type Superhero = typeof spiderman
 type Person = Superhero | Teacher
 ```
 
-Now, as Teacher and Superhero both have a height property, I can access height on an instance of the union type no problem:
+Now, as Teacher and Superhero both have a height property, I can access height on an instance of the union type:
 
 ```
 const getHeightDetails = (person: Person) => {
@@ -138,9 +138,9 @@ const getSubject = (person: Person) => {
 }
 ```
 
-Annoyingly, although `Person` is a union of a `Superhero` and a `Teacher`, we get a compiler error on trying to access `person.subject` because `Superhero` does not contain a subject property. (I would rather typescript ‘flattened’ these union types for you. Such that a `Person` had a property of `subject` that was `string | undefined`.) 
+Annoyingly, although `Person` is a union of a `Superhero` and a `Teacher`, we get a compiler error on trying to access `person.subject` because `Superhero` does not contain a subject property. (I would typescript ‘flattened’ these union types for you. Such that a `Person` had a property of `subject` that was `string | undefined`.) 
 
-To handle this use case, Typescript offers a feature called “Discriminating Union Types”. This technique involves you adding a constant property to each side of a union that acts as a unique identifier for that type in the union. You can also check if a property is ‘in’ the variable that you know is unique to one side of the union, e.g photos on Spider-Man. However, this value might change, or the Teacher type may later get photos and you’d have to update all usages of discriminating by photo to instead discriminate by another property.
+To handle this use case, Typescript offers a feature called “Discriminating Union Types”. This technique involves you adding a constant property to each side of a union that acts as a unique identifier for that type in the union. You can check if a property is ‘in’ the variable that is unique to one side of the union, e.g photos on Spider-Man. However, this value might change, or the Teacher type may later get photos and you’d have to update all usages of discriminating by photo to instead discriminate by another property.
 
 ```
 interface Superhero {
@@ -166,7 +166,7 @@ if (somePerson.type === ‘TEACHER’) {
 }
 ```
 
-By checking the `type` (our discriminator) is `TEACHER`, we can access all properties that are unique to a Teacher and not in Superhero. This is useful and allows us to access properties in only one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it also adds an unnecessary runtime cost. 
+By checking the `type` (our discriminator) is `TEACHER`, we can access all properties that are unique to a Teacher and not in Superhero. This is useful and allows us to access properties in one side of a union. However, it can be annoying to add a discriminating value to your objects (sometimes not possible), and it adds an unnecessary runtime cost. 
 
 ### FlattenUnion ###
 
@@ -215,13 +215,13 @@ const getPhotoWithId = (person: SafePerson, id: number) => person.photos?.find(p
 ```
 <small>(Note: this is using the new nested optional syntax in Typescript 3.7)</small>
 
-By using the FlattenUnion version, we don‘t have to inspect the property to verify our photos property exist. We can autocomplete all properties - something that doesn‘t work with the discriminated union version as only the keys on both sides of the union are suggested by Typescript.
+By using the FlattenUnion version, we don‘t have to inspect the property to verify our photos property exist. We can autocomplete all properties - something that doesn‘t work with the discriminated union version as the keys on both sides of the union are suggested by Typescript.
 
-So, how is this `FlattenUnion<T>` actually working? 
+How is this `FlattenUnion<T>` working? 
 
-To break it down, we take a type T and call `K in keyof UnionToIntersection<T>`. A simple `keyof T` would only give us the set of keys that are in both sides of the union, whereas swapping the union for an intersection means that we get all keys, even if they are only in one side of the union.
+To break it down, we take a type T and call `K in keyof UnionToIntersection<T>`. A simple `keyof T` would give us the set of keys that are in both sides of the union, whereas swapping the union for an intersection means that we get all keys, even if they are only in one side of the union.
 
-Now, for every key we say if that key is in `keyof T` (i.e. is this key in both sides of the union) then we want to use that value as is - it is not optional and we know it exists in both sides of the union. We want to say, take this value, and if it is an object, return the FlattenUnion of that object (the recursive part). However, before we can think about using `FlattenUnion`, we have one edge case to cover first - arrays in Javascript are objects. So, we say if the value is an array of any type, then leave it untouched. Else if the value is an object, recursively call `FlattenUnion` on the object, otherwise leave the value as it is (it is a number, string etc).
+Now, for every key we say if that key is in `keyof T` (i.e. is this key in both sides of the union) then we want to use that value as is - it is not optional and we know it exists in both sides of the union. We want to say, take this value, and if it is an object, return the FlattenUnion of that object (the recursive part). However, before we can think about using `FlattenUnion`, we have one edge case to cover first - arrays in Javascript are objects. We say if the value is an array of any type, then leave it untouched. Else if the value is an object, recursively call `FlattenUnion` on the object, otherwise leave the value as it is (it is a number, string etc).
 
 If the key isn‘t in `keyof T`, then we know the value is in only one side of the union, leave the value as is but add an `| undefined` as we **know** that it is not in both sides of the union.
 

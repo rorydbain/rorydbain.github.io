@@ -6,7 +6,7 @@ categories: programming swift
 #programming #swift
 ---
 
-Working in Swift generally when writing a class (or struct) it is [valuable](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)) to make things `private` where possible. However, you generally are looking to expose some properties from that structure for use elsewhere. 
+Working in Swift when writing a class (or struct) it is [valuable](https://en.wikipedia.org/wiki/Encapsulation_(computer_programming)) to make things `private` where possible. However, you are looking to expose properties from that structure for use elsewhere. 
 
 A common case I’ve found for this is when using a reactive framework like `RxSwift` or `Combine`. Using MVVM it common to have a `Subject` variable (e.g. `CurrentValueSubject`) stored as in instance variable of your ViewModel. That ViewModel can send events to its subjects, and whatever ‘owns’ the ViewModel (e.g. a View/ViewController) can subscribe to the observable stream. 
 
@@ -27,9 +27,9 @@ class ButtonViewModel {
 }
 ```
 
-This is a reasonable approach and should work well. However, I find it quite ‘noisy’, if you have a few publishers it can get busy.
+This is a reasonable approach and should work. However, I find it ‘noisy’, if you have a few publishers it can get busy.
 
-An alternative approach, is to use Swift’s new property wrappers. I investigated using these mostly as a syntactic sugar for the above definitions, but found the encapsulation properties of property wrappers were ideal for this scenario.
+An alternative approach, is to use Swift’s new property wrappers. I investigated using these as a syntactic sugar for the above definitions, but found the encapsulation properties of property wrappers were ideal for this scenario.
 
 The `propertyWrapper` in question looks like the following: 
 
@@ -60,7 +60,7 @@ class ButtonViewModel {
 }
 ```
 
-Now using the above, you can access the underlying `CurrentValueSubject` from within the ViewModel by doing `_isEnabled.subject`. Outside of the ViewModel, only the `AnyPublisher` is available, which gives us the same scoping functionality as the more-verbose example above.
+Now using the above, you can access the underlying `CurrentValueSubject` from within the ViewModel by doing `_isEnabled.subject`. Outside the ViewModel, only the `AnyPublisher` is available, which gives us the same scoping functionality as the more-verbose example above.
 
-RxSwift/Combine is the best usage of this that I’ve found so far, but there are likely some other cases that might be useful. Perhaps if you want to expose a `UIView` in a sub-view without exposing the specific subclass and its properties? The unfortunate thing is that you need to write a propertyWrapper for each mapping of Private Type -> Internal Type that you want, Swift doesn’t support having a generic that extends a second generic unfortunately. 
+RxSwift/Combine is the best usage of this that I’ve found, but there are likely other cases that might be useful. Perhaps if you want to expose a `UIView` in a sub-view without exposing the specific subclass and its properties? The unfortunate thing is that you need to write a propertyWrapper for each mapping of Private Type -> Internal Type that you want, Swift doesn’t support having a generic that extends a second generic unfortunately. 
 
