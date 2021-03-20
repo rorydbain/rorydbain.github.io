@@ -18,7 +18,7 @@ The case _does not_ work with MagSafe on the iPhone 12 and later models. The mag
 
 I purchased the stem cap base for mounting my phone, you can get a handlebar based one, but I was worried it wouldn’t be big enough for my handlebars. I don’t like where the phone sits with the stem mount, I much preferred the position on the ‘out front’ Quad-lock mount, which avoids you craning your neck down as much to see the screen.
 
-<div style="padding: 56.25% 0px 0px; position: relative;"><iframe style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;" src="https://gfycat.com/ifr/arcticsaneacornweevil?controls=0&hd=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen scrolling="auto" ></iframe></div>
+# ![Fidlock Vacuum Case]({{ "/assets/fidlock-2.gif" | absolute_url }})
 
 The Vacuum system itself is _brilliant_. The case and baseline up perfectly every time, which is much easier than trying to rotate and push down at the correct angle on a Quad-lock mount.  The connection feels secure too, if I had a lighter bike I imagine you could lift it by the phone itself. 
 
