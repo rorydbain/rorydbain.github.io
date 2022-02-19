@@ -1,0 +1,140 @@
+---
+layout: post
+title: "Property Wrappers & Swift Codable"
+date: 2022-02-19 10:00:43 +0000
+categories: programming swift
+#programming #swift
+---
+
+#### Codable Primer
+
+Swift has a handy [`Codable`](https://developer.apple.com/documentation/swift/codable) type that allows you to describe how to serialise and deserialise a type to some other structure, such as JSON. Just by conforming your type to the protocol, Swift will infer how to serialise and deserialise that type according to its properties (so long as all those properties also conform to `Codable`). 
+
+For example, if I were to have the following JSON & Swift struct that represents a bike: 
+
+<table width="100%">
+    <tr>
+        <th>JSON</th>
+        <th>Swift</th>
+    </tr>
+    <tr>
+        <td>
+            <pre>{
+    "brand": "Specialized",
+    "model": "Aethos Comp",
+    "wheel_size": "700"
+}</pre>
+        </td>
+        <td>
+            <pre>struct Bike: Codable {
+    let brand: String
+    let model: String
+    let wheelSize: Int
+}</pre>
+        </td>
+    </tr>
+</table>
+
+So long as I use a Decoder that's set up with a decoding strategy of `.convertFromSnakeCase`, then I don't need to write `CodingKeys` or a `init(from decoder:)` method. This is super handy, albeit a little ambiguous. 
+
+#### Property Wrapper
+
+Unfortunately, if _any_ of your properties don't work with Swift's automatic coding, then you need to write _all_ of your `CodingKeys` and/or `init(from decoder:)`. There's no way to override the default for one property, it's all or nothing - which leads us to [Property Wrappers](https://docs.swift.org/swift-book/LanguageGuide/Properties.html).
+
+Property Wrappers are structs that you define in Swift that you can use as annotations for variables. 
+
+When you interact with a variable that is annotated with a Property Wrapper, you are actually reading a computed value on the Property Wrapper called `wrappedValue`. If you need to access the underlying wrapper itself, you can use `_yourVariable`, which is a variable that Swift synthesizes to allow you to do just that. Beyond that, you can optionally define a `projectedValue` on the Property Wrapper, which is a different variable, of any type, exposed by the `$yourVariable` syntax.
+
+Apple uses these property wrappers in their implementation of [`Published`](https://developer.apple.com/documentation/combine/published) which is used heavily in SwiftUI. I [wrote about using the same](programming/swift/2020/06/13/encapsulation-with-swift-propertywrappers.html) for RxSwift's various Subjects a year or two ago, before I realised Apple did the same, likely some subliminal thinking there on my part.
+
+So, Property Wrappers + Codable, why?
+
+You can conform a Property Wrapper itself to Codable, which allows you to write whatever custom decoding logic for a type once, then re-use that logic for that type multiple times. 
+
+An example of when you might need this would be the `Decimal` type in Swift (read about why you'd want to use `Decimal` in [this](https://www.jessesquires.com/blog/2022/02/01/decimal-vs-double/) great Jesse Squires blog post). 
+
+If you have a JSON response containing a String that represents a Double value, Swift by default will fail to decode the value. You'll get an error like the following: 
+```
+Expected to decode NSDecimal but found a string/data instead.
+```
+We can write a custom decoder that tells Swift to first try to decode the Decimal normally, but failing that, try and decode a string and initialise a Decimal using that.
+
+```
+init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+
+    do {
+        self.value = try container.decode(Decimal.self)
+    } catch let error {
+        let stringValue = try container.decode(String.self)
+        
+        guard let decimalValue = Decimal(string: stringValue) else {
+            throw StringInitableError.stringIsNonGenericType(underlyingError: error)
+        }
+
+        self.value = decimalValue
+    }
+}
+```
+
+Combining this with a Property Wrapper, we can define something that lets us re-use this logic for _any_ type that might be represented as a String using JSON.
+
+```
+import Foundation
+
+@propertyWrapper
+public struct StringValueDecodable<T: Equatable & Codable & StringInitable>: Codable, Equatable {
+
+     public var wrappedValue: T
+
+     public init(wrappedValue: T) {
+         self.wrappedValue = wrappedValue
+     }
+
+     public init(from decoder: Decoder) throws {
+         let container = try decoder.singleValueContainer()
+
+         do {
+             self.wrappedValue = try container.decode(T.self)
+         } catch let underlyingError {
+             let stringValue = try container.decode(String.self)
+             guard let decimalValue = T(string: stringValue) else {
+                 throw StringInitableError.stringIsNonGenericType(underlyingError: underlyingError)
+             }
+             self.wrappedValue = decimalValue
+         }
+     }
+
+     public func encode(to encoder: Encoder) throws {
+         try wrappedValue.encode(to: encoder)
+     }
+
+}
+
+public enum StringInitableError: Error {
+    case stringIsNonGenericType(underlyingError: Error)
+}
+
+public protocol StringInitable {
+    init?(string: String)
+}
+
+extension Decimal: StringInitable {
+    public init?(string: String) {
+        self.init(string: string, locale: nil)
+    }
+}
+```
+
+If we take our bike example from earlier, say our third-party API started returning `wheel_size` as a String so that they could represent highly precise numbers. We could update our struct as follows and keep it working with minimal changes:
+
+```
+struct Bike: Codable {
+    let brand: String
+    let model: String
+    @StringValueDecodable var wheelSize: Decimal
+}
+```
+
+
+Ideally, the types that you're trying to decode would always align with the JSON type you're decoding. But sometimes you might not have control over the JSON response, or you might not have control over the decoder of your type, as is the case with Foundation's `Decimal`. Regardless, I hope the above gives you an idea about options available to you using both `Codable` and Property Wrappers.

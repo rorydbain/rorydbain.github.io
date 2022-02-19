@@ -1,21 +1,16 @@
 title: Rory Bain 
 email: rorydbain@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
+description: >-
   I'm Rory, I'm a software engineer from Scotland.
   Here you'll find my posts about all sorts of things - expect baking, programming and photography.
-baseurl: "/" # the subpath of your site, e.g. /blog
-url: "https://rorydbain.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/"
+url: "https://rorydbain.github.io"
 github_username:  rorydbain
-instagram_username: rorybain
-
-# Build settings
 markdown: kramdown
 plugins:
   - jekyll-feed
   - jekyll-paginate
-
 paginate: 6
 paginate_path: /page:num/
-
 sass:
   sass_dir: assets
