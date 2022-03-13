@@ -1,0 +1,50 @@
+---
+layout: post 
+title: "Brompton M3L 2021"
+date: 2022-03-11 10:00:43 +0000 
+categories: cycling bikes
+#cycling #bikes
+---
+
+When I first moved to London I thought that Bromptons, the classic folding bikes, were dorky. Perhaps they still are,
+but I've now sold myself on the idea that they're great.
+
+I got one through my work cycle scheme last year to replace my gravel bike as a commuter. I opted for a plain black, 3
+speed, upright handlebars (M), with dynamo lighting; all selected to minimise faff.
+
+# ![Brompton M3L]({{ "/assets/brompton.jpg" | absolute_url }})
+
+It is a delight to ride this bike. It feels nimble despite its small wheels and a rather heavy composition. The more
+upright position feels safer than my road bike, without feeling like every pedal is a slog. The fold of the bike is
+cleverly designed such that when unfolded, the rear triangle of the frame rests upon the down tube via a rubber '
+suspension block'. This block cushions the ride, and when combined with a long seat post like mine, makes for a
+comfortable road feel.
+
+Speaking of the seat post, the standard seat post that came with my M3L was a little too short for me. I'm around 1.85m
+tall, and felt like I could do with an extra inch or so of extra legroom. As the bike is already somewhat weighty, I
+started shopping around for titanium seat posts. Reading reviews, several people highly recommended a few in the
+£200-£300 price range, which was a bit more than I hoped to spend. I later settled for a 600mm one from eBay for around
+£80, and I've no complaints about it. It's lighter than my old, shorter aluminium seat post, it rides comfortably and
+has been the ideal length for me.
+
+The folding mechanism on a Brompton is brilliant, which makes sense given that they're still using the same design 30
+years later. I can fold it in a few seconds, faster than it took me to get a D-lock out of my bag and lock up my gravel
+bike. This makes it easy to stop in at the supermarket on the way home or take my bike into the pub - or the Royal
+Opera House, which I did the very day I bought it. The novelty of simply bringing my bike with me is yet to wear off.
+
+Additionally, when you don't want to be carrying the bike around too much, you can leave the handlebars up and use them
+to push the bike around using the small roller wheels just below the saddle. I opted to upgrade to the easy roller
+wheels, and while I wouldn't say they're _that_ easy rolling, any assistance in pushing it around London's bumpy streets
+is welcomed.
+
+# ![Brompton M3L 2]({{ "/assets/bromp2on.jpg" | absolute_url }})
+
+As for accessories for other accessories I've added, I've got a Peak Design magnetic mount so that I can check
+directions etc on my phone as I go (which I've described in more detail in an earlier post). It _just_ fits into the
+space beside my left brake leaver and does a great job - I always get comments from people about it. I've also just this
+week received the Metro Bag as a very nice Birthday present, I'm yet to use it on the bike, however, my first impressions
+are very good.
+
+If you're reading this and you're on the fence about getting a Brompton, I don't regret my purchase at all, I'd highly
+recommend it - I'm even considering upgrading to a lighter model when my Cycle Scheme comes round again.
+
