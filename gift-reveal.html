@@ -1,0 +1,169 @@
+<!-- gift-reveal.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Reveal</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: none;
+        }
+
+        .present-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            cursor: grab;
+        }
+
+        .present {
+            width: 100%;
+            height: 100%;
+            background: #ff4466;
+            position: relative;
+            transform-origin: center bottom;
+            transition: transform 0.3s ease;
+        }
+
+        .lid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #ff2244;
+            transform-origin: center top;
+            transition: transform 0.5s ease;
+        }
+
+        .ribbon-vertical {
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: #ffcc00;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ribbon-horizontal {
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            background: #ffcc00;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .bow {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: #ffcc00;
+            border-radius: 50%;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .qr-code {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="present-container">
+        <div class="qr-code">
+            <!-- Replace the src with your actual QR code image path -->
+            <img src="path-to-your-qr-code.png" alt="QR Code" style="width: 100%; height: 100%;">
+        </div>
+        <div class="present">
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+        </div>
+        <div class="lid">
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+            <div class="bow"></div>
+        </div>
+    </div>
+    <div class="instructions">Drag down to open your present!</div>
+
+    <script>
+        const presentContainer = document.querySelector('.present-container');
+        const lid = document.querySelector('.lid');
+        const qrCode = document.querySelector('.qr-code');
+        let isDragging = false;
+        let startY = 0;
+        let currentRotation = 0;
+
+        function handleStart(e) {
+            isDragging = true;
+            startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            presentContainer.style.cursor = 'grabbing';
+        }
+
+        function handleMove(e) {
+            if (!isDragging) return;
+            
+            const currentY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            const deltaY = currentY - startY;
+            
+            currentRotation = Math.min(Math.max(deltaY / 2, 0), 180);
+            lid.style.transform = `rotateX(${currentRotation}deg)`;
+            
+            if (currentRotation > 90) {
+                qrCode.style.opacity = (currentRotation - 90) / 90;
+            } else {
+                qrCode.style.opacity = 0;
+            }
+        }
+
+        function handleEnd() {
+            isDragging = false;
+            presentContainer.style.cursor = 'grab';
+            
+            if (currentRotation < 90) {
+                lid.style.transform = 'rotateX(0deg)';
+                qrCode.style.opacity = 0;
+            } else {
+                lid.style.transform = 'rotateX(180deg)';
+                qrCode.style.opacity = 1;
+            }
+        }
+
+        // Mouse events
+        presentContainer.addEventListener('mousedown', handleStart);
+        window.addEventListener('mousemove', handleMove);
+        window.addEventListener('mouseup', handleEnd);
+
+        // Touch events
+        presentContainer.addEventListener('touchstart', handleStart);
+        window.addEventListener('touchmove', handleMove);
+        window.addEventListener('touchend', handleEnd);
+    </script>
+</body>
+</html>
