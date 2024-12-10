@@ -1,4 +1,3 @@
-<!-- gift-reveal.html -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +16,7 @@
             justify-content: center;
             align-items: center;
             touch-action: none;
+            perspective: 1000px;
         }
 
         .present-container {
@@ -24,6 +24,7 @@
             width: 300px;
             height: 300px;
             cursor: grab;
+            transform: rotateX(180deg);
         }
 
         .present {
@@ -41,6 +42,7 @@
             height: 100%;
             background: #ff2244;
             transform-origin: center top;
+            transform: rotateX(180deg);
             transition: transform 0.5s ease;
         }
 
@@ -73,7 +75,7 @@
             transform: translateX(-50%);
         }
 
-        .qr-code {
+        .present-content {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -82,6 +84,62 @@
             height: 200px;
             opacity: 0;
             transition: opacity 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .youtube-button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #ff0000;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .youtube-button:hover {
+            background-color: #cc0000;
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            aspect-ratio: 16/9;
+        }
+
+        .close-button {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
         }
 
         .instructions {
@@ -92,13 +150,24 @@
             font-family: Arial, sans-serif;
             color: #666;
         }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
     <div class="present-container">
-        <div class="qr-code">
-            <!-- Replace the src with your actual QR code image path -->
-            <img src="path-to-your-qr-code.png" alt="QR Code" style="width: 100%; height: 100%;">
+        <div class="present-content">
+            <!-- Replace the YouTube button text and video ID as needed -->
+            <button class="youtube-button" onclick="openVideo()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
+                    <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
+                </svg>
+                Watch Video
+            </button>
         </div>
         <div class="present">
             <div class="ribbon-vertical"></div>
@@ -110,15 +179,25 @@
             <div class="bow"></div>
         </div>
     </div>
+    <div class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeVideo()">×</button>
+            <div id="video-container"></div>
+        </div>
+    </div>
     <div class="instructions">Drag down to open your present!</div>
 
     <script>
         const presentContainer = document.querySelector('.present-container');
         const lid = document.querySelector('.lid');
-        const qrCode = document.querySelector('.qr-code');
+        const presentContent = document.querySelector('.present-content');
+        const modal = document.querySelector('.modal');
         let isDragging = false;
         let startY = 0;
-        let currentRotation = 0;
+        let currentRotation = 180;
+
+        // Replace with your YouTube video ID
+        const videoId = 'dQw4w9WgXcQ';
 
         function handleStart(e) {
             isDragging = true;
@@ -132,13 +211,13 @@
             const currentY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
             const deltaY = currentY - startY;
             
-            currentRotation = Math.min(Math.max(deltaY / 2, 0), 180);
+            currentRotation = Math.max(Math.min(180 - (deltaY / 2), 180), 0);
             lid.style.transform = `rotateX(${currentRotation}deg)`;
             
-            if (currentRotation > 90) {
-                qrCode.style.opacity = (currentRotation - 90) / 90;
+            if (currentRotation < 90) {
+                presentContent.style.opacity = (90 - currentRotation) / 90;
             } else {
-                qrCode.style.opacity = 0;
+                presentContent.style.opacity = 0;
             }
         }
 
@@ -146,13 +225,31 @@
             isDragging = false;
             presentContainer.style.cursor = 'grab';
             
-            if (currentRotation < 90) {
-                lid.style.transform = 'rotateX(0deg)';
-                qrCode.style.opacity = 0;
-            } else {
+            if (currentRotation > 90) {
                 lid.style.transform = 'rotateX(180deg)';
-                qrCode.style.opacity = 1;
+                presentContent.style.opacity = 0;
+            } else {
+                lid.style.transform = 'rotateX(0deg)';
+                presentContent.style.opacity = 1;
             }
+        }
+
+        function openVideo() {
+            modal.style.display = 'flex';
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = `
+                <iframe
+                    src="https://www.youtube.com/embed/${videoId}?autoplay=1"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            `;
+        }
+
+        function closeVideo() {
+            modal.style.display = 'none';
+            const videoContainer = document.getElementById('video-container');
+            videoContainer.innerHTML = '';
         }
 
         // Mouse events
@@ -164,6 +261,13 @@
         presentContainer.addEventListener('touchstart', handleStart);
         window.addEventListener('touchmove', handleMove);
         window.addEventListener('touchend', handleEnd);
+
+        // Close modal when clicking outside
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeVideo();
+            }
+        });
     </script>
 </body>
 </html>
