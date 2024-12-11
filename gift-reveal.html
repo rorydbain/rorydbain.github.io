@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gift Reveal</title>
+    <title>Christmas Gift Reveal</title>
     <style>
         body, html {
             margin: 0;
@@ -11,12 +11,32 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
-            background: #f0f0f0;
+            background: #1a472a;  /* Dark green Christmas background */
             display: flex;
             justify-content: center;
             align-items: center;
             touch-action: none;
             perspective: 1000px;
+            position: relative;
+        }
+
+        /* Add falling snow effect */
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-10vh) translateX(0);
+            }
+            100% {
+                transform: translateY(110vh) translateX(20px);
+            }
+        }
+
+        .snowflake {
+            position: fixed;
+            color: white;
+            font-size: 1.5em;
+            user-select: none;
+            z-index: 1;
+            animation: snowfall 8s linear infinite;
         }
 
         .present-container {
@@ -25,32 +45,35 @@
             height: 300px;
             cursor: grab;
             transform: rotateX(180deg);
+            z-index: 2;
         }
 
         .present {
             width: 100%;
             height: 100%;
-            background: #ff4466;
+            background: #cc0000;  /* Christmas red */
             position: relative;
             transform-origin: center bottom;
             transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .lid {
             position: absolute;
             width: 100%;
             height: 100%;
-            background: #ff2244;
+            background: #aa0000;  /* Darker Christmas red */
             transform-origin: center top;
             transform: rotateX(180deg);
             transition: transform 0.5s ease;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
         }
 
         .ribbon-vertical {
             position: absolute;
             width: 30px;
             height: 100%;
-            background: #ffcc00;
+            background: #006400;  /* Dark green ribbon */
             left: 50%;
             transform: translateX(-50%);
         }
@@ -59,7 +82,7 @@
             position: absolute;
             width: 100%;
             height: 30px;
-            background: #ffcc00;
+            background: #006400;  /* Dark green ribbon */
             top: 50%;
             transform: translateY(-50%);
         }
@@ -68,23 +91,28 @@
             position: absolute;
             width: 60px;
             height: 60px;
-            background: #ffcc00;
+            background: #006400;  /* Dark green bow */
             border-radius: 50%;
             top: -30px;
             left: 50%;
             transform: translateX(-50%);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
         }
 
         .video-container {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 90%;
-            height: 90%;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             opacity: 0;
             transition: opacity 0.5s ease;
-            background: #000;
+            transform: rotateX(180deg);
+            pointer-events: none;
+        }
+
+        .video-container.visible {
+            pointer-events: all;
         }
 
         .video-container iframe {
@@ -98,24 +126,26 @@
             bottom: 20px;
             text-align: center;
             width: 100%;
-            font-family: Arial, sans-serif;
-            color: #666;
+            font-family: 'Arial', sans-serif;
+            color: #ffffff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 1.2em;
+            z-index: 2;
         }
     </style>
 </head>
 <body>
     <div class="present-container">
-        <div class="video-container">
-            <!-- Replace videoId in the src URL -->
-            <iframe
-                src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-            ></iframe>
-        </div>
         <div class="present">
             <div class="ribbon-vertical"></div>
             <div class="ribbon-horizontal"></div>
+        </div>
+        <div class="video-container">
+            <iframe
+                src="https://www.youtube.com/embed/rxy0nAC8F6E?autoplay=1&controls=0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+            ></iframe>
         </div>
         <div class="lid">
             <div class="ribbon-vertical"></div>
@@ -123,9 +153,23 @@
             <div class="bow"></div>
         </div>
     </div>
-    <div class="instructions">Drag down to open your present!</div>
+    <div class="instructions">🎄 Drag down to open your Christmas present! 🎄</div>
 
     <script>
+        // Add snowflakes
+        function createSnowflakes() {
+            const snowflakes = '❄❅❆';
+            for(let i = 0; i < 20; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.style.left = Math.random() * 100 + 'vw';
+                snowflake.style.animationDelay = Math.random() * 5 + 's';
+                snowflake.innerHTML = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+                document.body.appendChild(snowflake);
+            }
+        }
+        createSnowflakes();
+
         const presentContainer = document.querySelector('.present-container');
         const lid = document.querySelector('.lid');
         const videoContainer = document.querySelector('.video-container');
@@ -150,8 +194,10 @@
             
             if (currentRotation < 90) {
                 videoContainer.style.opacity = (90 - currentRotation) / 90;
+                videoContainer.classList.add('visible');
             } else {
                 videoContainer.style.opacity = 0;
+                videoContainer.classList.remove('visible');
             }
         }
 
@@ -162,9 +208,11 @@
             if (currentRotation > 90) {
                 lid.style.transform = 'rotateX(180deg)';
                 videoContainer.style.opacity = 0;
+                videoContainer.classList.remove('visible');
             } else {
                 lid.style.transform = 'rotateX(0deg)';
                 videoContainer.style.opacity = 1;
+                videoContainer.classList.add('visible');
             }
         }
 
