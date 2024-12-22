@@ -216,7 +216,9 @@
         }
         createSootSprites();
 
-        // Page-wide interaction
+        // Initialize elements and variables
+        const lid = document.querySelector('.lid');
+        const messageContainer = document.querySelector('.message-container');
         const body = document.querySelector('body');
         let isDragging = false;
         let startY = 0;
@@ -224,12 +226,14 @@
         let isOpen = false;
 
         function handleStart(e) {
+            e.preventDefault(); // Prevent default touch behavior
             isDragging = true;
             startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
         }
 
         function handleMove(e) {
             if (!isDragging) return;
+            e.preventDefault(); // Prevent default touch behavior
             
             const currentY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
             const deltaY = currentY - startY;
@@ -250,8 +254,9 @@
             }
         }
 
-        function handleEnd() {
+        function handleEnd(e) {
             if (!isDragging) return;
+            e.preventDefault(); // Prevent default touch behavior
             isDragging = false;
             
             const shouldOpen = currentRotation < 90;
@@ -273,13 +278,15 @@
 
         // Mouse events
         body.addEventListener('mousedown', handleStart);
-        window.addEventListener('mousemove', handleMove);
-        window.addEventListener('mouseup', handleEnd);
+        body.addEventListener('mousemove', handleMove);
+        body.addEventListener('mouseup', handleEnd);
+        body.addEventListener('mouseleave', handleEnd);
 
         // Touch events
-        body.addEventListener('touchstart', handleStart);
-        window.addEventListener('touchmove', handleMove);
-        window.addEventListener('touchend', handleEnd);
+        body.addEventListener('touchstart', handleStart, { passive: false });
+        body.addEventListener('touchmove', handleMove, { passive: false });
+        body.addEventListener('touchend', handleEnd, { passive: false });
+        body.addEventListener('touchcancel', handleEnd, { passive: false });
     </script>
 </body>
 </html>
