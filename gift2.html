@@ -145,16 +145,25 @@
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
-            animation: float 4s ease-in-out infinite;
+            animation: float 6s linear infinite;
             opacity: 0.9;
         }
 
         @keyframes float {
-            0%, 100% { 
-                transform: translateY(0) rotate(0deg); 
+            0% {
+                transform: translate(0, 0) rotate(0deg);
             }
-            50% { 
-                transform: translateY(-20px) rotate(5deg); 
+            25% {
+                transform: translate(50px, -30px) rotate(5deg);
+            }
+            50% {
+                transform: translate(0, -60px) rotate(0deg);
+            }
+            75% {
+                transform: translate(-50px, -30px) rotate(-5deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
             }
         }
     </style>
