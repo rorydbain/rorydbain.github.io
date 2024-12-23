@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theatre Gift Reveal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: url('https://images.unsplash.com/photo-1627126054085-c6fa214f7109?crop=entropy&cs=tinysrgb&fit=max&auto=format&ixid=MnwyMzkyNXwwfDF8c2VhcmNofDE3OHx8YmF0dGxlJTIwZ3JvdW5kfGVufDB8fHx8MTY0OTU2MTU4NA&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 5vh;
+            touch-action: none;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .present-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            transform: rotateX(180deg);
+            z-index: 2;
+        }
+
+        .present {
+            width: 100%;
+            height: 100%;
+            background: #3c3c3c;  /* Concrete grey */
+            position: relative;
+            transform-origin: center bottom;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            border-radius: 2px;
+        }
+
+        .lid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #4a4a4a;  /* Darker concrete */
+            transform-origin: center top;
+            transform: rotateX(180deg);
+            transition: transform 0.5s ease;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+            border-radius: 2px;
+        }
+
+        .ribbon-vertical {
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: #e5b64a;  /* Theater gold */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ribbon-horizontal {
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            background: #e5b64a;  /* Theater gold */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .bow {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: #ffd700;  /* Brighter gold */
+            border-radius: 50%;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .message-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            transform: rotateX(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.9);
+            border-radius: 2px;
+            backdrop-filter: blur(5px);
+        }
+
+        .message {
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .message h2 {
+            color: #e5b64a;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .message p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .message-container.visible {
+            opacity: 1;
+        }
+
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
+            font-size: 1.2em;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Floating images */
+        .floating-image {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            animation: float 6s linear infinite;
+            opacity: 0.9;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(50px, -30px) rotate(5deg);
+            }
+            50% {
+                transform: translate(0, -60px) rotate(0deg);
+            }
+            75% {
+                transform: translate(-50px, -30px) rotate(-5deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="present-container">
+        <div class="present">
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+        </div>
+        <div class="message-container">
+            <div class="message">
+                <h2>Merry Christmas Liz and Eddie</h2>
+                <p>Check your email for a 3 month</p>
+                <p style="font-size: 1.4em; font-weight: bold; color: #e5b64a;">National Theatre At Home</p>
+                <p>membership</p>
+            </div>
+        </div>
+        <div class="lid">
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+            <div class="bow"></div>
+        </div>
+    </div>
+    <div class="instructions">✨ Swipe anywhere to open your gift! ✨</div>
+
+    <script>
+        // Initialize elements and variables
+        const lid = document.querySelector('.lid');
+        const messageContainer = document.querySelector('.message-container');
+        const body = document.querySelector('body');
+        let isDragging = false;
+        let startY = 0;
+        let currentRotation = 180;
+        let isOpen = false;
+
+        // Add floating images
+        function createFloatingImages() {
+            const images = [
+                'https://i.ibb.co/7XYdqnq/Subject-2.png',
+                'https://i.ibb.co/cwBtrBt/Subject.png'
+            ];
+            
+            for(let i = 0; i < 8; i++) {
+                const floatingImg = document.createElement('div');
+                floatingImg.className = 'floating-image';
+                floatingImg.style.backgroundImage = `url(${images[i % 2]})`;
+                floatingImg.style.left = Math.random() * 90 + 5 + 'vw'; // Keep away from edges
+                floatingImg.style.top = Math.random() * 90 + 5 + 'vh';
+                floatingImg.style.animationDelay = Math.random() * 4 + 's';
+                floatingImg.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(floatingImg);
+            }
+        }
+        createFloatingImages();
+
+        function handleStart(e) {
+            e.preventDefault();
+            isDragging = true;
+            startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+        }
+
+        function handleMove(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            
+            const currentY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            const deltaY = currentY - startY;
+            
+            const newRotation = isOpen ? 
+                Math.max(0, Math.min(180, Math.abs(deltaY) / 2)) :
+                Math.max(0, Math.min(180, 180 - Math.abs(deltaY) / 2));
+            
+            currentRotation = newRotation;
+            lid.style.transform = `rotateX(${currentRotation}deg)`;
+            
+            if (currentRotation < 90) {
+                messageContainer.style.opacity = (90 - currentRotation) / 90;
+                messageContainer.classList.add('visible');
+            } else {
+                messageContainer.style.opacity = 0;
+                messageContainer.classList.remove('visible');
+            }
+        }
+
+        function handleEnd(e) {
+            if (!isDragging) return;
+            e.preventDefault();
+            isDragging = false;
+            
+            const shouldOpen = currentRotation < 90;
+            
+            if (shouldOpen) {
+                currentRotation = 0;
+                lid.style.transform = 'rotateX(0deg)';
+                messageContainer.style.opacity = 1;
+                messageContainer.classList.add('visible');
+                isOpen = true;
+            } else {
+                currentRotation = 180;
+                lid.style.transform = 'rotateX(180deg)';
+                messageContainer.style.opacity = 0;
+                messageContainer.classList.remove('visible');
+                isOpen = false;
+            }
+        }
+
+        // Mouse events
+        body.addEventListener('mousedown', handleStart);
+        body.addEventListener('mousemove', handleMove);
+        body.addEventListener('mouseup', handleEnd);
+        body.addEventListener('mouseleave', handleEnd);
+
+        // Touch events
+        body.addEventListener('touchstart', handleStart, { passive: false });
+        body.addEventListener('touchmove', handleMove, { passive: false });
+        body.addEventListener('touchend', handleEnd, { passive: false });
+        body.addEventListener('touchcancel', handleEnd, { passive: false });
+    </script>
+</body>
+</html>
