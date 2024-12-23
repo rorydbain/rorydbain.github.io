@@ -137,20 +137,25 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Stage light effect */
-        .spotlight {
+        /* Floating images */
+        .floating-image {
             position: fixed;
-            width: 20px;
-            height: 20px;
-            background: rgba(255,215,0,0.15);
-            border-radius: 50%;
-            filter: blur(10px);
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
             animation: float 4s ease-in-out infinite;
+            opacity: 0.9;
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(5deg); 
+            }
         }
     </style>
 </head>
@@ -186,18 +191,25 @@
         let currentRotation = 180;
         let isOpen = false;
 
-        // Add spotlight effects
-        function createSpotlights() {
+        // Add floating images
+        function createFloatingImages() {
+            const images = [
+                'https://i.ibb.co/7XYdqnq/Subject-2.png',
+                'https://i.ibb.co/cwBtrBt/Subject.png'
+            ];
+            
             for(let i = 0; i < 8; i++) {
-                const light = document.createElement('div');
-                light.className = 'spotlight';
-                light.style.left = Math.random() * 100 + 'vw';
-                light.style.top = Math.random() * 100 + 'vh';
-                light.style.animationDelay = Math.random() * 4 + 's';
-                document.body.appendChild(light);
+                const floatingImg = document.createElement('div');
+                floatingImg.className = 'floating-image';
+                floatingImg.style.backgroundImage = `url(${images[i % 2]})`;
+                floatingImg.style.left = Math.random() * 90 + 5 + 'vw'; // Keep away from edges
+                floatingImg.style.top = Math.random() * 90 + 5 + 'vh';
+                floatingImg.style.animationDelay = Math.random() * 4 + 's';
+                floatingImg.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                document.body.appendChild(floatingImg);
             }
         }
-        createSpotlights();
+        createFloatingImages();
 
         function handleStart(e) {
             e.preventDefault();
