@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghibli Gift Reveal</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap');
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: url('https://i.pinimg.com/736x/25/0c/c1/250cc12f7b7fef7aa7f3839f962693e0.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 5vh;
+            touch-action: none;
+            perspective: 1000px;
+            position: relative;
+        }
+
+
+
+        .present-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            cursor: grab;
+            transform: rotateX(180deg);
+            z-index: 2;
+        }
+
+        .present {
+            width: 100%;
+            height: 100%;
+            background: #1a2b47;  /* Deep night blue */
+            position: relative;
+            transform-origin: center bottom;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+
+        .lid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: #2a3b57;  /* Slightly lighter night blue */
+            transform-origin: center top;
+            transform: rotateX(180deg);
+            transition: transform 0.5s ease;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+        }
+
+        .ribbon-vertical {
+            position: absolute;
+            width: 30px;
+            height: 100%;
+            background: #4a5d7b;  /* Soft moonlight blue */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .ribbon-horizontal {
+            position: absolute;
+            width: 100%;
+            height: 30px;
+            background: #4a5d7b;  /* Soft moonlight blue */
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .bow {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: #3c4f6d;  /* Deeper moonlight blue */
+            border-radius: 50%;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .message-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            transform: rotateX(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 5vh;
+            background: #ffffff99;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .message {
+            font-family: 'Quicksand', sans-serif;
+            color: #4a4a4a;
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .message h2 {
+            color: #ff69b4;
+            margin-bottom: 15px;
+        }
+
+        .message p {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+
+        .message-container.visible {
+            opacity: 1;
+        }
+
+        .instructions {
+            position: fixed;
+            bottom: 20px;
+            text-align: center;
+            width: 100%;
+            font-family: 'Quicksand', sans-serif;
+            color: #ffffff;
+            font-size: 1.2em;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Spiky soot sprite decoration */
+        .soot-sprite {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: #000000;
+            opacity: 0.8;
+            animation: float 3s ease-in-out infinite;
+            clip-path: polygon(
+                50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%,
+                50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%
+            );
+        }
+
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0) rotate(0deg); 
+            }
+            50% { 
+                transform: translateY(-20px) rotate(180deg); 
+            }
+        }
+
+        .soot-sprite::before {
+            content: '•';
+            color: white;
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body>
+    <div class="present-container">
+        <div class="present">
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+        </div>
+        <div class="message-container">
+            <div class="message">
+                <h2>Dear Callum</h2>
+                <p>You have two tickets to see</p>
+                <p style="font-size: 1.4em; font-weight: bold; color: #1a1a1a;">My Neighbor Totoro</p>
+                <p>1st April</p>
+            </div>
+        </div>
+        <div class="lid">
+            <div class="ribbon-vertical"></div>
+            <div class="ribbon-horizontal"></div>
+            <div class="bow"></div>
+        </div>
+    </div>
+    <div class="instructions">        ✨ Swipe anywhere to open your gift! ✨</div>
+
+    <script>
+        // Add floating Totoros
+        // Add spiky soot sprites
+        function createSootSprites() {
+            const sizes = [15, 20, 25];  // Different sprite sizes
+            for(let i = 0; i < 12; i++) {
+                const sprite = document.createElement('div');
+                sprite.className = 'soot-sprite';
+                const size = sizes[Math.floor(Math.random() * sizes.length)];
+                sprite.style.width = size + 'px';
+                sprite.style.height = size + 'px';
+                sprite.style.left = Math.random() * 100 + 'vw';
+                sprite.style.top = Math.random() * 100 + 'vh';
+                sprite.style.animationDelay = Math.random() * 3 + 's';
+                sprite.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                document.body.appendChild(sprite);
+            }
+        }
+        createSootSprites();
+
+        // Initialize elements and variables
+        const lid = document.querySelector('.lid');
+        const messageContainer = document.querySelector('.message-container');
+        const body = document.querySelector('body');
+        let isDragging = false;
+        let startY = 0;
+        let currentRotation = 180;
+        let isOpen = false;
+
+        function handleStart(e) {
+            e.preventDefault(); // Prevent default touch behavior
+            isDragging = true;
+            startY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+        }
+
+        function handleMove(e) {
+            if (!isDragging) return;
+            e.preventDefault(); // Prevent default touch behavior
+            
+            const currentY = e.type.includes('mouse') ? e.clientY : e.touches[0].clientY;
+            const deltaY = currentY - startY;
+            
+            const newRotation = isOpen ? 
+                Math.max(0, Math.min(180, Math.abs(deltaY) / 2)) :
+                Math.max(0, Math.min(180, 180 - Math.abs(deltaY) / 2));
+            
+            currentRotation = newRotation;
+            lid.style.transform = `rotateX(${currentRotation}deg)`;
+            
+            if (currentRotation < 90) {
+                messageContainer.style.opacity = (90 - currentRotation) / 90;
+                messageContainer.classList.add('visible');
+            } else {
+                messageContainer.style.opacity = 0;
+                messageContainer.classList.remove('visible');
+            }
+        }
+
+        function handleEnd(e) {
+            if (!isDragging) return;
+            e.preventDefault(); // Prevent default touch behavior
+            isDragging = false;
+            
+            const shouldOpen = currentRotation < 90;
+            
+            if (shouldOpen) {
+                currentRotation = 0;
+                lid.style.transform = 'rotateX(0deg)';
+                messageContainer.style.opacity = 1;
+                messageContainer.classList.add('visible');
+                isOpen = true;
+            } else {
+                currentRotation = 180;
+                lid.style.transform = 'rotateX(180deg)';
+                messageContainer.style.opacity = 0;
+                messageContainer.classList.remove('visible');
+                isOpen = false;
+            }
+        }
+
+        // Mouse events
+        body.addEventListener('mousedown', handleStart);
+        body.addEventListener('mousemove', handleMove);
+        body.addEventListener('mouseup', handleEnd);
+        body.addEventListener('mouseleave', handleEnd);
+
+        // Touch events
+        body.addEventListener('touchstart', handleStart, { passive: false });
+        body.addEventListener('touchmove', handleMove, { passive: false });
+        body.addEventListener('touchend', handleEnd, { passive: false });
+        body.addEventListener('touchcancel', handleEnd, { passive: false });
+    </script>
+</body>
+</html>
