@@ -158,22 +158,23 @@
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Vine decoration */
-        .vine {
+        /* Floating artwork */
+        .artwork-piece {
             position: fixed;
-            width: 40px;
-            height: 40px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50,10 Q65,25 50,40 Q35,55 50,70 Q65,85 50,90 M40,30 Q50,35 60,30 M40,50 Q50,55 60,50 M40,70 Q50,75 60,70' stroke='%23582f1c' fill='none' stroke-width='2'/%3E%3Ccircle cx='45' cy='30' r='2' fill='%23582f1c'/%3E%3Ccircle cx='55' cy='30' r='2' fill='%23582f1c'/%3E%3Ccircle cx='45' cy='50' r='2' fill='%23582f1c'/%3E%3Ccircle cx='55' cy='50' r='2' fill='%23582f1c'/%3E%3Ccircle cx='45' cy='70' r='2' fill='%23582f1c'/%3E%3Ccircle cx='55' cy='70' r='2' fill='%23582f1c'/%3E%3C/svg%3E");
+            width: 80px;
+            height: 80px;
+            background-image: url('https://i.ibb.co/HYvNgBV/ollam-art.png');
             background-size: contain;
             background-repeat: no-repeat;
-            animation: sway 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
             opacity: 0.7;
+            z-index: 1;
         }
 
-        @keyframes sway {
-            0% { transform: rotate(-5deg) scale(1); }
-            50% { transform: rotate(5deg) scale(1.1); }
-            100% { transform: rotate(-5deg) scale(1); }
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
     </style>
 </head>
@@ -189,7 +190,7 @@
                 <p>9th February at Earth Hackney</p>
             </div>
             <iframe class="spotify-embed" 
-                src="https://open.spotify.com/embed/artist/6LtwY43IVeNpnireOVay0H" 
+                src="https://open.spotify.com/embed/album/5Rd4ogHVsbtlzrU8FrC0sQ" 
                 frameborder="0" 
                 allowtransparency="true" 
                 allow="encrypted-media">
@@ -213,19 +214,19 @@
         let currentRotation = 180;
         let isOpen = false;
 
-        // Add floating vines
-        function createVines() {
-            for(let i = 0; i < 12; i++) {
-                const vine = document.createElement('div');
-                vine.className = 'vine';
-                vine.style.left = Math.random() * 90 + 5 + 'vw';
-                vine.style.top = Math.random() * 90 + 5 + 'vh';
-                vine.style.animationDelay = Math.random() * 3 + 's';
-                vine.style.transform = `rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.5 + 0.8})`;
-                document.body.appendChild(vine);
+        // Add floating artwork pieces
+        function createArtworkPieces() {
+            for(let i = 0; i < 8; i++) {
+                const piece = document.createElement('div');
+                piece.className = 'artwork-piece';
+                piece.style.left = Math.random() * 80 + 10 + 'vw'; // Keep away from edges
+                piece.style.top = Math.random() * 80 + 10 + 'vh';
+                piece.style.animationDelay = Math.random() * 4 + 's';
+                piece.style.transform = `scale(${Math.random() * 0.5 + 0.5}) rotate(${Math.random() * 360}deg)`;
+                document.body.appendChild(piece);
             }
         }
-        createVines();
+        createArtworkPieces();
 
         function handleStart(e) {
             e.preventDefault();
