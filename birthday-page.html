@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy 60th Birthday, Mum! 🎉</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/inter-ui/3.19.3/inter.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.js"></script>
+    <style>
+        * {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        body {
+            background-color: #fafafa;
+        }
+        .content-width {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        .card {
+            border-radius: 24px;
+            background: white;
+            box-shadow: 
+                0 1px 2px rgba(0,0,0,0.04), 
+                0 2px 4px rgba(0,0,0,0.04), 
+                0 4px 8px rgba(0,0,0,0.04), 
+                0 8px 16px rgba(0,0,0,0.04);
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 32px;
+        }
+        .header-card {
+            padding: 48px 32px;
+        }
+        .footer-card {
+            padding: 32px;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 2px 4px rgba(0,0,0,0.05), 
+                0 4px 8px rgba(0,0,0,0.05), 
+                0 8px 16px rgba(0,0,0,0.05), 
+                0 16px 32px rgba(0,0,0,0.05);
+        }
+        .image-container {
+            position: relative;
+            display: block;
+            background: #f5f5f5;
+        }
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+        .view-details {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 32px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .card:hover .view-details {
+            opacity: 1;
+        }
+        .emoji {
+            display: inline-block;
+            transform-origin: center;
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            from { 
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .scroll-container {
+            scroll-behavior: smooth;
+            padding: 48px 0;
+        }
+    </style>
+</head>
+<body class="scroll-container">
+    <div class="content-width">
+        <!-- Header -->
+        <header class="card header-card text-center fade-in" style="animation-delay: 0.2s">
+            <h1 class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
+                Happy Birthday Mum! 
+                <span class="emoji inline-block ml-2">🎉</span>
+            </h1>
+            <p class="text-xl text-gray-600 mt-6">
+                How do you fancy Mallorca or maybe Tenerife this summer for our big birthday years?<br>
+            </p>
+        </header>
+
+        <!-- Gallery -->
+        <div class="fade-in" style="animation-delay: 0.4s">
+            <div id="villas-container"></div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="card footer-card text-center fade-in" style="animation-delay: 0.6s">
+            <p class="text-gray-600">
+                I haven't booked anything yet, but was thinking maybe Mallorca or Tuscany? Could do early summer after Angus finishes his exams, and you're done with term?
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const villas = [
+            {
+                image: "https://a0.muscache.com/im/pictures/miso/Hosting-37595328/original/562d6d0c-4604-487e-89f3-aed9bda99c8a.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/37595328"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-46408437/original/944aa005-1929-4fdc-b7d3-7ff12f0c3947.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/46408437"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-50884422/original/347e44c0-9819-44f2-9d15-916a0c45db9c.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/50884422"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/miso/Hosting-5695263/original/a6692cf1-0d2f-47c6-9586-d5dab6517764.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/5695263"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/miso/Hosting-734049259233080495/original/3d415537-b19b-4711-89b9-a0c42ed9bf19.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/852800708210507050"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/miso/Hosting-40386497/original/040b6550-fdd9-4968-81de-6795f00e7dc6.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/40386497"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-1035288416215127240/original/c62133fe-3a32-47b9-b84f-33206f1dd12c.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/1035288416215127240"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/bad2c9ca-c156-4ce8-907a-00da1c230ba9.jpg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/10397154"
+            },
+            {
+                image: "https://a0.muscache.com/im/pictures/prohost-api/Hosting-33353375/original/9ad7e76f-6725-4c70-9f87-47be65d5d227.jpeg?im_w=720&im_format=avif",
+                link: "https://www.airbnb.co.uk/rooms/33353375"
+            }
+        ];
+
+        function createVillaCard(villa, index) {
+            const delay = 0.6 + (index * 0.1);
+            return `
+                <div class="card fade-in" style="animation-delay: ${delay}s">
+                    <a href="${villa.link}" target="_blank" class="image-container">
+                        <img src="${villa.image}" alt="Beautiful villa in Mallorca" loading="lazy">
+                        <div class="view-details flex justify-between items-center">
+                            <span class="font-medium">View on Airbnb</span>
+                            <span class="text-xl">→</span>
+                        </div>
+                    </a>
+                </div>
+            `;
+        }
+
+        const container = document.getElementById('villas-container');
+        villas.forEach((villa, index) => {
+            container.innerHTML += createVillaCard(villa, index);
+        });
+    </script>
+</body>
+</html>
