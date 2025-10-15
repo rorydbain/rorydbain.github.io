@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0; url=https://c.c8.io/9dZQkrJ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0d0d0d;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 24px;
+            position: relative;
+        }
+
+        .logo-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid transparent;
+            border-top-color: #5e6ad2;
+            border-radius: 50%;
+            animation: spin 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+        }
+
+        .logo-ring:nth-child(2) {
+            animation-delay: 0.15s;
+            border-top-color: #9b8afb;
+        }
+
+        .logo-ring:nth-child(3) {
+            animation-delay: 0.3s;
+            border-top-color: #5e6ad2;
+            opacity: 0.5;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        h1 {
+            font-size: 20px;
+            font-weight: 500;
+            color: #e6e6e6;
+            margin-bottom: 12px;
+            letter-spacing: -0.02em;
+        }
+
+        p {
+            font-size: 14px;
+            color: #8b8b8b;
+            font-weight: 400;
+        }
+
+        a {
+            color: #5e6ad2;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #9b8afb;
+        }
+
+        .grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(94, 106, 210, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(94, 106, 210, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 0;
+        }
+
+        .gradient-orb {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.15;
+            z-index: 0;
+        }
+
+        .gradient-orb:nth-child(1) {
+            background: radial-gradient(circle, #5e6ad2 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+        }
+
+        .gradient-orb:nth-child(2) {
+            background: radial-gradient(circle, #9b8afb 0%, transparent 70%);
+            bottom: -250px;
+            left: -250px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gradient-orb"></div>
+    <div class="gradient-orb"></div>
+    <div class="grid"></div>
+
+    <div class="container">
+        <div class="logo">
+            <div class="logo-ring"></div>
+            <div class="logo-ring"></div>
+            <div class="logo-ring"></div>
+        </div>
+        <h1>Redirecting</h1>
+        <p>If you're not redirected, <a href="https://c.c8.io/9dZQkrJ">click here</a></p>
+    </div>
+</body>
+</html>
