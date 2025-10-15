@@ -7,31 +7,65 @@
 
 :root {
     color-scheme: light dark;
+
+    // CSS Custom Properties for modern theming
+    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', Consolas, monospace;
+
+    // Light mode colors
+    --color-text: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-background: #ffffff;
+    --color-background-secondary: #f8f9fa;
+    --color-border: #e1e4e8;
+    --color-accent: #5e6ad2;
+    --color-accent-hover: #4e5ac7;
+    --color-link: #5e6ad2;
+    --color-link-visited: #4a5199;
+    --color-code-bg: #f6f8fa;
+    --color-code-border: #e1e4e8;
 }
 
+@media (prefers-color-scheme: dark) {
+    :root {
+        // Dark mode colors
+        --color-text: #e6e6e6;
+        --color-text-secondary: #9b9b9b;
+        --color-background: #0d0d0d;
+        --color-background-secondary: #1a1a1a;
+        --color-border: #2d2d2d;
+        --color-accent: #7c8aff;
+        --color-accent-hover: #9ba8ff;
+        --color-link: #7c8aff;
+        --color-link-visited: #9ba8ff;
+        --color-code-bg: #1a1a1a;
+        --color-code-border: #2d2d2d;
+    }
+}
 
-$base-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$base-font-family: var(--font-sans) !default;
 $base-font-size:   16px !default;
 $base-font-weight: 400 !default;
 $small-font-size:  $base-font-size * 0.875 !default;
-$base-line-height: 3 !default;
+$base-line-height: 1.6 !default;
 
 $spacing-unit:     30px !default;
 
-$text-color:            #111 !default;
-$background-color:      #fdfdfd !default;
-$dark-text-color:       #ddd !default;
-$dark-background-color: #222 !default;
-$brand-color:           #4e4e4e !default;
-$dark-brand-color:     lighten($brand-color, 40%) !default;
+// Legacy color variables (kept for compatibility, now using CSS vars)
+$text-color:            #1a1a1a !default;
+$background-color:      #ffffff !default;
+$dark-text-color:       #e6e6e6 !default;
+$dark-background-color: #0d0d0d !default;
+$brand-color:           #5e6ad2 !default;
+$dark-brand-color:      #7c8aff !default;
 
-$grey-color:       #828282 !default;
-$grey-color-light: lighten($grey-color, 40%) !default;
-$grey-color-dark:  darken($grey-color, 25%) !default;
+$grey-color:       #666666 !default;
+$grey-color-light: #e1e4e8 !default;
+$grey-color-dark:  #404040 !default;
 
-$dark-grey-color:       lighten($grey-color, 20%) !default;
-$dark-grey-color-light: lighten($dark-grey-color, 40%) !default;
-$dark-grey-color-dark:  darken($dark-grey-color, 25%) !default;
+$dark-grey-color:       #9b9b9b !default;
+$dark-grey-color-light: #2d2d2d !default;
+$dark-grey-color-dark:  #e6e6e6 !default;
 
 // Width of the content area
 $content-width:    800px !default;
@@ -85,19 +119,19 @@ figure {
  */
 
 body {
-    font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
-    color: $text-color;
-    background-color: $background-color;
-    @media (prefers-color-scheme: dark) {
-        color: $dark-text-color;
-        background-color: $dark-background-color;
-    }
+    font-family: var(--font-sans);
+    font-size: $base-font-size;
+    font-weight: $base-font-weight;
+    line-height: $base-line-height;
+    color: var(--color-text);
+    background-color: var(--color-background);
     -webkit-text-size-adjust: 100%;
     -webkit-font-feature-settings: "kern" 1;
     -moz-font-feature-settings: "kern" 1;
     -o-font-feature-settings: "kern" 1;
     font-feature-settings: "kern" 1;
     font-kerning: normal;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /**
@@ -168,7 +202,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: $base-font-weight;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
 }
 
 /**
@@ -177,18 +213,14 @@ h6 {
 
 a {
     text-decoration: none;
+    color: var(--color-link);
+    transition: color 0.2s ease;
 
     &:visited {
-        color: darken($brand-color, 15%);
-        @media (prefers-color-scheme: dark) {
-            color: darken($dark-brand-color, 15%);
-        }
+        color: var(--color-link-visited);
     }
     &:hover {
-        color: $text-color;
-        @media (prefers-color-scheme: dark) {
-            color: #fff;
-        }
+        color: var(--color-accent-hover);
         text-decoration: underline;
     }
     .social-media-list &:hover {
@@ -199,17 +231,14 @@ a {
     }
 }
 
-// Non h anchor tags have salmon
+// Non h anchor tags use accent color
 :not(h1) > a, :not(h2) > a, :not(h3) > a, :not(h4) > a, :not(h5) > a, :not(h6) > a {
-    color: darksalmon;
+    color: var(--color-link);
 }
 
-// H anchor tags have grey colours
+// H anchor tags use text color
 h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
-    color: $brand-color;
-    @media (prefers-color-scheme: dark) {
-        color: $dark-brand-color;
-    }
+    color: var(--color-text);
 }
 
 /**
@@ -217,11 +246,11 @@ h1 > a, h2 > a, h3 > a, h4 > a, h5 > a, h6 > a {
  */
 
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
+    color: var(--color-text-secondary);
+    border-left: 3px solid var(--color-border);
     padding-left: $spacing-unit / 2;
     @include relative-font-size(1.125);
-    letter-spacing: -1px;
+    letter-spacing: -0.01em;
     font-style: italic;
     > :last-child {
         margin-bottom: 0;
@@ -234,27 +263,27 @@ blockquote {
 
 pre,
 code {
-    @include relative-font-size(0.9375);
-    border: 1px solid $grey-color-light;
-    border-radius: 3px;
-    background-color: #f5f5f5;
-    @media (prefers-color-scheme: dark) {
-        background-color: #373737;
-        border: 1px solid $dark-grey-color-light;
-    }
+    font-family: var(--font-mono);
+    @include relative-font-size(0.9);
+    border: 1px solid var(--color-code-border);
+    border-radius: 6px;
+    background-color: var(--color-code-bg);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 code {
-    padding: 1px 5px;
+    padding: 2px 6px;
 }
 
 pre {
-    padding: 8px 12px;
+    padding: 12px 16px;
     overflow-x: auto;
+    line-height: 1.5;
     >code {
         border: 0;
         padding-right: 0;
         padding-left: 0;
+        background-color: transparent;
     }
 }
 
@@ -296,7 +325,8 @@ pre {
     display: inline-block;
     vertical-align: middle;
     path {
-        fill: $grey-color;
+        fill: var(--color-text-secondary);
+        transition: fill 0.2s ease;
     }
 }
 
@@ -322,12 +352,9 @@ pre {
   display: inline-block;
 }
 
-.pagination a {    
+.pagination a {
   &:hover {
-      color: #333;
-      @media (prefers-color-scheme: dark) {
-        color: #fff;
-    }
+      color: var(--color-accent-hover);
   }
 }
 

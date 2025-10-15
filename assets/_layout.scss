@@ -3,12 +3,8 @@
  */
 
 .wrapper {
-  color: #424242;
-  @media (prefers-color-scheme: dark) {
-    color: $dark-text-color;
-  }
-  font-family: "Avenir", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-    "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+  color: var(--color-text);
+  font-family: var(--font-sans);
 }
 
 .site-header {
@@ -20,15 +16,16 @@
 
 .site-title {
   @include relative-font-size(2.2);
-  font-weight: 300;
+  font-weight: 600;
   line-height: $base-line-height * $base-font-size * 2.25;
   margin-bottom: 0;
+  letter-spacing: -0.03em;
   &,
   &:visited {
-    color: $grey-color-dark;
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-    }
+    color: var(--color-text);
+  }
+  &:hover {
+    text-decoration: none;
   }
 }
 
@@ -42,25 +39,23 @@
     display: none;
   }
   .page-link {
-    color: $grey-color-dark;
-    @media (prefers-color-scheme: dark) {
-      color: #fff;
-    }
-    
+    color: var(--color-text-secondary);
     line-height: $base-line-height;
+    font-weight: 400;
+    transition: color 0.2s ease;
     &:not(:last-child) {
       margin-right: 20px;
+    }
+    &:hover {
+      color: var(--color-text);
     }
   }
   @include media-query($on-palm) {
     position: absolute;
     top: 9px;
     right: $spacing-unit / 2;
-    background-color: $background-color;
-    @media (prefers-color-scheme: dark) {
-      color: $dark-text-color;
-      background-color: $dark-background-color;
-    }
+    background-color: var(--color-background);
+    color: var(--color-text);
     text-align: right;
     label[for="nav-trigger"] {
       display: block;
@@ -79,10 +74,7 @@
       padding-top: 10px;
       text-align: center;
       > svg path {
-        fill: $grey-color-dark;
-        @media (prefers-color-scheme: dark) {
-          fill: $dark-grey-color-dark;
-        }
+        fill: var(--color-text);
       }
     }
     input ~ .trigger {
@@ -125,7 +117,7 @@
 
 .footer-col-wrapper {
   @include relative-font-size(0.9375);
-  color: $grey-color;
+  color: var(--color-text-secondary);
   margin-left: -$spacing-unit / 2;
   @extend %clearfix;
 }
@@ -219,12 +211,17 @@
 
 .post-meta {
   font-size: $small-font-size;
-  color: $grey-color;
+  color: var(--color-text-secondary);
 }
 
 .post-link {
   display: block;
   @include relative-font-size(1.5);
+  font-weight: 500;
+  transition: color 0.2s ease;
+  &:hover {
+    color: var(--color-accent);
+  }
 }
 
 /**
@@ -238,8 +235,9 @@
 
 .post-title {
   @include relative-font-size(2.625);
-  letter-spacing: -1px;
-  line-height: 1;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  font-weight: 600;
   @include media-query($on-laptop) {
     @include relative-font-size(2.25);
   }
