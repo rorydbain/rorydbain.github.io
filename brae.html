@@ -28,7 +28,6 @@
     html, body {
       margin: 0;
       min-height: 100%;
-      overflow: hidden;
       color: var(--ink);
       background:
         radial-gradient(circle at 16% 10%, rgba(216, 150, 34, 0.20), transparent 32rem),
@@ -46,7 +45,7 @@
       display: grid;
       grid-template-rows: auto 1fr auto;
       width: min(1120px, calc(100% - 72px));
-      height: 100svh;
+      min-height: 100svh;
       margin: 0 auto;
     }
 
@@ -93,9 +92,8 @@
       grid-template-columns: minmax(0, 0.94fr) minmax(420px, 1fr);
       gap: clamp(28px, 6vw, 70px);
       align-items: center;
-      min-height: 0;
       overflow: visible;
-      padding: 8px 0 18px;
+      padding: 8px 0 24px;
     }
 
     .copy {
@@ -168,7 +166,7 @@
       display: grid;
       align-items: center;
       justify-items: center;
-      min-height: 0;
+      min-height: 520px;
       height: min(600px, calc(100svh - 132px));
     }
 
@@ -202,7 +200,7 @@
     footer {
       display: flex;
       justify-content: center;
-      padding: 0 0 20px;
+      padding: 0 0 24px;
     }
 
     @media (max-width: 900px) {
@@ -230,7 +228,8 @@
       }
 
       .shots {
-        height: min(380px, 34svh);
+        min-height: 360px;
+        height: 38svh;
       }
 
       .phone {
@@ -279,7 +278,8 @@
       }
 
       .shots {
-        height: min(320px, 30svh);
+        min-height: 300px;
+        height: 32svh;
       }
 
       .phone {
