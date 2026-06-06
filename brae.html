@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brae - Lighten your photo library</title>
+  <meta name="description" content="Brae helps you find oversized photos and videos, shrink them with simple presets, and keep control before anything changes.">
+  <meta property="og:title" content="Brae">
+  <meta property="og:description" content="Find the biggest photos and videos in your library and save space with simple, safe compression.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/brae/icon.png">
+  <link rel="icon" href="/assets/brae/icon.png">
+  <style>
+    :root {
+      --bg: #f5f1e5;
+      --ink: #15130f;
+      --muted: #716b5f;
+      --line: rgba(44, 38, 26, 0.14);
+      --gold: #d89622;
+      --gold-deep: #996212;
+      --charcoal: #191817;
+      --cream: #fffaf0;
+      --shadow: 0 24px 72px rgba(55, 42, 20, 0.18);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      overflow: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 16% 10%, rgba(216, 150, 34, 0.20), transparent 32rem),
+        radial-gradient(circle at 86% 10%, rgba(25, 24, 23, 0.11), transparent 34rem),
+        linear-gradient(180deg, #fffaf2 0%, var(--bg) 100%);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", Inter, Segoe UI, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100svh;
+    }
+
+    .page {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      width: min(1120px, calc(100% - 72px));
+      height: 100svh;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 30px 0 14px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: inherit;
+      text-decoration: none;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .mark {
+      display: block;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      box-shadow: 0 12px 26px rgba(86, 56, 13, 0.18);
+    }
+
+    .support {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+
+    .support:hover {
+      color: var(--ink);
+      text-decoration: underline;
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 0.94fr) minmax(420px, 1fr);
+      gap: clamp(28px, 6vw, 70px);
+      align-items: center;
+      min-height: 0;
+      overflow: visible;
+      padding: 8px 0 18px;
+    }
+
+    .copy {
+      align-self: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      background: rgba(255, 250, 240, 0.72);
+      backdrop-filter: blur(18px);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 650px;
+      font-size: clamp(56px, 9vw, 112px);
+      line-height: 0.88;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 590px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(20px, 2.5vw, 28px);
+      line-height: 1.25;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-top: 26px;
+      padding: 0 20px 20px;
+      margin-left: -20px;
+      margin-bottom: -20px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 999px;
+      color: white;
+      background: var(--charcoal);
+      box-shadow: 0 14px 34px rgba(25, 24, 23, 0.24);
+      text-decoration: none;
+      font-weight: 800;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .shots {
+      position: relative;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      min-height: 0;
+      height: min(600px, calc(100svh - 132px));
+    }
+
+    .phone {
+      position: absolute;
+      width: min(258px, 36vw);
+      max-height: 100%;
+      padding: 8px;
+      border-radius: 40px;
+      background: #101114;
+      box-shadow: var(--shadow);
+    }
+
+    .phone img {
+      display: block;
+      width: 100%;
+      border-radius: 31px;
+    }
+
+    .phone.library {
+      z-index: 2;
+      left: 7%;
+      transform: rotate(-4deg) translateY(8px);
+    }
+
+    .phone.compress {
+      right: 6%;
+      transform: rotate(5deg) translateY(-16px);
+    }
+
+    footer {
+      display: flex;
+      justify-content: center;
+      padding: 0 0 20px;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        width: min(100% - 28px, 680px);
+      }
+
+      main {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding-bottom: 8px;
+      }
+
+      .copy {
+        text-align: center;
+      }
+
+      .lead {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .actions {
+        justify-content: center;
+      }
+
+      .shots {
+        height: min(380px, 34svh);
+      }
+
+      .phone {
+        width: min(210px, 44vw);
+        border-radius: 28px;
+        padding: 6px;
+      }
+
+      .phone img {
+        border-radius: 22px;
+      }
+
+      .phone.library {
+        left: 17%;
+      }
+
+      .phone.compress {
+        right: 17%;
+      }
+
+    }
+
+    @media (max-width: 540px) {
+      header {
+        padding-top: 16px;
+      }
+
+      main {
+        align-content: start;
+      }
+
+      h1 {
+        font-size: clamp(48px, 16vw, 70px);
+      }
+
+      .lead {
+        font-size: 18px;
+      }
+
+      .actions {
+        margin-top: 22px;
+      }
+
+      .note {
+        width: 100%;
+      }
+
+      .shots {
+        height: min(320px, 30svh);
+      }
+
+      .phone {
+        width: min(176px, 47vw);
+      }
+
+      .phone.library {
+        left: 6%;
+        transform: rotate(-4deg) translateY(12px);
+      }
+
+      .phone.compress {
+        right: 6%;
+        transform: rotate(5deg) translateY(-6px);
+      }
+    }
+
+    @media (max-height: 720px) and (min-width: 901px) {
+      h1 {
+        font-size: clamp(50px, 8vw, 88px);
+      }
+
+      .lead {
+        font-size: 22px;
+      }
+
+      .shots {
+        height: calc(100svh - 126px);
+      }
+
+      .phone {
+        width: min(230px, 32vw);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="brand" href="/brae.html" aria-label="Brae home">
+        <img class="mark" src="/assets/brae/icon.png" alt="" width="42" height="42">
+        Brae
+      </a>
+    </header>
+
+    <main>
+      <section class="copy" aria-labelledby="headline">
+        <div class="eyebrow">Photos storage, made visible</div>
+        <h1 id="headline">Lighten your library.</h1>
+        <p class="lead">Find oversized photos and videos, shrink them with simple presets, and choose whether to save a copy or replace the original.</p>
+        <div class="actions">
+          <a class="button" href="mailto:rory@rorybain.com?subject=Brae">Get updates</a>
+          <span class="note">Built for iPhone. Private by design.</span>
+        </div>
+      </section>
+
+      <section class="shots" aria-label="Brae app screenshots">
+        <div class="phone library">
+          <img src="/assets/brae/library-with-intro.png" alt="Brae library recommendations">
+        </div>
+        <div class="phone compress">
+          <img src="/assets/brae/compress.png" alt="Brae compression setup">
+        </div>
+      </section>
+    </main>
+    <footer>
+      <a class="support" href="mailto:rorydbain@gmail.com">Support</a>
+    </footer>
+  </div>
+</body>
+</html>
