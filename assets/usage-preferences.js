@@ -1,4 +1,4 @@
-(function manageConsent() {
+(() => {
   const key = 'tiny-stats-choice-v2';
   const trackerUrl = 'https://photos.roryba.in/_stats/script.js';
   const privacyUrl = location.hostname === 'photos.roryba.in' ? '/privacy' : '/privacy/';
