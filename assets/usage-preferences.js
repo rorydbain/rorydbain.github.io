@@ -1,5 +1,5 @@
 (() => {
-  const key = 'tiny-stats-choice-v2';
+  const key = 'tiny-stats-choice-v3';
   const trackerUrl = 'https://photos.roryba.in/_stats/script.js';
   const privacyUrl = location.hostname === 'photos.roryba.in' ? '/privacy' : '/privacy/';
   const panel = document.createElement('div');
@@ -7,7 +7,7 @@
   panel.setAttribute('aria-label','Optional usage counts');
   panel.style.cssText='max-width:1080px;margin:24px auto;padding:16px;font:14px/1.5 system-ui,sans-serif;border-top:1px solid #d6d8ce;color:inherit';
   const text = document.createElement('p');
-  text.textContent='Optional usage counts help me improve this site. Only daily page totals; no visitor profiles. Counting is off until you allow it.';
+  text.textContent='Optional usage counts help me improve this site. Daily page counts and long-term monthly totals; no visitor profiles. Counting is off until you allow it.';
   const status = document.createElement('p');status.setAttribute('aria-live','polite');
   const allow = document.createElement('button');allow.textContent='Allow counts';
   const deny = document.createElement('button');deny.textContent='No thanks';
@@ -17,7 +17,7 @@
   function read() {
     try {
       const value = JSON.parse(localStorage.getItem(key));
-      if(value?.version===2 && ['yes','no'].includes(value.choice) && Date.now()-value.at<180*86400000 && value.at<=Date.now()) return value.choice;
+      if(value?.version===3 && ['yes','no'].includes(value.choice) && Date.now()-value.at<180*86400000 && value.at<=Date.now()) return value.choice;
     } catch {}
     return 'no';
   }
@@ -35,7 +35,7 @@
     dispatchEvent(new Event('tiny-stats-choice'));
   }
   function choose(choice) {
-    try {localStorage.setItem(key,JSON.stringify({version:2,choice,at:Date.now()}));}
+    try {localStorage.setItem(key,JSON.stringify({version:3,choice,at:Date.now()}));}
     catch {status.textContent='Your browser cannot save the preference. Counting stays off.';return;}
     update();
   }
