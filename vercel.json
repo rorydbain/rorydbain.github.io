@@ -1,0 +1,1 @@
+{"framework":null,"buildCommand":"bundle exec jekyll build && node scripts/assets.mjs","outputDirectory":"public","regions":["fra1"],"functions":{"api/page.js":{"includeFiles":"_site/**/*.html"}},"routes":[{"handle":"filesystem"},{"src":"/(.*)","dest":"/api/page?__path=$1"}]}

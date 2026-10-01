@@ -4,3 +4,7 @@ _site
 .DS_Store
 _posts/localStorage.json
 .idea
+.vercel
+public/
+node_modules/
+.env*

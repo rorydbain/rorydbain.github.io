@@ -4,7 +4,7 @@ description: >-
   I'm Rory, I'm a software engineer from Scotland.
   Here you'll find my posts about all sorts of things - expect baking, programming and photography.
 baseurl: "/"
-url: "https://rorydbain.github.io"
+url: "https://www.roryba.in"
 github_username:  rorydbain
 markdown: kramdown
 plugins:
@@ -14,3 +14,5 @@ paginate: 6
 paginate_path: /page:num/
 sass:
   sass_dir: assets
+
+exclude: [api, lib, scripts, node_modules, package.json, package-lock.json, vercel.json, public, vendor, README.md, DEPLOYMENT.md]
