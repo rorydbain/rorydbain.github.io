@@ -1,21 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
-    <title>Megan</title>
-    <style>
-        body { margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #f4f1ec; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
-        main { width: 100%; max-width: 420px; padding: 24px; text-align: center; }
-        h1 { font-weight: 600; font-size: 1.5rem; margin: 0 0 24px; color: #333; }
-        audio { width: 100%; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Megan</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #fff; color: #1d1c1d; font: 15px/1.47 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  .thread { max-width: 640px; margin: 0 auto; padding: 20px 16px 48px; }
+  .msg { display: flex; gap: 10px; padding: 6px 0; }
+  .msg img.avatar { width: 36px; height: 36px; border-radius: 6px; flex: none; margin-top: 2px; }
+  .head { font-weight: 800; }
+  .time { font-size: 12px; color: #616061; font-weight: 400; margin-left: 4px; }
+  .edited { font-size: 12px; color: #616061; }
+  .mention { background: #e8f5fa; color: #1264a3; border-radius: 3px; padding: 0 2px; }
+  .file-label { font-size: 13px; color: #616061; margin-top: 6px; }
+  .player { border: 1px solid #ddd; border-radius: 10px; padding: 14px 16px; margin-top: 4px; max-width: 480px; }
+  .player .top { display: flex; align-items: center; gap: 12px; }
+  .play { width: 40px; height: 40px; border-radius: 50%; border: 0; background: #e3eef7; color: #1264a3; cursor: pointer; display: grid; place-items: center; flex: none; }
+  .play svg { width: 18px; height: 18px; fill: currentColor; }
+  .title { font-weight: 700; font-size: 17px; line-height: 1.2; }
+  .sub { color: #616061; font-size: 13px; }
+  .controls { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+  .controls input[type=range] { flex: 1; accent-color: #1264a3; min-width: 0; }
+  .controls .t { font-size: 13px; color: #616061; font-variant-numeric: tabular-nums; }
+  .speed { border: 0; background: none; font: inherit; font-weight: 600; color: #616061; cursor: pointer; }
+  .transcript { border-left: 3px solid #ddd; padding-left: 12px; margin-top: 10px; color: #616061; max-width: 480px; }
+  .reactions { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+  .reaction { background: #f4f4f4; border-radius: 14px; padding: 1px 8px; font-size: 13px; color: #1264a3; }
+  .replies { display: flex; align-items: center; gap: 12px; color: #616061; font-size: 13px; margin: 16px 0 8px; }
+  .replies::after { content: ""; flex: 1; height: 1px; background: #ddd; }
+  .inline-img { height: 22px; width: 22px; vertical-align: -6px; border-radius: 3px; margin-left: 4px; }
+</style>
 </head>
 <body>
-    <main>
-        <h1>For Megan</h1>
-        <audio controls preload="metadata" src="/assets/megan-onc.m4a"></audio>
-    </main>
+<main class="thread">
+  <div class="msg">
+    <img class="avatar" src="/assets/megan-onc/rory.png" alt="">
+    <div>
+      <div><span class="head">Rory</span><span class="time">7 Jul 2023 at 17:13</span></div>
+      <div>When we sampled <span class="mention">@Megan</span> saying ONC, which is our on-call team’s Linear project prefix <span class="edited">(edited)</span></div>
+      <div class="file-label">MPEG-4 audio ▾</div>
+      <div class="player">
+        <div class="top">
+          <button class="play" id="play" aria-label="Play"><svg viewBox="0 0 24 24"><path id="icon" d="M8 5v14l11-7z"/></svg></button>
+          <div><div class="title">My Song 33</div><div class="sub">0:21 (1 MB)</div></div>
+        </div>
+        <div class="controls">
+          <input type="range" id="seek" min="0" max="1000" value="0" aria-label="Seek">
+          <span class="t" id="time">0:00</span>
+          <button class="speed" id="speed">1x</button>
+        </div>
+        <audio id="audio" preload="metadata" src="/assets/megan-onc/my-song-33.m4a"></audio>
+      </div>
+      <div class="transcript">On, on, on, on.</div>
+      <div class="reactions">
+        <span class="reaction">🤣 16</span><span class="reaction">🎵 5</span><span class="reaction">🐷 7</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="replies">8 replies</div>
+
+  <div class="msg"><img class="avatar" src="/assets/megan-onc/rory.png" alt=""><div>
+    <div><span class="head">Rory</span><span class="time">7 Jul 2023 at 17:14</span></div>
+    <div>the Slack transcript</div></div></div>
+
+  <div class="msg"><img class="avatar" src="/assets/megan-onc/aaron.png" alt=""><div>
+    <div><span class="head">Aaron Sheah</span><span class="time">7 Jul 2023 at 17:29</span></div>
+    <div>Chainsmokers collab?</div></div></div>
+
+  <div class="msg"><img class="avatar" src="/assets/megan-onc/rory.png" alt=""><div>
+    <div><span class="head">Rory</span><span class="time">7 Jul 2023 at 17:40</span></div>
+    <div>If they’re lucky 🫢</div></div></div>
+
+  <div class="msg"><img class="avatar" src="/assets/megan-onc/chris.png" alt=""><div>
+    <div><span class="head">Chris</span><span class="time">8 Jul 2023 at 09:03</span></div>
+    <div>That’s gotta be one of the mobile app ring tones 😂</div></div></div>
+
+  <div class="msg"><img class="avatar" src="/assets/megan-onc/leo.png" alt=""><div>
+    <div><span class="head">Leo ⛔</span><span class="time">10 Jul 2023 at 09:19</span></div>
+    <div>this is a bop tbh</div></div></div>
+
+  <div class="msg"><img class="avatar" src="/assets/megan-onc/rory.png" alt=""><div>
+    <div><span class="head">Rory</span><span class="time">10 Jul 2023 at 09:19</span></div>
+    <div>When that first big ONC hits<img class="inline-img" src="/assets/megan-onc/reaction.png" alt=""></div>
+    <div class="reactions"><span class="reaction">😂 1</span></div></div></div>
+
+  <div class="msg"><img class="avatar" src="/assets/megan-onc/aaron.png" alt=""><div>
+    <div><span class="head">Aaron Sheah</span><span class="time">10 Jul 2023 at 09:36</span></div>
+    <div>make sure the first ONC page happens on the dance floor 🕺</div></div></div>
+</main>
+<script>
+  const a = document.getElementById('audio'), play = document.getElementById('play'), icon = document.getElementById('icon'),
+        seek = document.getElementById('seek'), time = document.getElementById('time'), speed = document.getElementById('speed');
+  const PLAY = 'M8 5v14l11-7z', PAUSE = 'M6 5h4v14H6zm8 0h4v14h-4z';
+  const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  play.onclick = () => a.paused ? a.play() : a.pause();
+  a.onplay = () => icon.setAttribute('d', PAUSE);
+  a.onpause = a.onended = () => icon.setAttribute('d', PLAY);
+  a.ontimeupdate = () => { seek.value = a.duration ? a.currentTime / a.duration * 1000 : 0; time.textContent = fmt(a.currentTime); };
+  seek.oninput = () => { if (a.duration) a.currentTime = seek.value / 1000 * a.duration; };
+  const rates = [1, 1.5, 2, 0.5];
+  speed.onclick = () => { a.playbackRate = rates[(rates.indexOf(a.playbackRate) + 1) % rates.length]; speed.textContent = a.playbackRate + 'x'; };
+</script>
 </body>
 </html>
