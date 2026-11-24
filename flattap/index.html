@@ -154,8 +154,9 @@ pre.share { margin: 0 0 12px; padding: 12px; border-radius: 8px; background: #05
       <button id="zIn" aria-label="Zoom in">+</button>
       <button id="zOut" aria-label="Zoom out">&minus;</button>
       <button id="zReset" class="wide" aria-label="Reset view">Reset</button>
+      <button id="zTilt" class="wide" aria-label="Tilt view">Tilt</button>
     </div>
-    <div class="hint" id="hint">Drag to turn &middot; Right-drag or Shift-drag to move &middot; Scroll or pinch to zoom</div>
+    <div class="hint" id="hint">Drag to move or turn &middot; Pinch or scroll to zoom &middot; Twist two fingers to turn</div>
 
     <section class="card" id="card" hidden aria-live="polite">
       <div class="c-place" id="cPlace"></div>
@@ -188,7 +189,7 @@ pre.share { margin: 0 0 12px; padding: 12px; border-radius: 8px; background: #05
           <li>The earth is flat. The North Pole is at the center. Distance is distance on the flat map.</li>
           <li>Antarctica is the ice wall. It goes around the whole edge. Tap the side of the disc, and you fall off.</li>
           <li>The sun is a spotlight above the disc. Land in the light is in daytime.</li>
-          <li>Drag to turn the disc. Scroll or pinch to zoom in on any spot. Right-drag or Shift-drag to move the view, or use two fingers on a phone. Press Reset to start again.</li>
+          <li>Drag to move the view when you are zoomed in, or to turn the disc when you are zoomed out. Pinch or scroll to zoom in on any spot. On a trackpad, scroll with two fingers to move. Twist two fingers to turn. Right-drag or Shift-drag turns and tilts. Reset and Tilt help too.</li>
           <li>Zoom in very close on strange places. Some of them have secrets.</li>
           <li>Round 1 counts once. Round 5 counts three times. The top score is 1000.</li>
         </ul>
@@ -682,27 +683,34 @@ function iceHeight(th) {
   var b = u * 330, cb = Math.floor(b), fb = b - cb, tri2 = fb < .5 ? fb * 2 : (1 - fb) * 2;
   return ICE_H * (0.5 + 0.38 * hash1(ca % 90) * tri1 + 0.12 * hash1(cb % 330 + 500) * tri2 + 0.08 * Math.sin(u * 2 * Math.PI * 5 + 1.3));
 }
-function drawMap(size) {
-  mapCanvas.width = mapCanvas.height = size;
-  var g = mapCanvas.getContext('2d'), s = size / (2 * WALL), i;
-  g.setTransform(s, 0, 0, s, size / 2 - CX * s, size / 2 - CY * s);
+var P2 = null;
+function paintMap(cv, size, cx, cy, span, clip) {
+  if (!P2) P2 = { grat: new Path2D(gratD), land: new Path2D(landD), ant: new Path2D(antD) };
+  if (cv.width !== size) cv.width = cv.height = size;
+  var g = cv.getContext('2d'), s = size / span, i;
+  g.save();
+  g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, size, size);
+  g.setTransform(s, 0, 0, s, size / 2 - cx * s, size / 2 - cy * s);
+  if (clip) { g.beginPath(); g.arc(CX, CY, WALL, 0, 2 * Math.PI); g.clip(); }
   var bandGrad = g.createRadialGradient(CX, CY, R - 4, CX, CY, WALL);
   bandGrad.addColorStop(0, '#cfe9ff'); bandGrad.addColorStop(.5, '#eef8ff'); bandGrad.addColorStop(1, '#b4d8f2');
   g.fillStyle = bandGrad; g.beginPath(); g.arc(CX, CY, WALL, 0, 2 * Math.PI); g.fill();
   iceTexture(g, R - 6, WALL, 1400, 170, 77);
   g.fillStyle = '#1f66b5'; g.strokeStyle = '#12427a'; g.lineWidth = 2;
   g.beginPath(); g.arc(CX, CY, R, 0, 2 * Math.PI); g.fill(); g.stroke();
-  g.strokeStyle = 'rgba(227,239,255,.28)'; g.lineWidth = .8; g.stroke(new Path2D(gratD));
+  g.strokeStyle = 'rgba(227,239,255,.28)'; g.lineWidth = .8; g.stroke(P2.grat);
   g.strokeStyle = 'rgba(255,217,120,.4)'; g.lineWidth = 1; g.setLineDash([3, 6]);
   g.beginPath(); g.arc(CX, CY, SUN_R, 0, 2 * Math.PI); g.stroke(); g.setLineDash([]);
   g.lineJoin = 'round'; g.fillStyle = '#5fa05a'; g.strokeStyle = '#173d22'; g.lineWidth = .9;
-  var lp = new Path2D(landD); g.fill(lp, 'evenodd'); g.stroke(lp);
-  var ap = new Path2D(antD); g.fillStyle = '#e4f1ff'; g.fill(ap, 'evenodd');
+  g.fill(P2.land, 'evenodd'); g.stroke(P2.land);
+  var ap = P2.ant; g.fillStyle = '#e4f1ff'; g.fill(ap, 'evenodd');
   g.save(); g.clip(ap, 'evenodd'); iceTexture(g, 340, R, 2200, 260, 31); g.restore();
   g.strokeStyle = '#bcd8f3'; g.lineWidth = .8; g.stroke(ap);
   g.fillStyle = '#fff'; g.beginPath(); g.arc(CX, CY, 4, 0, 2 * Math.PI); g.fill();
   g.font = '600 11px "Chakra Petch", sans-serif'; g.textAlign = 'left'; g.globalAlpha = .8; g.fillText('NORTH POLE', CX + 9, CY - 4); g.globalAlpha = 1;
+  g.restore();
 }
+function drawMap(size) { paintMap(mapCanvas, size, CX, CY, 2 * WALL, false); }
 function makeSideCanvas() {
   var w = 2048, h = 256, c = document.createElement('canvas'), g, i, rnd = mulberry32(5);
   c.width = w; c.height = h; g = c.getContext('2d');
@@ -744,6 +752,26 @@ mapTex.encoding = THREE.sRGBEncoding;
 mapTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
 if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { drawMap(texSize); mapTex.needsUpdate = true; });
 
+var detail = { cv: document.createElement('canvas'), k: 0, cx: 0, cz: 0, last: 0, size: Math.min(2048, renderer.capabilities.maxTextureSize || 2048) };
+detail.cv.width = detail.cv.height = detail.size;
+detail.tex = new THREE.CanvasTexture(detail.cv);
+detail.tex.encoding = THREE.sRGBEncoding; detail.tex.anisotropy = renderer.capabilities.getMaxAnisotropy();
+detail.mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), new THREE.MeshStandardMaterial({
+  map: detail.tex, roughness: .95, metalness: 0, transparent: true, depthWrite: false,
+  polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }));
+detail.mesh.rotation.x = -Math.PI / 2; detail.mesh.visible = false; scene.add(detail.mesh);
+function updateDetail(now) {
+  var k = Math.floor(Math.log(940 / (1.4 * orb.dist)) / Math.LN2);
+  if (k < 1) { detail.mesh.visible = false; detail.k = 0; return; }
+  k = Math.min(k, 6);
+  var span = 940 / Math.pow(2, k);
+  var off = Math.hypot(orb.tx - detail.cx, orb.tz - detail.cz);
+  if ((k === detail.k && off <= span * .15) || now - detail.last < 160) return;
+  detail.k = k; detail.cx = orb.tx; detail.cz = orb.tz; detail.last = now;
+  paintMap(detail.cv, detail.size, CX + orb.tx, CY + orb.tz, span, true);
+  detail.tex.needsUpdate = true;
+  detail.mesh.scale.set(span, span, 1); detail.mesh.position.set(orb.tx, .03, orb.tz); detail.mesh.visible = true;
+}
 var top = new THREE.Mesh(new THREE.CircleGeometry(WALL, 160), new THREE.MeshStandardMaterial({ map: mapTex, roughness: .95, metalness: 0 }));
 top.rotation.x = -Math.PI / 2; scene.add(top);
 var sideTex = new THREE.CanvasTexture(makeSideCanvas());
@@ -849,28 +877,33 @@ function setGoal(g) {
 function homeGoal() { setGoal({ tx: 0, tz: 0, dist: homeDist(), el: .95 }); }
 $('zIn').onclick = function () { setGoal({ dist: orb.dist / 1.5 }); };
 $('zOut').onclick = function () { setGoal({ dist: orb.dist * 1.5 }); };
+$('zTilt').onclick = function () { setGoal({ el: orb.el > 1.2 ? .8 : 1.45 }); };
 $('zReset').onclick = function () { setGoal({ tx: 0, tz: 0, dist: homeDist(), el: .95, az: Math.round(orb.az / (2 * Math.PI)) * 2 * Math.PI }); };
 
-var ptrs = new Map(), moved = 0, startPt = null, pinch = null, mode = 'rotate';
-var plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), gp = new THREE.Vector3();
+var ptrs = new Map(), moved = 0, startPt = null, pinch = null, mode = 'rotate', dragging = false, tapOk = true;
+var plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0), gp0 = new THREE.Vector3(), gp1 = new THREE.Vector3();
 function pinchState() {
   var ps = Array.from(ptrs.values());
-  return { d: Math.hypot(ps[0].x - ps[1].x, ps[0].y - ps[1].y), cx: (ps[0].x + ps[1].x) / 2, cy: (ps[0].y + ps[1].y) / 2 };
+  return {
+    d: Math.hypot(ps[0].x - ps[1].x, ps[0].y - ps[1].y),
+    cx: (ps[0].x + ps[1].x) / 2, cy: (ps[0].y + ps[1].y) / 2,
+    ang: Math.atan2(ps[1].y - ps[0].y, ps[1].x - ps[0].x)
+  };
 }
 function userMoved() { goal = null; viewTouched = true; $('hint').classList.add('gone'); }
 function limitTarget() {
   var r = Math.hypot(orb.tx, orb.tz);
   if (r > WALL) { orb.tx *= WALL / r; orb.tz *= WALL / r; }
 }
-function groundAt(cx, cy) {
+function groundAt(cx, cy, out) {
   var rect = canvas.getBoundingClientRect();
   ndc.x = ((cx - rect.left) / rect.width) * 2 - 1;
   ndc.y = -((cy - rect.top) / rect.height) * 2 + 1;
   ray.setFromCamera(ndc, camera);
-  return ray.ray.intersectPlane(plane, gp) ? gp : null;
+  return ray.ray.intersectPlane(plane, out) ? out : null;
 }
 function zoomAt(cx, cy, factor) {
-  var nd = clamp(orb.dist * factor, 14, 2600), g = groundAt(cx, cy);
+  var nd = clamp(orb.dist * factor, 14, 2600), g = groundAt(cx, cy, gp0);
   if (g) {
     var k = 1 - nd / orb.dist;
     orb.tx += (g.x - orb.tx) * k; orb.tz += (g.z - orb.tz) * k;
@@ -879,39 +912,47 @@ function zoomAt(cx, cy, factor) {
   orb.dist = nd;
   if (nd >= homeDist() * .98) { orb.tx *= .85; orb.tz *= .85; }
 }
-function panBy(dx, dy) {
-  var s = 2 * orb.dist * Math.tan(21 * Math.PI / 180) / Math.max(1, canvas.clientHeight);
-  var f = s / Math.max(.35, Math.sin(orb.el)), ca = Math.cos(orb.az), sa = Math.sin(orb.az);
-  orb.tx += -dx * s * ca - dy * f * sa;
-  orb.tz += dx * s * sa - dy * f * ca;
+function panGround(x0, y0, x1, y1) {
+  var a = groundAt(x0, y0, gp0), b = groundAt(x1, y1, gp1);
+  if (!a || !b) return;
+  orb.tx += a.x - b.x; orb.tz += a.z - b.z;
   limitTarget();
+}
+function rotateBy(dx, dy) {
+  orb.az -= dx * 0.005;
+  orb.el = clamp(orb.el + dy * 0.004, .12, 1.52);
 }
 canvas.addEventListener('contextmenu', function (e) { e.preventDefault(); });
 canvas.addEventListener('pointerdown', function (e) {
   try { canvas.setPointerCapture(e.pointerId); } catch (x) {}
   ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
   if (ptrs.size === 1) {
-    moved = 0; startPt = { x: e.clientX, y: e.clientY };
-    mode = (e.button === 2 || e.shiftKey || e.ctrlKey || e.metaKey) ? 'pan' : 'rotate';
+    moved = 0; dragging = false; startPt = { x: e.clientX, y: e.clientY };
+    var explicit = e.button === 2 || e.shiftKey || e.ctrlKey || e.metaKey;
+    tapOk = !explicit;
+    mode = explicit ? 'rotate' : (orb.dist < homeDist() * .8 ? 'pan' : 'rotate');
   } else if (ptrs.size === 2) { moved = 99; pinch = pinchState(); }
 });
 canvas.addEventListener('pointermove', function (e) {
   var p = ptrs.get(e.pointerId);
   if (!p) return;
-  var dx = e.clientX - p.x, dy = e.clientY - p.y;
+  var px = p.x, py = p.y;
   p.x = e.clientX; p.y = e.clientY;
   if (ptrs.size === 1) {
     moved = Math.max(moved, Math.hypot(e.clientX - startPt.x, e.clientY - startPt.y));
     if (moved >= 5) {
+      if (!dragging) { dragging = true; px = startPt.x; py = startPt.y; }
       userMoved(); canvas.classList.add('drag');
-      if (mode === 'pan') panBy(dx, dy);
-      else { orb.az -= dx * 0.005; orb.el = clamp(orb.el + dy * 0.004, .12, 1.52); }
+      if (mode === 'pan') panGround(px, py, e.clientX, e.clientY);
+      else rotateBy(e.clientX - px, e.clientY - py);
     }
   } else if (ptrs.size === 2 && pinch) {
-    var n = pinchState();
+    var n = pinchState(), da = n.ang - pinch.ang;
     userMoved();
-    panBy(n.cx - pinch.cx, n.cy - pinch.cy);
+    panGround(pinch.cx, pinch.cy, n.cx, n.cy);
     zoomAt(n.cx, n.cy, pinch.d / Math.max(1, n.d));
+    if (da > Math.PI) da -= 2 * Math.PI; else if (da < -Math.PI) da += 2 * Math.PI;
+    orb.az += da;
     pinch = n;
   }
 });
@@ -920,17 +961,36 @@ function endPtr(e, cancel) {
   var single = ptrs.size === 1;
   ptrs.delete(e.pointerId);
   canvas.classList.remove('drag');
-  if (ptrs.size === 1) { var r = Array.from(ptrs.values())[0]; startPt = { x: r.x, y: r.y }; moved = 99; pinch = null; }
-  if (single && !cancel && moved < 5 && mode === 'rotate') tapAt(e.clientX, e.clientY);
+  if (ptrs.size === 1) {
+    var r = Array.from(ptrs.values())[0];
+    startPt = { x: r.x, y: r.y }; moved = 99; dragging = true; pinch = null; mode = 'pan';
+  }
+  if (single && !cancel && moved < 5 && tapOk) tapAt(e.clientX, e.clientY);
 }
 canvas.addEventListener('pointerup', function (e) { endPtr(e, false); });
 canvas.addEventListener('pointercancel', function (e) { endPtr(e, true); });
 canvas.addEventListener('wheel', function (e) {
   e.preventDefault();
   userMoved();
-  var dy = e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY;
-  zoomAt(e.clientX, e.clientY, Math.exp(dy * 0.0015));
+  var dx = e.deltaX, dy = e.deltaY;
+  if (e.deltaMode === 1) { dx *= 16; dy *= 16; } else if (e.deltaMode === 2) { dx *= 400; dy *= 400; }
+  if (e.ctrlKey) { zoomAt(e.clientX, e.clientY, Math.exp(dy * 0.012)); return; }
+  var wheel = e.deltaMode !== 0 || (dx === 0 && Math.abs(dy) >= 50 && dy % 1 === 0);
+  if (wheel) zoomAt(e.clientX, e.clientY, Math.exp(dy * 0.0015));
+  else panGround(e.clientX, e.clientY, e.clientX - dx, e.clientY - dy);
 }, { passive: false });
+if (!('ontouchstart' in window)) {
+  var gScale = 1, gRot = 0;
+  canvas.addEventListener('gesturestart', function (e) { e.preventDefault(); gScale = 1; gRot = 0; });
+  canvas.addEventListener('gesturechange', function (e) {
+    e.preventDefault(); userMoved();
+    var rect = canvas.getBoundingClientRect();
+    zoomAt(e.clientX !== undefined ? e.clientX : rect.left + rect.width / 2, e.clientY !== undefined ? e.clientY : rect.top + rect.height / 2, gScale / e.scale);
+    gScale = e.scale;
+    orb.az += (e.rotation - gRot) * Math.PI / 180; gRot = e.rotation;
+  });
+  canvas.addEventListener('gestureend', function (e) { e.preventDefault(); });
+}
 
 /* ---------- picking ---------- */
 var ray = new THREE.Raycaster(), ndc = new THREE.Vector2();
@@ -1348,6 +1408,7 @@ function frame(t) {
   }
   flash.material.opacity = flashOn ? 0.18 + 0.32 * (0.5 + 0.5 * Math.sin(t * 0.008)) : 0;
   updateEggs(t);
+  updateDetail(t);
   renderer.render(scene, camera);
 }
 requestAnimationFrame(frame);
