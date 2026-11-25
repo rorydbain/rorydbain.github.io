@@ -199,14 +199,15 @@ pre.share { margin: 0 0 12px; padding: 12px; border-radius: 8px; background: #05
   </main>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
 <script>
 window.addEventListener('error', function (e) {
   var t = document.getElementById('tName');
-  if (t) t.textContent = 'Error: ' + e.message;
+  if (t && e.filename && e.filename.indexOf(location.host) !== -1) t.textContent = 'Error: ' + e.message;
 });
 (function () {
 'use strict';
+try {
 var CX = 500, CY = 500, R = 440, WALL = 470, ANT_IN = 365, KM = 20015, THK = 56;
 
 /* ---------- geometry (no DOM) ---------- */
@@ -733,7 +734,9 @@ function glowCanvas(rgb) {
 
 /* ---------- scene ---------- */
 var canvas = $('gl');
-var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true });
+var renderer;
+try { renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true }); }
+catch (e) { $('tName').textContent = 'This browser could not start WebGL (3D graphics).'; return; }
 renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setClearColor(0x03060f, 1);
@@ -1414,6 +1417,11 @@ function frame(t) {
 requestAnimationFrame(frame);
 
 daily();
+} catch (err) {
+  var tn = document.getElementById('tName');
+  if (tn) tn.textContent = 'Error: ' + (err && err.message ? err.message : err);
+  if (window.console) console.error(err);
+}
 })();
 
 </script>
